@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
+    public GameObject player;
+
     void Update()
     {
         
