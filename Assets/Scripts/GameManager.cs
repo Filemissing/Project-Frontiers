@@ -11,7 +11,12 @@ public class GameManager : MonoBehaviour
     }
 
     public GameObject player;
-
+    public Carry playerCarry;
+    public Recipe[] recipes;
+    private void Awake()
+    {
+        playerCarry = player.GetComponent<Carry>();
+    }
     void Update()
     {
         
