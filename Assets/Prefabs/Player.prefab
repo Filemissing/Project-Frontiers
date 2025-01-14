@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3137477800254631523}
   - component: {fileID: 5129256600805646609}
+  - component: {fileID: 9017446588857732350}
+  - component: {fileID: 1483613984542452236}
   - component: {fileID: 6125907520695763519}
   - component: {fileID: 2933911050032290002}
   - component: {fileID: 4893443623312107404}
@@ -61,6 +63,38 @@ MonoBehaviour:
   isCursorLocked: 1
   movementStartTime: 0
   distanceMoved: 0
+--- !u!114 &9017446588857732350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3533549440831835266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee082e43247c98548a837836a088d2f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canInteract: 1
+  interactionRange: 1
+  interactionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1483613984542452236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3533549440831835266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ae052b827cbd94591bbf651276997b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carryingObject: {fileID: 0}
+  offset: {x: 2, y: 0, z: 1}
+  confineToCarryPosition: 1
 --- !u!54 &6125907520695763519
 Rigidbody:
   m_ObjectHideFlags: 0
