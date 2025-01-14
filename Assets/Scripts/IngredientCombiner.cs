@@ -6,8 +6,12 @@ using UnityEngine;
 public class IngredientCombiner : MonoBehaviour
 {
     List<Ingredient> ingredients;
-    List<Recipe> validRecipes = new List<Recipe>(GameManager.instance.recipes);
+    List<Recipe> validRecipes;
     Ingredient heldIngredient;
+    private void Awake()
+    {
+        validRecipes = new List<Recipe>(GameManager.instance.recipes);
+    }
     public void Interacted()
     {
         if(!GameManager.instance.playerCarry.carryingObject.TryGetComponent<Ingredient>(out heldIngredient)) return; // if player isn't carrying an ingredient
