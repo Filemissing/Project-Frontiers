@@ -10,8 +10,10 @@ public class OrderCheck : MonoBehaviour
     {
         CompletedOrder completedOrder = null;
 
-        if (GameManager.instance.playerCarry.carryingObject.TryGetComponent<CompletedOrder>(out CompletedOrder component))
-            completedOrder = component;
+        if (GameManager.instance.playerCarry)
+            if (GameManager.instance.playerCarry.carryingObject)
+                if (GameManager.instance.playerCarry.carryingObject.TryGetComponent<CompletedOrder>(out CompletedOrder component))
+                    completedOrder = component;
 
         return completedOrder;
     }
