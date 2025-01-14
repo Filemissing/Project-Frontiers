@@ -11,7 +11,8 @@ public class Carry : MonoBehaviour
     {
         if(confineToCarryPosition && carryingObject != null)
         {
-            carryingObject.transform.position = transform.TransformDirection(offset);
+            carryingObject.transform.SetParent(transform);
+            carryingObject.transform.position = transform.position + transform.TransformDirection(offset);
         }
     }
 }
