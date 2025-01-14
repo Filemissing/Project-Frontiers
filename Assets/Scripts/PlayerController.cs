@@ -20,16 +20,27 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float cameraHeight = 1.5f;
 
 
+    [Header("Camera Effects")]
+    [SerializeField] bool isBobbingEnabled;
+    [SerializeField] float bobbingAmplitude = .025f;
+
+
     [Header("Misc")]
     public bool isCursorLocked = true;
+    public float movementStartTime;
 
 
 
 
     void UpdateMovementDirection()
     {
+        Vector3 previousMovementDirection = movementDirection;
+
         movementDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
         movementDirection = transform.TransformDirection(movementDirection);
+
+        if (previousMovementDirection == Vector3.zero && movementDirection != Vector3.zero)
+            movementStartTime = Time.time;
     }
 
 
@@ -63,9 +74,9 @@ public class PlayerController : MonoBehaviour
             return value;
         }
 
-        Camera camera = Camera.main;
         float mouseDeltaX = Input.GetAxis("Mouse X");
         float mouseDeltaY = Input.GetAxis("Mouse Y");
+        Camera camera = Camera.main;
 
         Vector3 previousEulerAngles = transform.eulerAngles;
 
@@ -91,6 +102,20 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    // Camera Effects
+
+    void BobbingEffect()
+    {
+        Camera camera = Camera.main;
+        Vector3 localMovementDirection = transform.InverseTransformDirection(movementDirection);
+        Vector3 offset = Vector3.zero;
+
+        if (localMovementDirection != Vector3.zero)
+            offset = new Vector3(0, Mathf.Sin((Time.time - movementStartTime) * 15) * .01f * bobbingAmplitude * currentSpeed, 0);
+
+        camera.transform.position += offset;
+    }
+
     void Update()
     {
         Cursor.lockState = (isCursorLocked) ? CursorLockMode.Locked : CursorLockMode.Confined;
@@ -98,6 +123,10 @@ public class PlayerController : MonoBehaviour
         UpdateMovementDirection();
         UpdateCurrentSpeed();
         UpdateCamera();
+
+        // Camera Effects
+        Debug.Log(movementStartTime);
+        if (isBobbingEnabled) BobbingEffect();
     }
 
 
