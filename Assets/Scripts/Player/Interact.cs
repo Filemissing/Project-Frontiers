@@ -18,6 +18,9 @@ public class Interact : MonoBehaviour
         {
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, interactionRange, interactionMask, QueryTriggerInteraction.Collide))
             {
+                Debug.Log(hit.GetType());
+                Debug.Log(hit);
+                Debug.Log(hit.transform.name);
                 hit.transform.SendMessage("InteractLeft", SendMessageOptions.DontRequireReceiver);
             }
         }

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public Carry playerCarry;
     public Recipe[] recipes;
-    private void Awake()
+    void Awake()
     {
         instance = this;
         playerCarry = player.GetComponent<Carry>();

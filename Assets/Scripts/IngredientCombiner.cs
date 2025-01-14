@@ -12,11 +12,16 @@ public class IngredientCombiner : MonoBehaviour
     {
         validRecipes = new List<Recipe>(GameManager.instance.recipes);
     }
-    public void Interacted()
+    public void InteractLeft()
     {
-        if(!GameManager.instance.playerCarry.carryingObject.TryGetComponent<Ingredient>(out heldIngredient)) return; // if player isn't carrying an ingredient
+        Debug.Log("interacted with combining station");
+        Debug.Log(GameManager.instance);
+        if(GameManager.instance.playerCarry)
+            if(GameManager.instance.playerCarry.carryingObject)
+                if(!GameManager.instance.playerCarry.carryingObject.TryGetComponent<Ingredient>(out heldIngredient)) 
+                    return; // if player isn't carrying an ingredient
      
-        ingredients.Add(heldIngredient);
+        if(heldIngredient) ingredients.Add(heldIngredient);
 
         foreach (Recipe recipe in validRecipes)
         {
@@ -40,5 +45,7 @@ public class IngredientCombiner : MonoBehaviour
             } 
         }
         GameManager.instance.playerCarry.carryingObject = null;
+        heldIngredient.transform.SetParent(gameObject.transform);
+        heldIngredient.transform.position = Vector3.zero;
     }
 }
