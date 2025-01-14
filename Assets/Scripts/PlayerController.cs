@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
 
     [Header("Misc")]
-    public bool cursorLocked = true;
+    public bool isCursorLocked = true;
 
 
 
@@ -53,6 +53,16 @@ public class PlayerController : MonoBehaviour
 
     void UpdateCamera()
     {
+        float ClosestIfBetween(float value, float low, float high)
+        {
+            if (value > low && value < high)
+            {
+                float mid = (high - low) / 2 + low;
+                return value < mid ? low : high;
+            }
+            return value;
+        }
+
         Camera camera = Camera.main;
         float mouseDeltaX = Input.GetAxis("Mouse X");
         float mouseDeltaY = Input.GetAxis("Mouse Y");
@@ -67,16 +77,23 @@ public class PlayerController : MonoBehaviour
         //angleY %= 360;
         angleY *= cameraSensitivity;
 
+        float eulerX = ClosestIfBetween(camera.transform.eulerAngles.x + angleX, 70, 270); //camera.transform.eulerAngles.x + angleX; //Mathf.Clamp(camera.transform.eulerAngles.x + angleX, -80, 270);
+        float eulerY = angleY;
+
+        if (eulerX <= 0)
+            eulerX += 360;
+        //eulerX %= 360;
+
         transform.eulerAngles = new Vector3(previousEulerAngles.x, angleY, previousEulerAngles.z); // Apply player eulerAngles
         camera.transform.position = transform.position + Vector3.up * cameraHeight; // Apply camera position
-        camera.transform.eulerAngles = new Vector3(camera.transform.eulerAngles.x, transform.eulerAngles.y, 0); // Apply camera eulerAngles
-        camera.transform.eulerAngles += new Vector3(angleX, 0, 0);
+        camera.transform.eulerAngles = new Vector3(eulerX, eulerY, 0); // Apply camera eulerAngles
+        //camera.transform.eulerAngles += new Vector3(angleX, 0, 0);
     }
 
 
     void Update()
     {
-        Cursor.lockState = (cursorLocked) ? CursorLockMode.Locked : CursorLockMode.Confined;
+        Cursor.lockState = (isCursorLocked) ? CursorLockMode.Locked : CursorLockMode.Confined;
 
         UpdateMovementDirection();
         UpdateCurrentSpeed();
