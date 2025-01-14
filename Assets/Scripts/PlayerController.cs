@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -25,9 +27,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float bobbingAmplitude = .025f;
 
 
+    [Header("Footsteps")]
+    [SerializeField] AudioClip[] footstepSounds;
+    [SerializeField] float stepDistance = .3f;
+
+
     [Header("Misc")]
     public bool isCursorLocked = true;
     public float movementStartTime;
+    public float distanceMoved = 0;
+    Vector3 previousPosition;
 
 
 
@@ -40,7 +49,10 @@ public class PlayerController : MonoBehaviour
         movementDirection = transform.TransformDirection(movementDirection);
 
         if (previousMovementDirection == Vector3.zero && movementDirection != Vector3.zero)
+        {
             movementStartTime = Time.time;
+            distanceMoved = 0;
+        }
     }
 
 
@@ -102,8 +114,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    // Camera Effects
-
+    // Effects
     void BobbingEffect()
     {
         Camera camera = Camera.main;
@@ -116,6 +127,21 @@ public class PlayerController : MonoBehaviour
         camera.transform.position += offset;
     }
 
+    void FootstepEffect()
+    {
+        float previousDistanceMoved = distanceMoved;
+
+        if (movementDirection != Vector3.zero)
+            distanceMoved += (previousPosition - transform.position).magnitude;
+        
+        if (footstepSounds.Length > 0)
+            if (Mathf.RoundToInt(distanceMoved / stepDistance) > Mathf.RoundToInt(previousDistanceMoved / stepDistance))
+                AudioSource.PlayClipAtPoint(footstepSounds[UnityEngine.Random.Range(0, footstepSounds.Length)], transform.position - Vector3.up * -1);
+
+        previousPosition = transform.position;
+    }
+
+
     void Update()
     {
         Cursor.lockState = (isCursorLocked) ? CursorLockMode.Locked : CursorLockMode.Confined;
@@ -124,9 +150,9 @@ public class PlayerController : MonoBehaviour
         UpdateCurrentSpeed();
         UpdateCamera();
 
-        // Camera Effects
-        Debug.Log(movementStartTime);
+        // Effects
         if (isBobbingEnabled) BobbingEffect();
+        FootstepEffect();
     }
 
 

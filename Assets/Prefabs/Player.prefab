@@ -50,16 +50,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 6125907520695763519}
   movementDirection: {x: 0, y: 0, z: 0}
-  walkSpeed: 360
-  runSpeed: 440
+  walkSpeed: 280
+  runSpeed: 340
   cameraSensitivity: 1
   cameraHeight: 0.5
   isBobbingEnabled: 0
-  isSlantingEnabled: 0
-  isFOVEffectEnabled: 0
   bobbingAmplitude: 0.0125
+  footstepSounds: []
+  stepDistance: 0.75
   isCursorLocked: 1
   movementStartTime: 0
+  distanceMoved: 0
 --- !u!54 &6125907520695763519
 Rigidbody:
   m_ObjectHideFlags: 0
