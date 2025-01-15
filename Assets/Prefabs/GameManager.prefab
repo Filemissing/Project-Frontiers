@@ -48,11 +48,7 @@ MonoBehaviour:
   playerCarry: {fileID: 0}
   recipes:
   - {fileID: 11400000, guid: 4e7417d1d1e970941ac3adb8d33e6eb3, type: 2}
-  completedOrders:
+  orders:
   - {fileID: 0}
-  orders: []
-  orderRequest: {fileID: 8438816416278360533, guid: b7ad25530f62838429f492c19ff33dcf,
-    type: 3}
-  ordersObject: {fileID: 0}
-  timeBetweenOrdersMin: 10
-  timeBetweenOrdersMax: 20
+  - {fileID: 0}
+  - {fileID: 0}

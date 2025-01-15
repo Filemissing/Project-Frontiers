@@ -20,6 +20,15 @@ public class OrderRequest : MonoBehaviour
 
     void CorrectOrder()
     {
+        OrderRequest[] orders = GameManager.instance.orders;
+        for (int i = 0; i < orders.Length; i++) // Removes the OrderRequest from the Orders list
+        {
+            if (orders[i] == this)
+                orders[i] = null;
+        }
+
+        Destroy(GameManager.instance.playerCarry.carryingObject);
+        Destroy(gameObject);
         Debug.Log("The CompletedOrder is correct.");
     }
 
@@ -39,7 +48,7 @@ public class OrderRequest : MonoBehaviour
             return;
         }
 
-        if (completedOrder.name == order.name)
+        if (completedOrder.name == order.name) // Currently checks by name, change when needed.
             isCorrectCompletedOrder = true;
 
         if (isCorrectCompletedOrder)
