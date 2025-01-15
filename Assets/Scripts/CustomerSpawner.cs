@@ -5,7 +5,7 @@ using UnityEngine;
 public class CustomerSpawner : MonoBehaviour
 {
     [SerializeField] CompletedOrder[] completedOrders;
-    [SerializeField] GameObject customerPrefab;
+    [SerializeField] GameObject[] customerPrefabs;
 
     [SerializeField] float timeBetweenOrdersMin = 1;
     [SerializeField] float timeBetweenOrdersMax = 5;
@@ -30,14 +30,14 @@ public class CustomerSpawner : MonoBehaviour
         if (GameManager.instance.orders.Length == 0)
             shouldStop = LogWarningReturn("The Orders array in the GameManager instance does not contain any elements!");
 
-        if (!customerPrefab)
-            shouldStop = LogWarningReturn("The CustomerPrefab has not been assigned!");
+        if (customerPrefabs.Length == 0)
+            shouldStop = LogWarningReturn("The CustomerPrefabs array does not contain any elements!");
+        else
+            if (!customerPrefabs[0].TryGetComponent<OrderRequest>(out OrderRequest temp))
+                shouldStop = LogWarningReturn("The CustomerPrefabs do not contain an OrderRequest component!");
 
         if (completedOrders.Length == 0)
-            shouldStop = LogWarningReturn("The CompletedOrders array does not contain any CompletedOrder's!");
-        
-        if (!customerPrefab.TryGetComponent<OrderRequest>(out OrderRequest temp))
-            shouldStop = LogWarningReturn("The CustomerPrefab does not have a OrderRequest component!");
+            shouldStop = LogWarningReturn("The CompletedOrders array does not contain any elements!");
 
         if (shouldStop)
             return;
@@ -58,7 +58,7 @@ public class CustomerSpawner : MonoBehaviour
             return;
 
 
-        GameObject newCustomer = Instantiate<GameObject>(customerPrefab);
+        GameObject newCustomer = Instantiate<GameObject>(customerPrefabs[Random.Range(0, customerPrefabs.Length)]);
         OrderRequest newOrder = null;
 
         if (newCustomer.TryGetComponent<OrderRequest>(out OrderRequest orderRequest))

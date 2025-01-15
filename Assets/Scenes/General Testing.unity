@@ -2889,8 +2889,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   completedOrders:
   - {fileID: 102828728}
-  customerPrefab: {fileID: 6865562514252675721, guid: aea28d58fef2a16478090969c3f25444,
-    type: 3}
+  customerPrefabs:
+  - {fileID: 5705143447413767023, guid: eb5c86282912d4f4ba3fefa31ca0d38d, type: 3}
+  - {fileID: 5705143447413767023, guid: 5e8a3a00de723444986b1e1324ebe7f0, type: 3}
+  - {fileID: 5705143447413767023, guid: 7fbc7651d6303cc4092e5753599d2add, type: 3}
   timeBetweenOrdersMin: 1
   timeBetweenOrdersMax: 5
 --- !u!4 &2013059130
