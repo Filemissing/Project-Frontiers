@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96940b329688b31408669f0b2c6e20d6, type: 3}
   m_Name: Fried Tomato
   m_EditorClassIdentifier: 
-  ingredients: []
+  ingredients:
+  - ingredient: {fileID: 8150760410510220236, guid: 623a66bd8cb101b45916a7737d9d8a7f,
+      type: 3}
+    isFried: 1
+    isBurnt: 0
+    isChopped: 0
   endResult: {fileID: 0}

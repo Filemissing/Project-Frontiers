@@ -20,10 +20,17 @@ public class Fryable : MonoBehaviour
     {
         fryTimeCounter += Time.deltaTime;
 
-        if (fryTimeCounter >= fryTime) ingredient.meshRenderer.material = friedMaterial; //change the material when fried
-        ingredient.isFried = true;
+        if (fryTimeCounter >= fryTime)
+        {
+            ingredient.meshRenderer.material = friedMaterial; //change the material when fried
+            ingredient.isFried = true;
+        }
 
-        if (fryTimeCounter >= burnTime) ingredient.meshRenderer.material = burntMaterial; //change the material when burnt
-        ingredient.isBurnt = true;
+        if (fryTimeCounter >= burnTime)
+        {
+            ingredient.meshRenderer.material = burntMaterial; //change the material when burnt
+            ingredient.isFried = false;
+            ingredient.isBurnt = true;
+        }
     }
 }
