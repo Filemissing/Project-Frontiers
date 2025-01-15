@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if(instance == null) instance = this;
+
         if (Time.time >= nextOrderTime) // Checks if should create new order
         {
             CreateOrder();

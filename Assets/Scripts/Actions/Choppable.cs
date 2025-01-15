@@ -17,8 +17,10 @@ public class Choppable : MonoBehaviour
     public virtual void Chop()
     {
         chopCount++;
-        if (chopCount >= requiredChops) ingredient.meshFilter.sharedMesh = choppedMesh; //change the mesh to the chopped variant
-
-        ingredient.isChopped = true;
+        if (chopCount >= requiredChops)
+        {
+            ingredient.meshFilter.sharedMesh = choppedMesh; //change the mesh to the chopped variant
+            ingredient.isChopped = true;
+        }
     }
 }
