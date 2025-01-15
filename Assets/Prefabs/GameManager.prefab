@@ -54,5 +54,5 @@ MonoBehaviour:
   orderRequest: {fileID: 8438816416278360533, guid: b7ad25530f62838429f492c19ff33dcf,
     type: 3}
   ordersObject: {fileID: 0}
-  timeBetweenOrdersMin: 1
-  timeBetweenOrdersMax: 5
+  timeBetweenOrdersMin: 10
+  timeBetweenOrdersMax: 20

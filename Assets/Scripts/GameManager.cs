@@ -19,14 +19,10 @@ public class GameManager : MonoBehaviour
     public float timeBetweenOrdersMax = 5;
     float nextOrderTime;
 
-    void Reset()
-    {
-        instance = this;
-    }
-
     void Awake()
     {
         playerCarry = player.GetComponent<Carry>();
+        instance = this;
     }
 
     void UpdateNextOrderTime()

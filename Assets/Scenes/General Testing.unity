@@ -3120,16 +3120,6 @@ PrefabInstance:
       objectReference: {fileID: 2082898821}
     - target: {fileID: 408182905720698994, guid: abccfa8de0404964fb7a2abbc70acf4f,
         type: 3}
-      propertyPath: timeBetweenOrdersMax
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 408182905720698994, guid: abccfa8de0404964fb7a2abbc70acf4f,
-        type: 3}
-      propertyPath: timeBetweenOrdersMin
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 408182905720698994, guid: abccfa8de0404964fb7a2abbc70acf4f,
-        type: 3}
       propertyPath: completedOrders.Array.data[0]
       value: 
       objectReference: {fileID: 102828728}

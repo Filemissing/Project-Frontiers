@@ -9,7 +9,7 @@ public class OrderRequest : MonoBehaviour
     CompletedOrder GetCompletedOrder()
     {
         CompletedOrder completedOrder = null;
-
+        
         if (GameManager.instance.playerCarry)
             if (GameManager.instance.playerCarry.carryingObject)
                 if (GameManager.instance.playerCarry.carryingObject.TryGetComponent<CompletedOrder>(out CompletedOrder component))
