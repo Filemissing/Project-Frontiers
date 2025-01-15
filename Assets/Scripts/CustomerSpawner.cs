@@ -44,7 +44,7 @@ public class CustomerSpawner : MonoBehaviour
 
 
 
-
+        // Getting the ordersSlotIndex
         int ordersSlotIndex = -1; // The index of the slot wherein this order will go
         for (int i = 0; i < GameManager.instance.orders.Length; i++)
         {
@@ -66,21 +66,11 @@ public class CustomerSpawner : MonoBehaviour
 
 
         newOrder.order = completedOrders[Random.Range(0, completedOrders.Length)];
-        newOrder.transform.position = transform.position + Vector3.left * ordersSlotIndex;
+        float distance = (3f / GameManager.instance.orders.Length); // Calculates the distance between customers based on the max amount of customers
+        newOrder.transform.position = transform.position + Vector3.left * ordersSlotIndex * distance; // Calculates and sets the position of the orders
         newOrder.transform.parent = transform;
-        GameManager.instance.orders[ordersSlotIndex] = newOrder;
-        /*
-        bool spotFound = false;
-        for (int i = 0; i < orders.Length; i++)
-        {
-            if (!orders[i] && !spotFound)
-            {
-                orders[i] = newOrder;
-                spotFound = true;
-            }
-        }
-        */
-        //orders.Add(newOrder);
+
+        GameManager.instance.orders[ordersSlotIndex] = newOrder; // Puts the order in the Orders array
     }
 
     void Update()
