@@ -6,6 +6,8 @@ using UnityEngine;
 public class OrderRequest : MonoBehaviour
 {
     public CompletedOrder order;
+    public float maxTime;
+    public float timeLeft;
 
     CompletedOrder GetCompletedOrder()
     {
@@ -14,7 +16,7 @@ public class OrderRequest : MonoBehaviour
         if (GameManager.instance.playerCarry)
             if (GameManager.instance.playerCarry.carryingObject)
                 if (GameManager.instance.playerCarry.carryingObject.TryGetComponent<Plate>(out Plate plate))
-                    if (GameManager.instance.playerCarry.carryingObject.transform.GetChild(0))
+                    if (GameManager.instance.playerCarry.carryingObject.transform.childCount != 0)
                         if (GameManager.instance.playerCarry.carryingObject.transform.GetChild(0).TryGetComponent<CompletedOrder>(out CompletedOrder component))
                             completedOrder = component;
 
@@ -76,6 +78,24 @@ public class OrderRequest : MonoBehaviour
     void InteractLeft()
     {
         CheckOrder();
+    }
+
+    void OutOfTime()
+    {
+        Destroy(gameObject);
+    }
+
+    void Update()
+    {
+        timeLeft -= Time.deltaTime;
+
+        if (timeLeft <= 0)
+            OutOfTime();
+    }
+
+    void Awake()
+    {
+        timeLeft = maxTime;
     }
 }
 
