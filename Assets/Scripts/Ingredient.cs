@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
 [System.Serializable]
-public class Ingredient : MonoBehaviour
+public class Ingredient : Carryable
 {
     public MeshFilter meshFilter;
     public MeshRenderer meshRenderer;
@@ -17,15 +17,15 @@ public class Ingredient : MonoBehaviour
     public bool isBurnt;
     public bool isChopped;
 
-    public IngredientRequirements ToIngredientRequirement()
+    public override void InteractLeft()
     {
-        IngredientRequirements ingredientvalues = new IngredientRequirements
+        if(transform.parent && transform.parent.TryGetComponent<Pan>(out Pan pan) | transform.parent.TryGetComponent<Plate>(out Plate plate))
         {
-            ingredient = this,
-            isChopped = isChopped,
-            isFried = isFried,
-            isBurnt = isBurnt
-        };
-        return ingredientvalues;
+            return;
+        }
+        else
+        {
+            base.InteractLeft();
+        }
     }
 }
