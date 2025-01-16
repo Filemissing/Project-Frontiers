@@ -16,14 +16,9 @@ public class Pan : Carryable
                 stove.pan = null;
             }
         }
-        else if(!ingredient && GameManager.instance.playerCarry.carryingObject.TryGetComponent<Ingredient>(out ingredient))
+        else if(!ingredient && GameManager.instance.TakeCarryingObject<Ingredient>(gameObject, out ingredient))
         {
-            GameManager.instance.playerCarry.carryingObject = null;
-            ingredient.transform.SetParent(transform);
-            ingredient.transform.position = transform.position;
-
+            // put the ingredient in the pan
         }
     }
-
-    
 }

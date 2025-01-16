@@ -10,11 +10,9 @@ public class Stove : MonoBehaviour
     {
         if(GameManager.instance.playerCarry.carryingObject == null) return;
 
-        if(GameManager.instance.playerCarry.carryingObject.TryGetComponent<Pan>(out pan))
+        if(GameManager.instance.TakeCarryingObject<Pan>(gameObject, out pan))
         {
-            GameManager.instance.playerCarry.carryingObject = null;
-            pan.transform.SetParent(transform);
-            pan.transform.position = transform.position;
+            // place the pan on the stove
         }
     }
 
