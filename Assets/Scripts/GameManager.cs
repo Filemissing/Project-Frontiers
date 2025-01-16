@@ -20,6 +20,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-
+        if(instance == null) instance = this;
     }
 }

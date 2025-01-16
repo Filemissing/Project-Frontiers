@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Stove : MonoBehaviour
 {
-    Pan pan;
+    public Pan pan;
     
     void InteractLeft()
     {
+        if(GameManager.instance.playerCarry.carryingObject == null) return;
+
         if(GameManager.instance.playerCarry.carryingObject.TryGetComponent<Pan>(out pan))
         {
             GameManager.instance.playerCarry.carryingObject = null;
             pan.transform.SetParent(transform);
-            pan.transform.position = Vector3.zero;
+            pan.transform.position = transform.position;
         }
     }
 

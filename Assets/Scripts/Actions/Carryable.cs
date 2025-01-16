@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Carryable : MonoBehaviour
 {
-    void InteractLeft()
+    public virtual void InteractLeft()
     {
         if(GameManager.instance.playerCarry.carryingObject == null)
         {

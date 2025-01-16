@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class IngredientCombiner : MonoBehaviour
+public class Plate : Carryable
 {
     [SerializeField] List<Ingredient> ingredients = new List<Ingredient>();
     [SerializeField] List<Recipe> validRecipes = new List<Recipe>();
@@ -13,10 +13,12 @@ public class IngredientCombiner : MonoBehaviour
     {
         validRecipes = new List<Recipe>(GameManager.instance.recipes);
     }
-    public void InteractLeft()
+    public override void InteractLeft()
     {
-        Debug.Log("interacted with combining station");
-        
+        base.InteractLeft();
+
+        if (GetCarryingObject() == false) return;
+
         if(UpdateValidRecipes() == false) return;
         
         RemoveHeldObject();
@@ -24,13 +26,27 @@ public class IngredientCombiner : MonoBehaviour
         CheckRecipeCompletion();
     }
 
-    bool UpdateValidRecipes()
+    bool GetCarryingObject()
     {
-        if (!GameManager.instance.playerCarry.carryingObject.TryGetComponent<Ingredient>(out heldIngredient))
-            return false; // if player isn't carrying an ingredient
+        if (GameManager.instance.playerCarry.carryingObject == null) return false;
+
+        if (GameManager.instance.playerCarry.carryingObject.TryGetComponent<Ingredient>(out heldIngredient))
+        {
+            // if player is carrying an ingredient
+        } 
+        else if (GameManager.instance.playerCarry.carryingObject.TryGetComponent<Pan>(out Pan pan))
+        {
+            heldIngredient = pan.ingredient;// if the player is carrying a pan
+            pan.ingredient = null;
+        }
+        else return false;
 
         if (heldIngredient != null) ingredients.Add(heldIngredient);
+        return true;
+    }
 
+    bool UpdateValidRecipes()
+    {
         retry:
         foreach (Recipe recipe in validRecipes)
         {
