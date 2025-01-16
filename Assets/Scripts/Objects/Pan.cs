@@ -10,11 +10,11 @@ public class Pan : Carryable
     {
         if(GameManager.instance.playerCarry.carryingObject == null)
         {
-            base.InteractLeft();
             if(transform.parent && transform.parent.TryGetComponent<Stove>(out Stove stove))
             {
                 stove.pan = null;
             }
+            base.InteractLeft();
         }
         else if(!ingredient && GameManager.instance.TakeCarryingObject<Ingredient>(gameObject, out ingredient))
         {

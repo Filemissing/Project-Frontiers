@@ -9,6 +9,7 @@ public class Carryable : MonoBehaviour
         if(GameManager.instance.playerCarry.carryingObject == null)
         {
             GameManager.instance.playerCarry.carryingObject = gameObject;
+            gameObject.transform.SetParent(GameManager.instance.player.transform);
         }
     }
 }

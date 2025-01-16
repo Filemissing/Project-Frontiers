@@ -37,7 +37,6 @@ public class Plate : Carryable
         else if (GameManager.instance.playerCarry.carryingObject.TryGetComponent<Pan>(out Pan pan))
         {
             heldIngredient = pan.ingredient;// if the player is carrying a pan
-            pan.ingredient = null;
         }
         else return false;
 
@@ -92,9 +91,15 @@ public class Plate : Carryable
     
     void RemoveHeldObject()
     {
-        Debug.Log("removed held object");
-        //take the heldobject out of the players hand and parent it under the combining station
-        GameManager.instance.playerCarry.carryingObject = null;
+        if (GameManager.instance.playerCarry.carryingObject.TryGetComponent<Ingredient>(out heldIngredient))
+        {
+            GameManager.instance.playerCarry.carryingObject = null;// if player is carrying an ingredient
+        }
+        else if (GameManager.instance.playerCarry.carryingObject.TryGetComponent<Pan>(out Pan pan))
+        {
+            heldIngredient = pan.ingredient;// if the player is carrying a pan
+            pan.ingredient = null;
+        }     
         heldIngredient.transform.SetParent(transform);
         heldIngredient.transform.position = transform.position;
     }
