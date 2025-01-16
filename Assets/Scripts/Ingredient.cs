@@ -19,13 +19,36 @@ public class Ingredient : Carryable
 
     public override void InteractLeft()
     {
-        if(transform.parent && transform.parent.TryGetComponent<Pan>(out Pan pan) | transform.parent.TryGetComponent<Plate>(out Plate plate))
+        if(transform.parent)
         {
-            return;
+            if (transform.parent.TryGetComponent<Pan>(out Pan pan))
+            {
+                return; // don't allow pickup from pan or plate 
+            }
+            else if(transform.parent.TryGetComponent<Plate>(out Plate plate))
+            {
+                return; // don't allow pickup from pan or plate 
+            }
+            else if(transform.parent.TryGetComponent<CuttingBoard>(out CuttingBoard cuttingBoard))
+            {
+                base.InteractLeft();
+                cuttingBoard.ingredient = null;
+            }
         }
         else
         {
             base.InteractLeft();
+        }
+    }
+
+    public void InteractRight()
+    {
+        if(transform.parent && transform.parent.TryGetComponent<CuttingBoard>(out CuttingBoard cuttingBoard))
+        {
+            if(GameManager.instance.playerCarry.carryingObject && GameManager.instance.playerCarry.carryingObject.TryGetComponent<Knife>(out Knife knife))
+            {
+                SendMessage("Chop");
+            }
         }
     }
 }
