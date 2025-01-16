@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8150760410510220236}
   - component: {fileID: 5517750624232373398}
   - component: {fileID: 3433270267573969469}
-  - component: {fileID: 1537376980453865581}
   - component: {fileID: 8141911280445877496}
   - component: {fileID: 835157405937535677}
   - component: {fileID: 1240251536196134562}
@@ -85,18 +84,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requiredChops: 5
   choppedMesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1537376980453865581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1758713822228931279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 745b619259d23f64fb148db76a62f007, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!33 &8141911280445877496
 MeshFilter:
   m_ObjectHideFlags: 0

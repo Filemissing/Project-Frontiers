@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public GameObject player;
+    PlayerController playerController;
     public Carry playerCarry;
     public Recipe[] recipes;
     public OrderRequest[] orders;
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         playerCarry = player.GetComponent<Carry>();
+        playerController = player.GetComponent<PlayerController>();
         instance = this;
     }
 
@@ -45,5 +47,16 @@ public class GameManager : MonoBehaviour
 
         returnComponent = default(T);
         return false;
+    }
+
+    public void EnterUIMode()
+    {
+        playerController.enabled = false;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+    public void ExitUIMode()
+    {
+        playerController.enabled = true;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
