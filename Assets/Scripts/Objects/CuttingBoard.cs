@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CuttingBoard : Carryable
+public class CuttingBoard : MonoBehaviour
 {
     public Ingredient ingredient;
 
-    public override void InteractLeft()
+    public void InteractLeft()
     {
-        if (GameManager.instance.playerCarry.carryingObject == null)
-        {
-            base.InteractLeft();
-        }
-        else if (!ingredient && GameManager.instance.TakeCarryingObject<Ingredient>(gameObject, out ingredient))
+        if (!ingredient && GameManager.instance.TakeCarryingObject<Ingredient>(gameObject, out ingredient))
         {
             // put ingredient on cuttingboard
         }

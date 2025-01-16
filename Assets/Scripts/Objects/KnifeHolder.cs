@@ -6,6 +6,7 @@ using UnityEngine;
 public class KnifeHolder : MonoBehaviour
 {
     public Knife knife;
+    public Transform position;
 
     public void InteractLeft()
     {
@@ -14,6 +15,7 @@ public class KnifeHolder : MonoBehaviour
             if (GameManager.instance.TakeCarryingObject<Knife>(gameObject, out Knife knife))
             {
                 this.knife = knife;
+                knife.transform.SetPositionAndRotation(position.position, position.rotation);
             }
         } 
     }

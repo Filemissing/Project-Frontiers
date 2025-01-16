@@ -13,9 +13,20 @@ public class Plate : Carryable
     {
         validRecipes = new List<Recipe>(GameManager.instance.recipes);
     }
+
+    public int positionOnCounter;
     public override void InteractLeft()
     {
-        base.InteractLeft();
+        if (GameManager.instance.playerCarry.carryingObject == null)
+        { 
+            // pickup the plate
+            if (transform.parent && transform.parent.TryGetComponent<Counter>(out Counter counter))
+            {
+                counter.plateSlots[positionOnCounter] = null;
+            } 
+            base.InteractLeft();
+        }
+
 
         if (GetCarryingObject() == false) return;
 

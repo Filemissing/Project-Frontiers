@@ -5,6 +5,8 @@ using UnityEngine;
 public class Pan : Carryable
 {
     public Ingredient ingredient;
+    public Vector3 ingredientPosition;
+    public int positionOnStove;
     
     public override void InteractLeft()
     {
@@ -12,13 +14,13 @@ public class Pan : Carryable
         {
             if(transform.parent && transform.parent.TryGetComponent<Stove>(out Stove stove))
             {
-                stove.pan = null;
+                stove.panSlots[positionOnStove] = null;
             }
             base.InteractLeft();
         }
         else if(!ingredient && GameManager.instance.TakeCarryingObject<Ingredient>(gameObject, out ingredient))
         {
-            // put the ingredient in the pan
+            ingredient.transform.position = transform.TransformPoint(ingredientPosition);// put the ingredient in the pan
         }
     }
 }

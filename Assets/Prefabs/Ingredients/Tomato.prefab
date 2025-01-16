@@ -68,8 +68,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fryTime: 5
   burnTime: 10
-  friedMaterial: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
-  burntMaterial: {fileID: 10756, guid: 0000000000000000e000000000000000, type: 0}
+  friedMaterial: {fileID: 2100000, guid: 2cb6fb636aca2e44ba01f018973de6c4, type: 2}
+  burntMaterial: {fileID: 2100000, guid: b7152e8211bb98141a32f1af00353bef, type: 2}
 --- !u!114 &3433270267573969469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,7 +112,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 96910e299c995eb40a716143d8ffa04e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -149,7 +149,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
