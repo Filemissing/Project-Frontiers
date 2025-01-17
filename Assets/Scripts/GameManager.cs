@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
     public Recipe[] recipes;
     public OrderRequest[] orders;
 
+    [Header("Rating")]
+    public float rating = 0;
+    public List<float> ratings = new List<float>();
+
     void Awake()
     {
         playerCarry = player.GetComponent<Carry>();
@@ -20,9 +24,22 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
+    void UpdateRating()
+    {
+        float totalRatings = 0;
+        for (int i = 0; i < ratings.Count; i++)
+        {
+            totalRatings += ratings[i];
+        }
+
+        float averageRating = totalRatings / ratings.Count;
+        rating = averageRating;
+    }
+
     void Update()
     {
         if(instance == null) instance = this;
+        UpdateRating();
     }
 
     public bool TakeCarryingObject<T>(GameObject newParent, out T returnComponent)
