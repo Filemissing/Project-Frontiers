@@ -42,7 +42,7 @@ public class OrderRequest : MonoBehaviour
     void IncorrectOrder()
     {
         maxRating -= .5f;
-        maxRating = Mathf.Clamp(maxRating, 0, 5);
+        maxRating = Mathf.Clamp(maxRating, 1, 5);
         Debug.Log("The CompletedOrder is incorrect.");
     }
 
@@ -86,7 +86,7 @@ public class OrderRequest : MonoBehaviour
 
     void OutOfTime()
     {
-        GameManager.instance.ratings.Add(0f);
+        GameManager.instance.ratings.Add(1f);
         Destroy(gameObject);
     }
 
