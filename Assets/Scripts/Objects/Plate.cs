@@ -20,10 +20,13 @@ public class Plate : Carryable
         if (GameManager.instance.playerCarry.carryingObject == null)
         { 
             // pickup the plate
+            // NO
+            /*
             if (transform.parent && transform.parent.TryGetComponent<Counter>(out Counter counter))
             {
                 counter.plateSlots[positionOnCounter] = null;
-            } 
+            }
+            */
             base.InteractLeft();
         }
 
