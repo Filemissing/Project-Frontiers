@@ -23,6 +23,7 @@ public class OrderRequest : MonoBehaviour
         return completedOrder;
     }
 
+    float maxRating = 5f;
     void CorrectOrder()
     {
         OrderRequest[] orders = GameManager.instance.orders;
@@ -34,11 +35,14 @@ public class OrderRequest : MonoBehaviour
 
         Destroy(GameManager.instance.playerCarry.carryingObject);
         Destroy(gameObject);
+        GameManager.instance.ratings.Add(maxRating);
         Debug.Log("The CompletedOrder is correct.");
     }
 
     void IncorrectOrder()
     {
+        maxRating -= .5f;
+        maxRating = Mathf.Clamp(maxRating, 0, 5);
         Debug.Log("The CompletedOrder is incorrect.");
     }
 
@@ -82,6 +86,7 @@ public class OrderRequest : MonoBehaviour
 
     void OutOfTime()
     {
+        GameManager.instance.ratings.Add(0f);
         Destroy(gameObject);
     }
 
