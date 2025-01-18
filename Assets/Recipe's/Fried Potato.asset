@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fried Potato
   m_EditorClassIdentifier: 
   ingredients:
-  - ingredient: {fileID: 7180954764722552992, guid: 6c7529da78ab34644ac055e676b73335,
+  - ingredient: {fileID: 7296356283906436058, guid: 6c7529da78ab34644ac055e676b73335,
       type: 3}
     isFried: 1
     isBurnt: 0

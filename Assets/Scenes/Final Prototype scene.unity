@@ -3031,6 +3031,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5129256600805646609, guid: 8871b2185fbbdc542b0a2ddb382a21f0,
+        type: 3}
+      propertyPath: isCursorLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9017446588857732350, guid: 8871b2185fbbdc542b0a2ddb382a21f0,
+        type: 3}
+      propertyPath: cursorImage
+      value: 
+      objectReference: {fileID: 1007732416}
+    - target: {fileID: 9017446588857732350, guid: 8871b2185fbbdc542b0a2ddb382a21f0,
+        type: 3}
+      propertyPath: defaultSprite
+      value: 
+      objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 9017446588857732350, guid: 8871b2185fbbdc542b0a2ddb382a21f0,
+        type: 3}
+      propertyPath: highlightSprite
+      value: 
+      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11958,7 +11978,7 @@ MonoBehaviour:
   spawnPosition: {fileID: 2076497864}
   ingredients:
   - {fileID: 8150760410510220236, guid: 623a66bd8cb101b45916a7737d9d8a7f, type: 3}
-  - {fileID: 7180954764722552992, guid: 6c7529da78ab34644ac055e676b73335, type: 3}
+  - {fileID: 7296356283906436058, guid: 6c7529da78ab34644ac055e676b73335, type: 3}
 --- !u!33 &8941763295323752284
 MeshFilter:
   m_ObjectHideFlags: 0
