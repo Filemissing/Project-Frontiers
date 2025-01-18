@@ -11,8 +11,8 @@ public class Fryable : MonoBehaviour
         ingredient = GetComponent<Ingredient>();
     }
 
-    public int fryTime;
-    public int burnTime;
+    public float fryTime;
+    public float burnTime;
     float fryTimeCounter;
     public Material friedMaterial;
     public Material burntMaterial;
