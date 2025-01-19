@@ -4,16 +4,28 @@ using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
 {
-    [SerializeField] CompletedOrder[] completedOrders;
     [SerializeField] GameObject[] customerPrefabs;
 
     [SerializeField] float timeBetweenOrdersMin = 1;
     [SerializeField] float timeBetweenOrdersMax = 5;
     float nextOrderTime;
 
+    List<CompletedOrder> completedOrders = new List<CompletedOrder>();
+
     void UpdateNextOrderTime()
     {
         nextOrderTime = Time.time + Random.Range(timeBetweenOrdersMin, timeBetweenOrdersMax);
+    }
+
+    void SetCompletedOrders()
+    {
+        for (int i = 0; i < GameManager.instance.recipes.Length; i++)
+        {
+            if (GameManager.instance.recipes[i].endResult.TryGetComponent<CompletedOrder>(out CompletedOrder component))
+                completedOrders.Add(component);
+            else
+                Debug.Log(GameManager.instance.recipes[i].endResult + " does not have a CompletedOrder component!");
+        }
     }
 
     bool LogWarningReturn(string warningText)
@@ -36,7 +48,7 @@ public class CustomerSpawner : MonoBehaviour
             if (!customerPrefabs[0].TryGetComponent<OrderRequest>(out OrderRequest temp))
                 shouldStop = LogWarningReturn("The CustomerPrefabs do not contain an OrderRequest component!");
 
-        if (completedOrders.Length == 0)
+        if (completedOrders.Count == 0)
             shouldStop = LogWarningReturn("The CompletedOrders array does not contain any elements!");
 
         if (shouldStop)
@@ -65,7 +77,7 @@ public class CustomerSpawner : MonoBehaviour
             newOrder = orderRequest;
 
 
-        newOrder.order = completedOrders[Random.Range(0, completedOrders.Length)];
+        newOrder.order = completedOrders[Random.Range(0, completedOrders.Count)];
         float distance = (3f / GameManager.instance.orders.Length); // Calculates the distance between customers based on the max amount of customers
         newOrder.transform.position = transform.position + Vector3.left * ordersSlotIndex * distance; // Calculates and sets the position of the orders
         newOrder.transform.parent = transform;
@@ -80,5 +92,10 @@ public class CustomerSpawner : MonoBehaviour
             CreateOrder();
             UpdateNextOrderTime();
         }
+    }
+
+    void Awake()
+    {
+        SetCompletedOrders();
     }
 }

@@ -1,19 +1,49 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
+[System.Serializable]
 public class Interact : MonoBehaviour
 {
     public bool canInteract;
     public float interactionRange;
     public LayerMask interactionMask;
-    RaycastHit hit;
+    private RaycastHit hit;
+
+    [Header("Cursor")]
+    public Image cursorImage;
+    public Sprite defaultSprite;
+    public CursorSprite[] cursorSprites;
     
     void Update()
     {
         if (!canInteract) return;
 
+        ChangeCursor();
+
+        SendMessages();
+    }
+
+    void ChangeCursor()
+    {
+        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, interactionRange, interactionMask, QueryTriggerInteraction.Collide))
+        {
+            foreach (CursorSprite cursorSprite in cursorSprites)
+            {
+                if (cursorSprite.CheckComponent(hit.transform.gameObject))
+                {
+                    cursorImage.sprite = cursorSprite.sprite;
+                    return;
+                }
+            }
+        }
+        cursorImage.sprite = defaultSprite;
+    }
+    
+    void SendMessages()
+    {
         if (Input.GetMouseButtonDown(0))// left mouse button
         {
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, interactionRange, interactionMask, QueryTriggerInteraction.Collide))
@@ -28,6 +58,22 @@ public class Interact : MonoBehaviour
             {
                 hit.transform.SendMessage("InteractRight", SendMessageOptions.DontRequireReceiver);
             }
+        }
+    }
+
+    [System.Serializable]
+    public struct CursorSprite
+    {
+        public Component component;
+        public Sprite sprite;
+        public bool CheckComponent(GameObject target)
+        {
+            Type type = component.GetType();
+            if (target.TryGetComponent(type, out Component c))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

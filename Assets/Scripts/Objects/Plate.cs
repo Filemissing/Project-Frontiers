@@ -20,10 +20,13 @@ public class Plate : Carryable
         if (GameManager.instance.playerCarry.carryingObject == null)
         { 
             // pickup the plate
+            // NO
+            /*
             if (transform.parent && transform.parent.TryGetComponent<Counter>(out Counter counter))
             {
                 counter.plateSlots[positionOnCounter] = null;
-            } 
+            }
+            */
             base.InteractLeft();
         }
 
@@ -48,6 +51,10 @@ public class Plate : Carryable
         else if (GameManager.instance.playerCarry.carryingObject.TryGetComponent<Pan>(out Pan pan))
         {
             heldIngredient = pan.ingredient;// if the player is carrying a pan
+        }
+        else if(GameManager.instance.playerCarry.carryingObject.TryGetComponent<FryBasket>(out FryBasket basket))
+        {
+            heldIngredient = basket.ingredient;
         }
         else return false;
 
@@ -93,10 +100,11 @@ public class Plate : Carryable
     bool CompareIngredientToIngredientRequirements(Ingredient ingredient, IngredientRequirements requirements)
     {
         if (requirements.ingredient.GetType() == ingredient.GetType())
-            if (requirements.isFried == ingredient.isFried)
-                if (requirements.isBurnt == ingredient.isBurnt)
-                    if (requirements.isChopped == ingredient.isChopped)
-                        return true;
+            if(requirements.isCooked == ingredient.isCooked)
+                if (requirements.isFried == ingredient.isFried)
+                    if (requirements.isBurnt == ingredient.isBurnt)
+                        if (requirements.isChopped == ingredient.isChopped)
+                            return true;
         return false;
     }
     
@@ -110,7 +118,12 @@ public class Plate : Carryable
         {
             heldIngredient = pan.ingredient;// if the player is carrying a pan
             pan.ingredient = null;
-        }     
+        }
+        else if(GameManager.instance.playerCarry.carryingObject.TryGetComponent<FryBasket>(out FryBasket basket))
+        {
+            heldIngredient = basket.ingredient;
+            basket.ingredient = null;
+        }
         heldIngredient.transform.SetParent(transform);
         heldIngredient.transform.position = transform.position;
     }

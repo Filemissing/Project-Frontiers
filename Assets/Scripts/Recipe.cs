@@ -15,6 +15,7 @@ public class Recipe : ScriptableObject
 public class IngredientRequirements
 {
     public Ingredient ingredient;
+    public bool isCooked;
     public bool isFried;
     public bool isBurnt;
     public bool isChopped;

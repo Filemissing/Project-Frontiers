@@ -33,7 +33,7 @@ public class Stove : MonoBehaviour
         {
             if (panSlots[i] != null && panSlots[i].ingredient != null)
             {
-                panSlots[i].ingredient.SendMessage("Fry");
+                panSlots[i].ingredient.SendMessage("Cook");
             }
         }
     }
