@@ -5,12 +5,14 @@ using UnityEngine;
 public class CuttingBoard : MonoBehaviour
 {
     public Ingredient ingredient;
+    public Vector3 ingredientPosition;
 
     public void InteractLeft()
     {
-        if (!ingredient && GameManager.instance.TakeCarryingObject<Ingredient>(gameObject, out ingredient))
+        if (!ingredient && GameManager.instance.TakeCarryingObject<Choppable>(gameObject, out Choppable returnComponent))
         {
-            // put ingredient on cuttingboard
+            ingredient = returnComponent.GetComponent<Ingredient>();
+            ingredient.transform.position = transform.TransformPoint(ingredientPosition); // put ingredient on cuttingboard
         }
     }
 }
