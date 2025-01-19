@@ -5,6 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class Ingredient : Carryable
 {
+    public Sprite icon;
+
     public MeshFilter meshFilter;
     public MeshRenderer meshRenderer;
     protected virtual void Awake()
