@@ -13,6 +13,7 @@ public class Ingredient : Carryable
         meshRenderer = gameObject.GetComponent<MeshRenderer>();
     }
 
+    public bool isCooked;
     public bool isFried;
     public bool isBurnt;
     public bool isChopped;
@@ -23,11 +24,15 @@ public class Ingredient : Carryable
         {
             if (transform.parent.TryGetComponent<Pan>(out Pan pan))
             {
-                return; // don't allow pickup from pan or plate 
+                return; // don't allow pickup from pan
             }
             else if(transform.parent.TryGetComponent<Plate>(out Plate plate))
             {
-                return; // don't allow pickup from pan or plate 
+                return; // don't allow pickup from plate 
+            }
+            else if(transform.parent.TryGetComponent<FryBasket>(out FryBasket fryBasket))
+            {
+                return; // don't allow pickup...
             }
             else if(transform.parent.TryGetComponent<CuttingBoard>(out CuttingBoard cuttingBoard))
             {

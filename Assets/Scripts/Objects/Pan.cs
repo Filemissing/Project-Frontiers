@@ -18,8 +18,9 @@ public class Pan : Carryable
             }
             base.InteractLeft();
         }
-        else if(!ingredient && GameManager.instance.TakeCarryingObject<Ingredient>(gameObject, out ingredient))
+        else if(!ingredient && GameManager.instance.TakeCarryingObject<Cookable>(gameObject, out Cookable returnComponent))
         {
+            ingredient = returnComponent.GetComponent<Ingredient>();
             ingredient.transform.position = transform.TransformPoint(ingredientPosition);// put the ingredient in the pan
         }
     }
