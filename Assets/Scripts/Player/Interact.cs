@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class Interact : MonoBehaviour
     [Header("Cursor")]
     public Image cursorImage;
     public Sprite defaultSprite;
-    public Sprite highlightSprite;
+    public CursorSprite[] cursorSprites;
     
     void Update()
     {
@@ -27,8 +28,18 @@ public class Interact : MonoBehaviour
 
     void ChangeCursor()
     {
-        bool highlight = Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, interactionRange, interactionMask, QueryTriggerInteraction.Collide);
-        cursorImage.sprite = highlight ? highlightSprite : defaultSprite;
+        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, interactionRange, interactionMask, QueryTriggerInteraction.Collide))
+        {
+            foreach (CursorSprite cursorSprite in cursorSprites)
+            {
+                if (cursorSprite.CheckComponent(hit.transform.gameObject))
+                {
+                    cursorImage.sprite = cursorSprite.sprite;
+                    return;
+                }
+            }
+        }
+        cursorImage.sprite = defaultSprite;
     }
     
     void SendMessages()
@@ -48,5 +59,21 @@ public class Interact : MonoBehaviour
                 hit.transform.SendMessage("InteractRight", SendMessageOptions.DontRequireReceiver);
             }
         }
-    }    
+    }
+
+    [System.Serializable]
+    public struct CursorSprite
+    {
+        public Component component;
+        public Sprite sprite;
+        public bool CheckComponent(GameObject target)
+        {
+            Type type = component.GetType();
+            if (target.TryGetComponent(type, out Component c))
+            {
+                return true;
+            }
+            return false;
+        }
+    }
 }
