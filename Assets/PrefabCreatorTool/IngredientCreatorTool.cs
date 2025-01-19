@@ -15,28 +15,36 @@ public class IngredientCreatorTool : EditorWindow
     static IngredientCreationInfoStorage info;
 
     static string objectName;
+    static Sprite icon;
 
     Mesh defaultMesh;
     Material defaultMaterial;
 
     bool canFry;
     bool fryFoldout;
-
     float fryTime; 
-    float burnTime;
+    float fryBurnTime;
     Material friedMaterial;
-    Material burntMaterial;
+    Material fryBurntMaterial;
 
     bool canChop;
     bool chopFoldout;
     int requiredChops;
     Mesh choppedMesh;
 
+    bool canCook;
+    bool cookFoldout;
+    float cookTime;
+    float cookBurnTime;
+    Material cookedMaterial;
+    Material cookBurntMaterial;
+
     private void OnGUI()
     {
         GUILayout.Label("Create new Ingredient", EditorStyles.boldLabel);
 
         objectName = EditorGUILayout.TextField("Name", objectName);
+        icon = (Sprite)EditorGUILayout.ObjectField("Icon", icon, typeof(Sprite), false);
 
         GUILayout.Space(10);
 
@@ -57,9 +65,9 @@ public class IngredientCreatorTool : EditorWindow
             EditorGUI.indentLevel++;
 
             fryTime = EditorGUILayout.FloatField("Fry Time", fryTime);
-            burnTime = EditorGUILayout.FloatField("Burn Time", burnTime);
+            fryBurnTime = EditorGUILayout.FloatField("Fry Burn Time", fryBurnTime);
             friedMaterial = (Material)EditorGUILayout.ObjectField("Fried Material", friedMaterial, typeof(Material), false);
-            burntMaterial = (Material)EditorGUILayout.ObjectField("Burnt Material", burntMaterial, typeof(Material), false);
+            fryBurntMaterial = (Material)EditorGUILayout.ObjectField("Fry Burnt Material", fryBurntMaterial, typeof(Material), false);
 
             EditorGUI.indentLevel--;
         }
@@ -89,6 +97,29 @@ public class IngredientCreatorTool : EditorWindow
 
         GUILayout.Space(10);
 
+        EditorGUILayout.BeginHorizontal();
+        cookFoldout = EditorGUILayout.Foldout(cookFoldout, "Can Cook", true);
+        canCook = EditorGUILayout.Toggle(canCook);
+        EditorGUILayout.EndHorizontal();
+
+        GUI.enabled = canCook;
+
+        if (cookFoldout)
+        {
+            EditorGUI.indentLevel++;
+
+            cookTime = EditorGUILayout.FloatField("Cook Time", cookTime);
+            cookBurnTime = EditorGUILayout.FloatField("Cook Burn Time", cookBurnTime);
+            cookedMaterial = (Material)EditorGUILayout.ObjectField("Fried Material", cookedMaterial, typeof(Material), false);
+            cookBurntMaterial = (Material)EditorGUILayout.ObjectField("Cook Burnt Material", cookBurntMaterial, typeof(Material), false);
+
+            EditorGUI.indentLevel--;
+        }
+
+        GUI.enabled = true;
+
+        GUILayout.Space(10);
+
         info = (IngredientCreationInfoStorage)EditorGUILayout.ObjectField(info, typeof(IngredientCreationInfoStorage), false);
 
         if(GUILayout.Button("Create Ingredient"))
@@ -100,7 +131,9 @@ public class IngredientCreatorTool : EditorWindow
     static GameObject gameObject;
     void CreatePrefab()
     {
-        gameObject = new GameObject(objectName);
+        gameObject = new GameObject(objectName); // create a new GameObject
+
+        // set up normal components
 
         MeshFilter meshFilter = gameObject.AddComponent<MeshFilter>();
         meshFilter.sharedMesh = defaultMesh;
@@ -115,9 +148,9 @@ public class IngredientCreatorTool : EditorWindow
         {
             Fryable fryable = gameObject.AddComponent<Fryable>();
             fryable.fryTime = fryTime;
-            fryable.burnTime = burnTime;
+            fryable.burnTime = fryBurnTime;
             fryable.friedMaterial = friedMaterial;
-            fryable.burntMaterial = burntMaterial;
+            fryable.burntMaterial = fryBurntMaterial;
         }
 
         if (canChop)
@@ -125,6 +158,15 @@ public class IngredientCreatorTool : EditorWindow
             Choppable choppable = gameObject.AddComponent<Choppable>();
             choppable.requiredChops = requiredChops;
             choppable.choppedMesh = choppedMesh;
+        }
+
+        if (canChop)
+        {
+            Cookable cookable = gameObject.AddComponent<Cookable>();
+            cookable.cookTime = cookTime;
+            cookable.burnTime = cookBurnTime;
+            cookable.cookedMaterial = cookedMaterial;
+            cookable.burntMaterial = cookBurntMaterial;
         }
 
         string prefabPath = $"Assets/Prefabs/Ingredients/{objectName}.prefab";
@@ -137,6 +179,7 @@ public class IngredientCreatorTool : EditorWindow
         DestroyImmediate(gameObject);
 
         info.objectName = objectName;
+        info.icon = icon;
         info.gameObject = prefab;
         info.used = false;
 
@@ -167,11 +210,11 @@ public class {objectName} : Ingredient
             return;
         }
 
-        File.WriteAllText(scriptPath, scriptContent);
+        File.WriteAllText(scriptPath, scriptContent); // write the new script
 
         AssetDatabase.Refresh();
 
-        info.createdScript = AssetDatabase.LoadAssetAtPath<MonoScript>(scriptPath);
+        info.createdScript = AssetDatabase.LoadAssetAtPath<MonoScript>(scriptPath); // recompile and store a reference to the newly created script
 
         Debug.Log($"Script {objectName} created at {scriptPath}");
 
@@ -181,24 +224,26 @@ public class {objectName} : Ingredient
     [UnityEditor.Callbacks.DidReloadScripts]
     static void CompletePrefabCreation()
     {
-        info = AssetDatabase.LoadAssetAtPath<IngredientCreationInfoStorage>("Assets/PrefabCreatorTool/InfoStorage.asset");
+        info = AssetDatabase.LoadAssetAtPath<IngredientCreationInfoStorage>("Assets/PrefabCreatorTool/InfoStorage.asset"); // load the stored data
 
-        if (info.used) return;
-        if (info.gameObject == null) return;
-        if (info.createdScript == null) return;
+        if (info.used) return; // return if it was already used (in case of normal scriptreloads for other reasons)
 
-        GameObject gameObject = Instantiate(info.gameObject);
+        if (info.gameObject == null) throw new NullReferenceException("the variable gameObject was not stored correctly");
+        if (info.createdScript == null) throw new NullReferenceException("the new script was not correctly created or stored");
 
-        Ingredient oldIngredientComponent = gameObject.GetComponent<Ingredient>();
+        GameObject gameObject = Instantiate(info.gameObject); //reinstantieate the gameObject to further edit it
+
+        gameObject.TryGetComponent<Ingredient>(out Ingredient oldIngredientComponent); // get the plain Ingredient component created by dependencies
 
         Type type = info.createdScript.GetClass();
-        gameObject.AddComponent(type);
+        Ingredient ingredient = (Ingredient)gameObject.AddComponent(type);
+        ingredient.icon = info.icon;
 
-        DestroyImmediate(oldIngredientComponent);
+        if(oldIngredientComponent != null) DestroyImmediate(oldIngredientComponent); // remove the plain ingredient component
 
         string prefabPath = $"Assets/Prefabs/Ingredients/{info.objectName}.prefab";
 
-        PrefabUtility.SaveAsPrefabAssetAndConnect(gameObject, prefabPath, InteractionMode.UserAction);
+        PrefabUtility.SaveAsPrefabAsset(gameObject, prefabPath); // override the previously stored prefab with the newest changes
 
         Debug.Log($"Prefab {info.objectName} created at {prefabPath}");
 
