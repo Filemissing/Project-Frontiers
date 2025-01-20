@@ -12,10 +12,11 @@ GameObject:
   - component: {fileID: 8150760410510220236}
   - component: {fileID: 5517750624232373398}
   - component: {fileID: 3433270267573969469}
+  - component: {fileID: 900631000282092429}
   - component: {fileID: 8141911280445877496}
   - component: {fileID: 835157405937535677}
   - component: {fileID: 1240251536196134562}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Tomato
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41a73f85fdfe4a4a8435a3c5dd2b395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 0abd04de09357b84cb02a0c58d7265b8, type: 3}
   meshFilter: {fileID: 8141911280445877496}
   meshRenderer: {fileID: 835157405937535677}
   isCooked: 0
@@ -85,7 +86,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requiredChops: 5
-  choppedMesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  choppedMesh: {fileID: -3622971129683253792, guid: f1ea0bb66a71a634399cfade5c7e4809,
+    type: 3}
+--- !u!114 &900631000282092429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758713822228931279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48bfa4b0550b3bc45a35b8ca2858306e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cookTime: 5
+  burnTime: 10
+  cookedMaterial: {fileID: 2100000, guid: 2cb6fb636aca2e44ba01f018973de6c4, type: 2}
+  burntMaterial: {fileID: 2100000, guid: b7152e8211bb98141a32f1af00353bef, type: 2}
 --- !u!33 &8141911280445877496
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -93,7 +111,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1758713822228931279}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 5708641738378311085, guid: f1ea0bb66a71a634399cfade5c7e4809, type: 3}
 --- !u!23 &835157405937535677
 MeshRenderer:
   m_ObjectHideFlags: 0
