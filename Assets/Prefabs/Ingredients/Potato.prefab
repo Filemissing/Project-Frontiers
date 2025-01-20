@@ -121,8 +121,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe8966dff201762458cd7f9bbbb80dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   meshFilter: {fileID: 0}
   meshRenderer: {fileID: 0}
+  isCooked: 0
   isFried: 0
   isBurnt: 0
   isChopped: 0
