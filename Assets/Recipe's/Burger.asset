@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96940b329688b31408669f0b2c6e20d6, type: 3}
-  m_Name: Chopped Tomato
+  m_Name: Burger
   m_EditorClassIdentifier: 
   ingredients:
-  - ingredient: {fileID: 8150760410510220236, guid: 623a66bd8cb101b45916a7737d9d8a7f,
+  - ingredient: {fileID: 5219984672791855782, guid: 7e1b534aaf487aa409099ea6f97d8d9a,
       type: 3}
+    isCooked: 0
     isFried: 0
     isBurnt: 0
     isChopped: 1
-  endResult: {fileID: 4945554552441540036, guid: 5ded38e8507ff61498e9a8586e673b65,
+  endResult: {fileID: 772926955943895418, guid: 6c4052ebe8370184f876bf86fbc5435e,
     type: 3}
