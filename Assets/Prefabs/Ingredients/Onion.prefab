@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7369971425577801351}
   - component: {fileID: 7160459423243501830}
   - component: {fileID: 5219984672791855782}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Onion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,8 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee4fdd1acd17c1a4e9aad185b8002a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 0}
   meshFilter: {fileID: 0}
   meshRenderer: {fileID: 0}
+  isCooked: 0
   isFried: 0
   isBurnt: 0
   isChopped: 0

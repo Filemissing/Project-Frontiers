@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7521248787709218481}
   - component: {fileID: 6989716024351199204}
   - component: {fileID: 503975130994698142}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 5691794326724734860}
   - component: {fileID: 2550082000063919560}
   - component: {fileID: 6138987029162687368}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1861697221126502333}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: All tomatoes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 5525686050611297665}
   - component: {fileID: 2469197768189256913}
   - component: {fileID: 1760970177743202289}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7296356283906436058}
   - component: {fileID: 4237527030025049416}
   - component: {fileID: 330410939765917850}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Potato
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,8 +121,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe8966dff201762458cd7f9bbbb80dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 0}
   meshFilter: {fileID: 0}
   meshRenderer: {fileID: 0}
+  isCooked: 0
   isFried: 0
   isBurnt: 0
   isChopped: 0

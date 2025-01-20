@@ -41,6 +41,10 @@ public class Ingredient : Carryable
                 base.InteractLeft();
                 cuttingBoard.ingredient = null;
             }
+            else
+            {
+                base.InteractLeft();
+            }
         }
         else
         {

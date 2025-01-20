@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 440177425209593116}
   - component: {fileID: 2560633696089744354}
   - component: {fileID: 5154414419174028826}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3834243359239641645}
   - component: {fileID: 7335632310184260871}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ChoppedTomato
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,3 +150,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 402f4c9c12b0bd3488d691c6934d70e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
