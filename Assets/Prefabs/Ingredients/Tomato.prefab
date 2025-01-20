@@ -49,8 +49,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41a73f85fdfe4a4a8435a3c5dd2b395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 0abd04de09357b84cb02a0c58d7265b8, type: 3}
   meshFilter: {fileID: 8141911280445877496}
   meshRenderer: {fileID: 835157405937535677}
+  isCooked: 0
   isFried: 0
   isBurnt: 0
   isChopped: 0
