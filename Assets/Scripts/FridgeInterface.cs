@@ -12,7 +12,6 @@ public class FridgeInterface : MonoBehaviour
     {
         for (int i = 0; i < fridge.ingredients.Length; i++)
         {
-            Debug.Log(i);
             Button button = Instantiate(buttonPrefab, transform).GetComponent<Button>();
             int j = i; // store i in non changing variable so delaget void can use the unchanged value
             button.onClick.AddListener(delegate { fridge.SelectIngredient(j); });
