@@ -126,6 +126,7 @@ public class Plate : Carryable
         }
         heldIngredient.transform.SetParent(transform);
         heldIngredient.transform.position = transform.position;
+        heldIngredient = null;
     }
 
     void CheckRecipeCompletion()

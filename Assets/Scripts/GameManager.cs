@@ -13,24 +13,35 @@ public class GameManager : MonoBehaviour
     public Recipe[] recipes;
     public OrderRequest[] orders;
 
+    public float maxDayTime = 210;
+    public float dayTimeLeft;
+
     [Header("Rating")]
     public float rating = 0;
     public List<float> ratings = new List<float>();
-
-    [Header("Message Handler")]
-    public MessageHandler messageHandler;
 
     void Awake()
     {
         playerCarry = player.GetComponent<Carry>();
         playerController = player.GetComponent<PlayerController>();
         instance = this;
+        dayTimeLeft = maxDayTime;
+    }
 
-        messageHandler.SayMessage(messageHandler.dialogues[0]);
+    void UpdateDayTime()
+    {
+        dayTimeLeft -= Time.deltaTime;
+        dayTimeLeft = Mathf.Clamp(dayTimeLeft, 0, maxDayTime);
     }
 
     void UpdateRating()
     {
+        if (ratings.Count == 0)
+        {
+            rating = 5;
+            return;
+        }
+
         float totalRatings = 0;
         for (int i = 0; i < ratings.Count; i++)
         {
@@ -44,6 +55,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if(instance == null) instance = this;
+        UpdateDayTime();
         UpdateRating();
     }
 
