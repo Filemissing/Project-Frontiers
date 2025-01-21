@@ -143,7 +143,6 @@ public class IngredientCreatorTool : EditorWindow
 
         MeshCollider collider = gameObject.AddComponent<MeshCollider>();
         collider.sharedMesh = defaultMesh;
-        collider.convex = true;
 
         if (canFry)
         {

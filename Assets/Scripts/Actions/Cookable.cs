@@ -13,7 +13,7 @@ public class Cookable : MonoBehaviour
 
     public float cookTime;
     public float burnTime;
-    [HideInInspector] public float cookTimeCounter;
+    float cookTimeCounter;
     public Material cookedMaterial;
     public Material burntMaterial;
     public virtual void Cook()
