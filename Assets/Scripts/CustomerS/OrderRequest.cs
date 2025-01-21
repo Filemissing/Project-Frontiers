@@ -22,6 +22,29 @@ public class OrderRequest : MonoBehaviour
 
         return completedOrder;
     }
+    
+    Message GetMessage(int rating)
+    {
+        Message chosenMessage;
+        List<Message> possibleMessages = new List<Message>();
+
+        for (int i = 0; i < GameManager.instance.messageHandler.reviews.Length; i++)
+        {
+            Message message = GameManager.instance.messageHandler.reviews[i];
+
+            if (message.rating == rating)
+                possibleMessages.Add(message);
+        }
+
+        if (possibleMessages.Count == 0)
+        {
+            Debug.Log("NO MESSAGE FOUND");
+            return GameManager.instance.messageHandler.reviews[0];
+        }
+        
+        chosenMessage = possibleMessages[Random.Range(0, possibleMessages.Count)];
+        return chosenMessage;
+    }
 
     float maxRating = 5f;
     void CorrectOrder()
@@ -36,6 +59,7 @@ public class OrderRequest : MonoBehaviour
         Destroy(GameManager.instance.playerCarry.carryingObject);
         Destroy(gameObject);
         GameManager.instance.ratings.Add(maxRating);
+        GameManager.instance.messageHandler.SayMessage(GetMessage((int)maxRating));
         Debug.Log("The CompletedOrder is correct.");
     }
 
@@ -87,6 +111,7 @@ public class OrderRequest : MonoBehaviour
     void OutOfTime()
     {
         GameManager.instance.ratings.Add(1f);
+        GameManager.instance.messageHandler.SayMessage(GetMessage(1));
         Destroy(gameObject);
     }
 
