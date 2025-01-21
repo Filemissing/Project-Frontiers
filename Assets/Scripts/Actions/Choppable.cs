@@ -12,7 +12,7 @@ public class Choppable : MonoBehaviour
     }
 
     public int requiredChops;
-    [HideInInspector] public int chopCount;
+    int chopCount;
     public Mesh choppedMesh;
     public virtual void Chop()
     {
