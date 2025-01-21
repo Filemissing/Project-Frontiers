@@ -1220,6 +1220,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 126752995149011482, guid: 6a2c7a555596a3741bfe167768eb41a2,
+        type: 3}
+      propertyPath: carryableBlacklist.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 126752995149011482, guid: 6a2c7a555596a3741bfe167768eb41a2,
+        type: 3}
+      propertyPath: carryableBlacklist.Array.data[2]
+      value: 
+      objectReference: {fileID: 1075667111636566182, guid: 5220d1cec8670924088f9e0a62acbe14,
+        type: 3}
+    - target: {fileID: 126752995149011482, guid: 6a2c7a555596a3741bfe167768eb41a2,
+        type: 3}
+      propertyPath: carryableBlacklist.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 990661965862867154, guid: 6a2c7a555596a3741bfe167768eb41a2,
         type: 3}
       propertyPath: m_Name
