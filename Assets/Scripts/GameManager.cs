@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     public float maxDayTime = 210;
     public float dayTimeLeft;
 
+    [Header("Message Handler")]
+    public MessageHandler messageHandler;
+
     [Header("Rating")]
     public float rating = 0;
     public List<float> ratings = new List<float>();
@@ -26,6 +29,8 @@ public class GameManager : MonoBehaviour
         playerController = player.GetComponent<PlayerController>();
         instance = this;
         dayTimeLeft = maxDayTime;
+
+        messageHandler.SayMessage(messageHandler.dialogues[0]);
     }
 
     void UpdateDayTime()
