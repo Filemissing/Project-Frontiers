@@ -22,6 +22,8 @@ public class Ingredient : Carryable
 
     public override void InteractLeft()
     {
+        if(GameManager.instance.playerCarry.carryingObject != null) return;
+
         if(transform.parent)
         {
             if (transform.parent.TryGetComponent<Pan>(out Pan pan))

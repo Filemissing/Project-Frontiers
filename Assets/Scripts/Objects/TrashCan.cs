@@ -17,9 +17,11 @@ public class TrashCan : MonoBehaviour
         for (int i = 0; i < carryableBlacklist.Length; i++)
         {
             if (GameManager.instance.playerCarry.carryingObject.GetComponent(carryableBlacklist[i].GetType()) != null)
+            {
                 isBlacklisted = true;
-                if (GameManager.instance.playerCarry.carryingObject.transform.childCount != 0)
-                    destroyObject = GameManager.instance.playerCarry.carryingObject.transform.GetChild(0).gameObject;
+                if (GameManager.instance.playerCarry.carryingObject.transform.childCount > 1)
+                    destroyObject = GameManager.instance.playerCarry.carryingObject.transform.GetChild(1).gameObject;
+            }
         }
 
         if (destroyObject == null && isBlacklisted == false)

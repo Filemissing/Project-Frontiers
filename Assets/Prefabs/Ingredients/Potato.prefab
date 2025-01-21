@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe8966dff201762458cd7f9bbbb80dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: a9e57744d8064174b974fed631f7d7c4, type: 3}
   meshFilter: {fileID: 0}
   meshRenderer: {fileID: 0}
   isCooked: 0
@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fryTime: 5
   burnTime: 10
+  fryTimeCounter: 0
   friedMaterial: {fileID: 2100000, guid: 2cb6fb636aca2e44ba01f018973de6c4, type: 2}
   burntMaterial: {fileID: 2100000, guid: b7152e8211bb98141a32f1af00353bef, type: 2}
 --- !u!114 &330410939765917850
@@ -158,6 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requiredChops: 5
+  chopCount: 0
   choppedMesh: {fileID: 2775390830980927165, guid: 74a69e97707327147ab9c5511cff9304,
     type: 3}
 --- !u!114 &223150800925677756
@@ -174,5 +176,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cookTime: 5
   burnTime: 10
+  cookTimeCounter: 0
   cookedMaterial: {fileID: 2100000, guid: 2cb6fb636aca2e44ba01f018973de6c4, type: 2}
   burntMaterial: {fileID: 2100000, guid: b7152e8211bb98141a32f1af00353bef, type: 2}

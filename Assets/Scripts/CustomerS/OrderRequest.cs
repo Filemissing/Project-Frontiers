@@ -36,14 +36,12 @@ public class OrderRequest : MonoBehaviour
         Destroy(GameManager.instance.playerCarry.carryingObject);
         Destroy(gameObject);
         GameManager.instance.ratings.Add(maxRating);
-        Debug.Log("The CompletedOrder is correct.");
     }
 
     void IncorrectOrder()
     {
         maxRating -= .5f;
         maxRating = Mathf.Clamp(maxRating, 1, 5);
-        Debug.Log("The CompletedOrder is incorrect.");
     }
 
     void CheckOrder()
@@ -53,7 +51,6 @@ public class OrderRequest : MonoBehaviour
 
         if (completedOrder == null)
         {
-            Debug.Log("CompletedOrder not found.");
             return;
         }
 
