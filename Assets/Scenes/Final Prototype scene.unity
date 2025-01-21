@@ -1687,6 +1687,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1413141331990859108}
     m_Modifications:
+    - target: {fileID: 496412929263428147, guid: 5220d1cec8670924088f9e0a62acbe14,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3298467127260968776, guid: 5220d1cec8670924088f9e0a62acbe14,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -1756,6 +1761,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FryBasket
+      objectReference: {fileID: 0}
+    - target: {fileID: 5522203097832158378, guid: 5220d1cec8670924088f9e0a62acbe14,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5522203097832158378, guid: 5220d1cec8670924088f9e0a62acbe14,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7524753716784874458, guid: 5220d1cec8670924088f9e0a62acbe14,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2065,6 +2085,11 @@ PrefabInstance:
     - target: {fileID: 1760324737500175292, guid: 4bc073c8df3109e4cbe3a098bf6d0472,
         type: 3}
       propertyPath: positionOnStove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2684747165985085416, guid: 4bc073c8df3109e4cbe3a098bf6d0472,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8194016327662660601, guid: 4bc073c8df3109e4cbe3a098bf6d0472,
@@ -3698,6 +3723,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1413141331990859108}
     m_Modifications:
+    - target: {fileID: 496412929263428147, guid: 5220d1cec8670924088f9e0a62acbe14,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1075667111636566182, guid: 5220d1cec8670924088f9e0a62acbe14,
         type: 3}
       propertyPath: positionOnFryer
@@ -3772,6 +3802,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FryBasket (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5522203097832158378, guid: 5220d1cec8670924088f9e0a62acbe14,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5522203097832158378, guid: 5220d1cec8670924088f9e0a62acbe14,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7524753716784874458, guid: 5220d1cec8670924088f9e0a62acbe14,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4994,6 +5039,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8020892687051635547, guid: d41e6fe53480d3a48a1bf902c9f977b1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6069,6 +6119,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020892687051635547, guid: d41e6fe53480d3a48a1bf902c9f977b1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10918,6 +10973,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3940675820696680340}
     m_Modifications:
+    - target: {fileID: 2684747165985085416, guid: 4bc073c8df3109e4cbe3a098bf6d0472,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8194016327662660601, guid: 4bc073c8df3109e4cbe3a098bf6d0472,
         type: 3}
       propertyPath: m_LocalScale.x
