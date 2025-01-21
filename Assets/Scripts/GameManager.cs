@@ -17,11 +17,16 @@ public class GameManager : MonoBehaviour
     public float rating = 0;
     public List<float> ratings = new List<float>();
 
+    [Header("Message Handler")]
+    public MessageHandler messageHandler;
+
     void Awake()
     {
         playerCarry = player.GetComponent<Carry>();
         playerController = player.GetComponent<PlayerController>();
         instance = this;
+
+        messageHandler.SayMessage(messageHandler.dialogues[0]);
     }
 
     void UpdateRating()
