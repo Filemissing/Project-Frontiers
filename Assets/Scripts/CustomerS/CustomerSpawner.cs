@@ -99,7 +99,6 @@ public class CustomerSpawner : MonoBehaviour
     void Update()
     {
         float currentDayTime = GameManager.instance.maxDayTime - GameManager.instance.dayTimeLeft;
-        Debug.Log(nextOrderTime);
         float a = GetCurrentOrders();
         float b = GameManager.instance.orders.Length;
         float percentage = a / b;

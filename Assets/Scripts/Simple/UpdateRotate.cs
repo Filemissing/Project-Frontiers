@@ -9,5 +9,6 @@ public class UpdateRotate : MonoBehaviour
     void Update()
     {
         transform.eulerAngles += additiveVector * Time.deltaTime;
+        Time.timeScale = 1f;
     }
 }
