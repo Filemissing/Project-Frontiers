@@ -13,7 +13,7 @@ public class Fryable : MonoBehaviour
 
     public float fryTime;
     public float burnTime;
-    float fryTimeCounter;
+    [HideInInspector] public float fryTimeCounter;
     public Material friedMaterial;
     public Material burntMaterial;
     public virtual void Fry()

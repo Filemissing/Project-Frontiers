@@ -17,6 +17,17 @@ public class CustomerSpawner : MonoBehaviour
         nextOrderTime = Time.time + Random.Range(timeBetweenOrdersMin, timeBetweenOrdersMax);
     }
 
+    int GetCurrentOrders()
+    {
+        int currentOrders = 0;
+        for (int i = 0; i < GameManager.instance.orders.Length; i++)
+        {
+            if (GameManager.instance.orders[i] != null)
+                currentOrders++;
+        }
+        return currentOrders;
+    }
+
     void SetCompletedOrders()
     {
         for (int i = 0; i < GameManager.instance.recipes.Length; i++)
@@ -87,11 +98,43 @@ public class CustomerSpawner : MonoBehaviour
 
     void Update()
     {
+        float currentDayTime = GameManager.instance.maxDayTime - GameManager.instance.dayTimeLeft;
+        float a = GetCurrentOrders();
+        float b = GameManager.instance.orders.Length;
+        float percentage = a / b;
+
+        //Debug.Log(percentage);
+        //Debug.Log(GetCurrentOrders() + " / " + GameManager.instance.orders.Length);
+        //Debug.Log(GetCurrentOrders() / GameManager.instance.orders.Length);
+        //Debug.Log(GameManager.instance.orders.Length);
+        //Debug.Log(GameManager.instance.maxDayTime);
+        //Debug.Log(GetCurrentOrders() / GameManager.instance.orders.Length * GameManager.instance.maxDayTime);
+
+        if (Time.time >= nextOrderTime)
+        {
+            if (GetCurrentOrders() == 0)
+            {
+                CreateOrder();
+                UpdateNextOrderTime();
+            }
+            else if (currentDayTime >= percentage * GameManager.instance.maxDayTime)
+            {
+                CreateOrder();
+                UpdateNextOrderTime();
+            }
+            else
+            {
+                UpdateNextOrderTime();
+            }
+        }
+
+        /*
         if (Time.time >= nextOrderTime) // Checks if should create new order
         {
             CreateOrder();
             UpdateNextOrderTime();
         }
+        */
     }
 
     void Awake()

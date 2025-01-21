@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: f8686d1ff6cb6434190b9083d1044fac
   - enabled: 1
-    path: Assets/Scenes/Final Prototype scene Dialogue.unity
+    path: Assets/Scenes/Final Prototype scene.unity
     guid: 1619d32a154ed0b4e8ceaf2a0e3c33ef
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity

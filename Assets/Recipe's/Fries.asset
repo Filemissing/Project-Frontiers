@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96940b329688b31408669f0b2c6e20d6, type: 3}
+  m_Name: Fries
+  m_EditorClassIdentifier: 
+  ingredients:
+  - ingredient: {fileID: 7296356283906436058, guid: 6c7529da78ab34644ac055e676b73335,
+      type: 3}
+    isFried: 1
+    isBurnt: 0
+    isChopped: 1
+  endResult: {fileID: 1160917111590400152, guid: 78a4a46e1be6aa84ab071a9697c07063,
+    type: 3}
