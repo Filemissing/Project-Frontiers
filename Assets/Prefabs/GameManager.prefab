@@ -54,6 +54,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  isDayCyling: 0
   maxDayTime: 210
   dayTimeLeft: 0
   messageHandler: {fileID: 7189992599285825104}
@@ -78,19 +79,20 @@ MonoBehaviour:
   nextPanelCanvasGroup: {fileID: 0}
   nextPanelRectTransform: {fileID: 0}
   characterSpeed: 0.03
-  lineSpeed: 0.5
+  lineSpeed: 0.4
   startPosition: -120
   endPosition: 160
   startScale: {x: 0.3, y: 0.3, z: 0.3}
   endScale: {x: 1, y: 1, z: 1}
   clickScale: {x: 0.95, y: 0.95, z: 0.95}
   nextPanelStartScale: {x: 0.7, y: 0.7, z: 0.7}
+  clickTransitionTime: 0.1
+  nextPanelTransitionTime: 0.4
+  isVisible: 0
   reviewPanelParent: {fileID: 0}
   reviewPanel: {fileID: 4867691869681592704, guid: b0be31112cca761468b597deddecefc0,
     type: 3}
   transitionTime: 0.3
-  clickTransitionTime: 0.1
-  nextPanelTransitionTime: 0.4
   dialogues:
   - name: Boss
     text: TEMP - Welcome to the restaurant! You will be the chef for today.
@@ -101,7 +103,7 @@ MonoBehaviour:
     rating: 0
     messageType: 1
   - name: Boss
-    text: TEMP - I SAID GET TO WORK U FUCKING PIECE OF SHIT. w. w. w. w. w.
+    text: TEMP - I SAID GET TO WORK U FUCKING PIECE OF SHIT.
     rating: 0
     messageType: 1
   reviews:
@@ -126,5 +128,3 @@ MonoBehaviour:
     text: TEMP - WHAT THE FOCK M8 WHERE IS MY BLOODY FOOD?!?!
     rating: 1
     messageType: 0
-  isVisible: 0
-  canNext: 0

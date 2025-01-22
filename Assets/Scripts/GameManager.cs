@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public Recipe[] recipes;
     public OrderRequest[] orders;
 
+    public bool isDayCyling;
     public float maxDayTime = 210;
     public float dayTimeLeft;
 
@@ -40,6 +41,9 @@ public class GameManager : MonoBehaviour
 
     void UpdateDayTime()
     {
+        if (!isDayCyling)
+            return;
+
         if (dayTimeLeft <= 0)
             return;
 

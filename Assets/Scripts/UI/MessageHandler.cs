@@ -147,10 +147,14 @@ public class MessageHandler : MonoBehaviour
             if (nextDialogueMessageIndex < dialogues.Length)
                 SayMessage(dialogues[nextDialogueMessageIndex]);
             else
+            {
                 isVisible = false;
+                GameManager.instance.isDayCyling = true;
+            }
             
             rectTransform.localScale = clickScale;
             rectTransform.DOScale(endScale, clickTransitionTime);
+            canNext = false;
         }
     }
 
