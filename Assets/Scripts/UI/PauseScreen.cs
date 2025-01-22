@@ -19,10 +19,10 @@ public class PauseScreen : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.dayTimeLeft != 0) // Checks if day hasen't ended.
-            if (Input.GetKeyDown(pauseKey)) isPaused = !isPaused;
+        if (GameManager.instance.dayTimeLeft == 0) // Checks if day hasen't ended.
+            isPaused = false;
         else
-            //isPaused = false;
+            if (Input.GetKeyDown(pauseKey)) isPaused = !isPaused;
 
         if (isPaused != lastPauseState)
         {
