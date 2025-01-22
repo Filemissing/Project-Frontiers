@@ -157,18 +157,20 @@ public class MessageHandler : MonoBehaviour
     bool previousCanNext = true;
     void CanNextChange() // Might cause bad performance due to tweening called many times, but there are no such warnings.
     {
-        /*
         if (canNext == previousCanNext)
             return;
-        */
 
         if (canNext)
         {
+            DOTween.Kill(nextPanelCanvasGroup);
+            DOTween.Kill(nextPanelRectTransform);
             nextPanelCanvasGroup.DOFade(1, nextPanelTransitionTime);
             nextPanelRectTransform.DOScale(new Vector3(1, 1, 1), nextPanelTransitionTime);
         }
         else
         {
+            DOTween.Kill(nextPanelCanvasGroup);
+            DOTween.Kill(nextPanelRectTransform);
             nextPanelCanvasGroup.DOFade(0, 0);
             nextPanelRectTransform.DOScale(nextPanelStartScale, 0);
         }
@@ -184,12 +186,16 @@ public class MessageHandler : MonoBehaviour
 
         if (isVisible)
         {
+            DOTween.Kill(rectTransform);
+            DOTween.Kill(canvasGroup);
             rectTransform.DOMoveY(endPosition, transitionTime);
             rectTransform.DOScale(endScale, transitionTime);
             canvasGroup.DOFade(1, transitionTime);
         }
         else
         {
+            DOTween.Kill(rectTransform);
+            DOTween.Kill(canvasGroup);
             rectTransform.DOMoveY(startPosition, transitionTime);
             rectTransform.DOScale(startScale, transitionTime);
             canvasGroup.DOFade(0, transitionTime);
