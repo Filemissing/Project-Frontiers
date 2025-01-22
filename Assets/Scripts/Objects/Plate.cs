@@ -30,7 +30,6 @@ public class Plate : Carryable
             base.InteractLeft();
         }
 
-
         if (GetCarryingObject() == false) return;
 
         if(UpdateValidRecipes() == false) return;
@@ -165,5 +164,21 @@ public class Plate : Carryable
             Destroy(transform.GetChild(i).gameObject);
         }
         Instantiate(recipe.endResult, transform);
+    }
+
+    private void Update()
+    {
+        DisableIngredientHitBoxes();
+    }
+
+    void DisableIngredientHitBoxes()
+    {
+        foreach (Ingredient ingredient in ingredients)
+        {
+            if (ingredient != null)
+            {
+                ingredient.GetComponent<Collider>().enabled = false; 
+            }
+        }
     }
 }
