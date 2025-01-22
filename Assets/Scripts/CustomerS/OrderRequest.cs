@@ -63,7 +63,7 @@ public class OrderRequest : MonoBehaviour
     void IncorrectOrder()
     {
         maxRating -= .5f;
-        maxRating = Mathf.Clamp(maxRating, 1, 5);
+        maxRating = Mathf.Clamp(maxRating, 2, 5);
         Debug.Log("The CompletedOrder is incorrect.");
     }
 
