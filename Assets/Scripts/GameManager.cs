@@ -23,6 +23,11 @@ public class GameManager : MonoBehaviour
     public float rating = 0;
     public List<float> ratings = new List<float>();
 
+    void DayEnd()
+    {
+        Time.timeScale = 0;
+    }
+
     void Awake()
     {
         playerCarry = player.GetComponent<Carry>();
@@ -35,8 +40,14 @@ public class GameManager : MonoBehaviour
 
     void UpdateDayTime()
     {
+        if (dayTimeLeft <= 0)
+            return;
+
         dayTimeLeft -= Time.deltaTime;
         dayTimeLeft = Mathf.Clamp(dayTimeLeft, 0, maxDayTime);
+
+        if (dayTimeLeft == 0)
+            DayEnd();
     }
 
     void UpdateRating()

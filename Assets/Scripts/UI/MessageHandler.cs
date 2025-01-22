@@ -38,7 +38,7 @@ public class MessageHandler : MonoBehaviour
 
 
 
-    public async void SayMessage(Message message)
+    public void SayMessage(Message message)
     {
         if (message.messageType == Message.MessageType.Dialogue)
         {
