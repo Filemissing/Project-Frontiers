@@ -60,8 +60,6 @@ public class MessageHandler : MonoBehaviour
                 isVisible = true;
 
             canNext = false; // Disable nextPanel
-            nextPanelCanvasGroup.DOFade(0, 0);
-            nextPanelRectTransform.DOScale(nextPanelStartScale, 0);
 
             currentDialogueMessage = message;
             nameLabel.text = message.name;
@@ -88,8 +86,6 @@ public class MessageHandler : MonoBehaviour
 
                 textLabel.text = text;
                 canNext = true; // Enable nextPanel
-                nextPanelCanvasGroup.DOFade(1, nextPanelTransitionTime);
-                nextPanelRectTransform.DOScale(new Vector3(1, 1, 1), nextPanelTransitionTime);
             }
         }
         else if (message.messageType == Message.MessageType.Review)
@@ -158,7 +154,29 @@ public class MessageHandler : MonoBehaviour
         }
     }
 
-    bool previousIsVisible;
+    bool previousCanNext = true;
+    void CanNextChange() // Might cause bad performance due to tweening called many times, but there are no such warnings.
+    {
+        /*
+        if (canNext == previousCanNext)
+            return;
+        */
+
+        if (canNext)
+        {
+            nextPanelCanvasGroup.DOFade(1, nextPanelTransitionTime);
+            nextPanelRectTransform.DOScale(new Vector3(1, 1, 1), nextPanelTransitionTime);
+        }
+        else
+        {
+            nextPanelCanvasGroup.DOFade(0, 0);
+            nextPanelRectTransform.DOScale(nextPanelStartScale, 0);
+        }
+
+        previousCanNext = canNext;
+    }
+
+    bool previousIsVisible = false;
     void VisibilityChange(float transitionTime)
     {
         if (isVisible == previousIsVisible)
@@ -182,6 +200,7 @@ public class MessageHandler : MonoBehaviour
 
     void Update()
     {
+        CanNextChange();
         VisibilityChange(transitionTime);
         Next();
     }
