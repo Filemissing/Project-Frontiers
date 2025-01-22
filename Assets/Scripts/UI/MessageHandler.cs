@@ -14,27 +14,41 @@ public class MessageHandler : MonoBehaviour
 
     [SerializeField] CanvasGroup canvasGroup;
     [SerializeField] RectTransform rectTransform;
+    [SerializeField] CanvasGroup nextPanelCanvasGroup;
+    [SerializeField] RectTransform nextPanelRectTransform;
 
-    [Header("Review")]
-    [SerializeField] GameObject reviewPanel;
+    [SerializeField] float characterSpeed = .2f;
+    [SerializeField] float lineSpeed = .5f;
 
-    [Header("Values")]
     [SerializeField] float startPosition = -240;
     [SerializeField] float endPosition = 40;
 
     [SerializeField] Vector3 startScale = new Vector3(0.3f, 0.3f, 0.3f);
     [SerializeField] Vector3 endScale = new Vector3(1, 1, 1);
+    [SerializeField] Vector3 clickScale = new Vector3(.95f, .95f, .95f);
+    [SerializeField] Vector3 nextPanelStartScale = new Vector3(.7f, .7f, .7f);
+
+    [SerializeField] float clickTransitionTime = .1f;
+    [SerializeField] float nextPanelTransitionTime = .6f;
+
+    public bool isVisible;
+    bool canNext;
+    Message currentDialogueMessage;
+
+
+    [Header("Review")]
+    [SerializeField] Transform reviewPanelParent;
+    [SerializeField] GameObject reviewPanel;
 
     [SerializeField] float transitionTime = .3f;
+
 
     [Header("Dialogues")]
     public Message[] dialogues;
 
+
     [Header("Reviews")]
     public Message[] reviews;
-
-    public bool isVisible;
-    Message currentDialogueMessage;
 
 
 
@@ -45,16 +59,45 @@ public class MessageHandler : MonoBehaviour
             if (!isVisible)
                 isVisible = true;
 
+            canNext = false; // Disable nextPanel
+            nextPanelCanvasGroup.DOFade(0, 0);
+            nextPanelRectTransform.DOScale(nextPanelStartScale, 0);
+
             currentDialogueMessage = message;
             nameLabel.text = message.name;
-            textLabel.text = message.text;
+            //textLabel.text = message.text;
+
+            StartCoroutine(ApplyTextWithEffect(message.text));
+            IEnumerator ApplyTextWithEffect(string text)
+            {
+                string tempText = "";
+
+                for (int i = 0; i < text.Length; i++)
+                {
+                    char character = text[i];
+                    float waitTime = characterSpeed;
+
+                    tempText += character;
+                    textLabel.text = tempText;
+
+                    if (character == '.' || character == '!' || character == '?' || character == ',')
+                        waitTime = lineSpeed;
+
+                    yield return new WaitForSeconds(waitTime);
+                }
+
+                textLabel.text = text;
+                canNext = true; // Enable nextPanel
+                nextPanelCanvasGroup.DOFade(1, nextPanelTransitionTime);
+                nextPanelRectTransform.DOScale(new Vector3(1, 1, 1), nextPanelTransitionTime);
+            }
         }
         else if (message.messageType == Message.MessageType.Review)
         {
             GameObject review = Instantiate<GameObject>(reviewPanel);
 
             review.SetActive(true);
-            review.transform.SetParent(reviewPanel.transform.parent);
+            review.transform.SetParent(reviewPanelParent);
 
             RectTransform rectTransform = review.GetComponent<RectTransform>();
             CanvasGroup canvasGroup = review.GetComponent<CanvasGroup>();
@@ -73,6 +116,8 @@ public class MessageHandler : MonoBehaviour
             canvasGroup.DOFade(1, transitionTime);
             rectTransform.DOScale(endScale, transitionTime);
 
+
+            StartCoroutine(Wait(10, canvasGroup, rectTransform));
             IEnumerator Wait(float seconds, CanvasGroup canvasGroup, RectTransform rectTransform)
             {
                 yield return new WaitForSeconds(seconds);
@@ -84,14 +129,12 @@ public class MessageHandler : MonoBehaviour
                 rectTransform.DOSizeDelta(new Vector3(0, 0, 0), .2f);
                 Destroy(review, .25f);
             }
-
-            StartCoroutine(Wait(10, canvasGroup, rectTransform));
         }
     }
 
     void Next()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) && canNext)
         {
             int nextDialogueMessageIndex = 0;
             for (int i = 0; i < dialogues.Length; i++)
@@ -104,7 +147,14 @@ public class MessageHandler : MonoBehaviour
             if (nextDialogueMessageIndex < dialogues.Length)
                 SayMessage(dialogues[nextDialogueMessageIndex]);
             else
+            {
                 isVisible = false;
+                GameManager.instance.isDayCyling = true;
+            }
+            
+            rectTransform.localScale = clickScale;
+            rectTransform.DOScale(endScale, clickTransitionTime);
+            canNext = false;
         }
     }
 

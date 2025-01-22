@@ -54,6 +54,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  isDayCyling: 0
   maxDayTime: 210
   dayTimeLeft: 0
   messageHandler: {fileID: 7189992599285825104}
@@ -75,45 +76,55 @@ MonoBehaviour:
   textLabel: {fileID: 0}
   canvasGroup: {fileID: 0}
   rectTransform: {fileID: 0}
-  reviewPanel: {fileID: 0}
-  startPosition: -240
-  endPosition: 40
+  nextPanelCanvasGroup: {fileID: 0}
+  nextPanelRectTransform: {fileID: 0}
+  characterSpeed: 0.03
+  lineSpeed: 0.4
+  startPosition: -120
+  endPosition: 160
   startScale: {x: 0.3, y: 0.3, z: 0.3}
   endScale: {x: 1, y: 1, z: 1}
+  clickScale: {x: 0.95, y: 0.95, z: 0.95}
+  nextPanelStartScale: {x: 0.7, y: 0.7, z: 0.7}
+  clickTransitionTime: 0.1
+  nextPanelTransitionTime: 0.4
+  isVisible: 0
+  reviewPanelParent: {fileID: 0}
+  reviewPanel: {fileID: 4867691869681592704, guid: b0be31112cca761468b597deddecefc0,
+    type: 3}
   transitionTime: 0.3
   dialogues:
   - name: Boss
-    text: Welcome to the restaurant!
+    text: TEMP - Welcome to the restaurant! You will be the chef for today.
     rating: 0
     messageType: 1
   - name: Boss
-    text: GET TO FUCKING WORK
+    text: TEMP - GET TO FUCKING WORK. I MEAN IT.
     rating: 0
     messageType: 1
   - name: Boss
-    text: I SAID GET TO WORK U FUCKING PIECE OF SHIT
+    text: TEMP - I SAID GET TO WORK U FUCKING PIECE OF SHIT.
     rating: 0
     messageType: 1
   reviews:
   - name: Mr. French Fries
-    text: I FUCKING LOVE THESE FIRES
+    text: TEMP - I FUCKING LOVE THESE FIRES
     rating: 5
     messageType: 0
   - name: Coughing Baby
-    text: Cough Cough.
+    text: TEMP - Cough Cough.
     rating: 5
     messageType: 0
   - name: Hydrogen Bomb
-    text: AOWWWW
+    text: TEMP - AOWWWW
     rating: 5
     messageType: 0
   - name: '"Normal" person'
-    text: I WANT A FUCKING REFUND WHER ETHE FUCK IS MY FOOD GIVE ME MY FOOD OR I
-      KIL YOU
+    text: TEMP - I WANT A FUCKING REFUND WHER ETHE FUCK IS MY FOOD GIVE ME MY FOOD
+      OR I KIL YOU
     rating: 1
     messageType: 0
   - name: Happiest person in berlingham
-    text: WHAT THE FOCK M8 WHERE IS MY BLOODY FOOD?!?!
+    text: TEMP - WHAT THE FOCK M8 WHERE IS MY BLOODY FOOD?!?!
     rating: 1
     messageType: 0
-  isVisible: 0
