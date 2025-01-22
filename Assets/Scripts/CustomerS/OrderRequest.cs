@@ -37,10 +37,7 @@ public class OrderRequest : MonoBehaviour
         }
 
         if (possibleMessages.Count == 0)
-        {
-            Debug.Log("NO MESSAGE FOUND");
             return GameManager.instance.messageHandler.reviews[0];
-        }
         
         chosenMessage = possibleMessages[Random.Range(0, possibleMessages.Count)];
         return chosenMessage;

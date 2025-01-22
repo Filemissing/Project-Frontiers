@@ -1117,7 +1117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &525702761
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1498,7 +1498,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &635329971
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3416,19 +3416,19 @@ PrefabInstance:
     - target: {fileID: 408182905720698994, guid: abccfa8de0404964fb7a2abbc70acf4f,
         type: 3}
       propertyPath: recipes.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 408182905720698994, guid: abccfa8de0404964fb7a2abbc70acf4f,
         type: 3}
       propertyPath: recipes.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 524606b20226e2b458d15a9aea9e8a72,
+      objectReference: {fileID: 11400000, guid: a79f56f15f93a7340bcd69c52c366178,
         type: 2}
     - target: {fileID: 408182905720698994, guid: abccfa8de0404964fb7a2abbc70acf4f,
         type: 3}
       propertyPath: recipes.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: a79f56f15f93a7340bcd69c52c366178,
+      objectReference: {fileID: 11400000, guid: 82f8c6abc092c5d4fa6dcca18ad7d7a3,
         type: 2}
     - target: {fileID: 408182905720698994, guid: abccfa8de0404964fb7a2abbc70acf4f,
         type: 3}

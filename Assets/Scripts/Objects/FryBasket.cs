@@ -7,7 +7,14 @@ public class FryBasket : Carryable
     public Ingredient ingredient;
     public Vector3 ingredientPosition;
     public int positionOnFryer;
-    
+    ProgressBar progressBar;
+    Fryable fryable;
+
+    private void Awake()
+    {
+        progressBar = GetComponentInChildren<ProgressBar>();
+    }
+
     public override void InteractLeft()
     {
         if(GameManager.instance.playerCarry.carryingObject == null)
@@ -18,10 +25,37 @@ public class FryBasket : Carryable
             }
             base.InteractLeft();
         }
-        else if(!ingredient && GameManager.instance.TakeCarryingObject<Fryable>(gameObject, out Fryable returnComponent))
+        else if(!ingredient && GameManager.instance.TakeCarryingObject<Fryable>(gameObject, out fryable))
         {
-            ingredient = returnComponent.GetComponent<Ingredient>();
+            ingredient = fryable.GetComponent<Ingredient>();
             ingredient.transform.position = transform.TransformPoint(ingredientPosition);// put the ingredient in the basket
         }
+    }
+
+    public void Update()
+    {
+        UpdateProgressBar();
+    }
+
+    void UpdateProgressBar()
+    {
+        if (ingredient != null)
+        {
+            progressBar.gameObject.SetActive(true);
+            if (fryable.fryTimeCounter <= fryable.fryTime)
+            {
+                progressBar.iconImage.sprite = progressBar.defaultIcon;
+                progressBar.progress = fryable.fryTimeCounter / fryable.fryTime;
+                progressBar.barColor = Color.green;
+            }
+            else
+            {
+                progressBar.iconImage.sprite = progressBar.alternateIcon;
+                progressBar.progress = (fryable.fryTimeCounter - fryable.fryTime) / (fryable.burnTime - fryable.fryTime);
+                progressBar.progress = Mathf.Clamp01(progressBar.progress);
+                progressBar.barColor = Color.red;
+            }
+        }
+        else progressBar.gameObject.SetActive(false);
     }
 }

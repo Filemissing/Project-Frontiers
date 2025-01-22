@@ -13,10 +13,10 @@ public class SpeechBubble : MonoBehaviour
 
     void LookAtPlayer()
     {
-        if (canvas == null)
+        if (canvas == null || GameManager.instance.player == null)
             return;
 
-        Vector3 direction = Camera.main.transform.position - canvas.transform.position;
+        Vector3 direction = GameManager.instance.player.transform.position - canvas.transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         canvas.transform.rotation = lookRotation;
     }
