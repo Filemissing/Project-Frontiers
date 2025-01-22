@@ -8,7 +8,8 @@ using UnityEngine;
     public enum MessageType
     {
         Review,
-        Dialogue
+        Dialogue,
+        EndMessage
     }
 
     public string name;

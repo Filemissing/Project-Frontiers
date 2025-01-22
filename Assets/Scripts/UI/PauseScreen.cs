@@ -22,7 +22,7 @@ public class PauseScreen : MonoBehaviour
         if (GameManager.instance.dayTimeLeft != 0) // Checks if day hasen't ended.
             if (Input.GetKeyDown(pauseKey)) isPaused = !isPaused;
         else
-            isPaused = false;
+            //isPaused = false;
 
         if (isPaused != lastPauseState)
         {
