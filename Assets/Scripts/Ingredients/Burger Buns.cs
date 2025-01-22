@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class Burger Buns : Ingredient
+public class BurgerBuns : Ingredient
 {
 
 }
