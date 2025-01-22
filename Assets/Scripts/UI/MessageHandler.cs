@@ -16,6 +16,7 @@ public class MessageHandler : MonoBehaviour
     [SerializeField] RectTransform rectTransform;
 
     [Header("Review")]
+    [SerializeField] Transform reviewPanelParent;
     [SerializeField] GameObject reviewPanel;
 
     [Header("Values")]
@@ -54,7 +55,7 @@ public class MessageHandler : MonoBehaviour
             GameObject review = Instantiate<GameObject>(reviewPanel);
 
             review.SetActive(true);
-            review.transform.SetParent(reviewPanel.transform.parent);
+            review.transform.SetParent(reviewPanelParent);
 
             RectTransform rectTransform = review.GetComponent<RectTransform>();
             CanvasGroup canvasGroup = review.GetComponent<CanvasGroup>();
