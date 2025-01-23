@@ -23,6 +23,8 @@ public class Interact : MonoBehaviour
 
         ChangeCursor();
 
+        OutLineObject();
+
         SendMessages();
     }
 
@@ -40,6 +42,17 @@ public class Interact : MonoBehaviour
             }
         }
         cursorImage.sprite = defaultSprite;
+    }
+
+    void OutLineObject()
+    {
+        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, interactionRange, interactionMask, QueryTriggerInteraction.Collide))
+        {
+            if(hit.transform.TryGetComponent<Carryable>(out Carryable carryable))
+            {
+                carryable.Outline();
+            }
+        }
     }
     
     void SendMessages()

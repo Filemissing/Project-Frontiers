@@ -10,8 +10,9 @@ public class FryBasket : Carryable
     ProgressBar progressBar;
     Fryable fryable;
 
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
         progressBar = GetComponentInChildren<ProgressBar>();
     }
 
@@ -32,8 +33,9 @@ public class FryBasket : Carryable
         }
     }
 
-    public void Update()
+    public override void Update()
     {
+        base.Update();
         UpdateProgressBar();
     }
 
