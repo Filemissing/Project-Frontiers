@@ -19,15 +19,26 @@ public class PauseScreen : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(pauseKey)) isPaused = !isPaused;
+        if (GameManager.instance.dayTimeLeft == 0) // Checks if day hasen't ended.
+            isPaused = false;
+        else
+            if (Input.GetKeyDown(pauseKey)) isPaused = !isPaused;
 
         if (isPaused != lastPauseState)
         {
-            if (isPaused) GameManager.instance.EnterUIMode();
-            else GameManager.instance.ExitUIMode(); 
+            if (isPaused)
+            {
+                Time.timeScale = 0;
+                GameManager.instance.EnterUIMode();
+            }
+            else
+            {
+                Time.timeScale = 1;
+                GameManager.instance.ExitUIMode();
+            }
         }
 
-        Time.timeScale = isPaused ? 0f : 1f;
+        //Time.timeScale = isPaused ? 0f : 1f;
         GameManager.instance.player.SetActive(!isPaused);
 
         canvas.enabled = isPaused;

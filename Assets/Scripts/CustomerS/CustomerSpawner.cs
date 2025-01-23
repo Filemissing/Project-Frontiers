@@ -98,6 +98,9 @@ public class CustomerSpawner : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.instance.isDayCyling)
+            return;
+
         float currentDayTime = GameManager.instance.maxDayTime - GameManager.instance.dayTimeLeft;
         float a = GetCurrentOrders();
         float b = GameManager.instance.orders.Length;

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7419571951755308355}
   - component: {fileID: 408182905720698994}
+  - component: {fileID: 7189992599285825104}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -47,8 +48,83 @@ MonoBehaviour:
   player: {fileID: 0}
   playerCarry: {fileID: 0}
   recipes:
-  - {fileID: 11400000, guid: 4e7417d1d1e970941ac3adb8d33e6eb3, type: 2}
+  - {fileID: 11400000, guid: 82f8c6abc092c5d4fa6dcca18ad7d7a3, type: 2}
+  - {fileID: 11400000, guid: 69f926269cd440f498deab680672958b, type: 2}
   orders:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  isDayCyling: 0
+  maxDayTime: 210
+  dayTimeLeft: 0
+  messageHandler: {fileID: 7189992599285825104}
+  rating: 0
+  ratings: []
+--- !u!114 &7189992599285825104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7347963214056942460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 277037ec854f9d141b7a506e27aa6baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameLabel: {fileID: 0}
+  textLabel: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  rectTransform: {fileID: 0}
+  nextPanelCanvasGroup: {fileID: 0}
+  nextPanelRectTransform: {fileID: 0}
+  characterSpeed: 0.03
+  lineSpeed: 0.4
+  startPosition: -120
+  endPosition: 160
+  startScale: {x: 0.3, y: 0.3, z: 0.3}
+  endScale: {x: 1, y: 1, z: 1}
+  clickScale: {x: 0.95, y: 0.95, z: 0.95}
+  nextPanelStartScale: {x: 0.7, y: 0.7, z: 0.7}
+  clickTransitionTime: 0.1
+  nextPanelTransitionTime: 0.4
+  isVisible: 0
+  reviewPanelParent: {fileID: 0}
+  reviewPanel: {fileID: 4867691869681592704, guid: b0be31112cca761468b597deddecefc0,
+    type: 3}
+  transitionTime: 0.3
+  dialogues:
+  - name: Boss
+    text: TEMP - Welcome to the restaurant! You will be the chef for today.
+    rating: 0
+    messageType: 1
+  - name: Boss
+    text: TEMP - GET TO FUCKING WORK. I MEAN IT.
+    rating: 0
+    messageType: 1
+  - name: Boss
+    text: TEMP - I SAID GET TO WORK U FUCKING PIECE OF SHIT.
+    rating: 0
+    messageType: 1
+  reviews:
+  - name: Mr. French Fries
+    text: TEMP - I FUCKING LOVE THESE FIRES
+    rating: 5
+    messageType: 0
+  - name: Coughing Baby
+    text: TEMP - Cough Cough.
+    rating: 5
+    messageType: 0
+  - name: Hydrogen Bomb
+    text: TEMP - AOWWWW
+    rating: 5
+    messageType: 0
+  - name: '"Normal" person'
+    text: TEMP - I WANT A FUCKING REFUND WHER ETHE FUCK IS MY FOOD GIVE ME MY FOOD
+      OR I KIL YOU
+    rating: 1
+    messageType: 0
+  - name: Happiest person in berlingham
+    text: TEMP - WHAT THE FOCK M8 WHERE IS MY BLOODY FOOD?!?!
+    rating: 1
+    messageType: 0

@@ -11,8 +11,9 @@ public class Pan : Carryable
     ProgressBar progressBar;
     Cookable cookable;
 
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
         progressBar = GetComponentInChildren<ProgressBar>();
     }
 
@@ -33,8 +34,9 @@ public class Pan : Carryable
         }
     }
 
-    public void Update()
+    public override void Update()
     {
+        base .Update();
         UpdateProgressBar();
     }
 

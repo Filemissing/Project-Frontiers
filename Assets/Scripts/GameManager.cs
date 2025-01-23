@@ -13,12 +13,21 @@ public class GameManager : MonoBehaviour
     public Recipe[] recipes;
     public OrderRequest[] orders;
 
+    public bool isDayCyling;
     public float maxDayTime = 210;
     public float dayTimeLeft;
+
+    [Header("Message Handler")]
+    public MessageHandler messageHandler;
 
     [Header("Rating")]
     public float rating = 0;
     public List<float> ratings = new List<float>();
+
+    void DayEnd()
+    {
+        Time.timeScale = 0;
+    }
 
     void Awake()
     {
@@ -26,12 +35,23 @@ public class GameManager : MonoBehaviour
         playerController = player.GetComponent<PlayerController>();
         instance = this;
         dayTimeLeft = maxDayTime;
+
+        messageHandler.SayMessage(messageHandler.dialogues[0]);
     }
 
     void UpdateDayTime()
     {
+        if (!isDayCyling)
+            return;
+
+        if (dayTimeLeft <= 0)
+            return;
+
         dayTimeLeft -= Time.deltaTime;
         dayTimeLeft = Mathf.Clamp(dayTimeLeft, 0, maxDayTime);
+
+        if (dayTimeLeft == 0)
+            DayEnd();
     }
 
     void UpdateRating()

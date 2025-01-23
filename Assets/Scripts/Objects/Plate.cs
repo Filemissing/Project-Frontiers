@@ -9,8 +9,9 @@ public class Plate : Carryable
     [SerializeField] List<Ingredient> ingredients = new List<Ingredient>();
     [SerializeField] List<Recipe> validRecipes = new List<Recipe>();
     [SerializeField] Ingredient heldIngredient;
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
         validRecipes = new List<Recipe>(GameManager.instance.recipes);
     }
 
@@ -29,7 +30,6 @@ public class Plate : Carryable
             */
             base.InteractLeft();
         }
-
 
         if (GetCarryingObject() == false) return;
 
@@ -165,5 +165,22 @@ public class Plate : Carryable
             Destroy(transform.GetChild(i).gameObject);
         }
         Instantiate(recipe.endResult, transform);
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        DisableIngredientHitBoxes();
+    }
+
+    void DisableIngredientHitBoxes()
+    {
+        foreach (Ingredient ingredient in ingredients)
+        {
+            if (ingredient != null)
+            {
+                ingredient.GetComponent<Collider>().enabled = false; 
+            }
+        }
     }
 }

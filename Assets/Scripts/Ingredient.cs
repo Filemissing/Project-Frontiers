@@ -9,8 +9,9 @@ public class Ingredient : Carryable
 
     public MeshFilter meshFilter;
     public MeshRenderer meshRenderer;
-    protected virtual void Awake()
+    public override void Awake()
     {
+        base.Awake();
         meshFilter = gameObject.GetComponent<MeshFilter>();
         meshRenderer = gameObject.GetComponent<MeshRenderer>();
     }
@@ -63,5 +64,10 @@ public class Ingredient : Carryable
                 SendMessage("Chop");
             }
         }
+    }
+
+    public override void Update()
+    {
+        base.Update();
     }
 }
