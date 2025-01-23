@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using UnityEngine;
 
 public class DayNightCycle : MonoBehaviour
@@ -10,19 +11,22 @@ public class DayNightCycle : MonoBehaviour
     float difference;
     float timeSpeed;
 
+    Vector3 originalRotation;
+
     Light light;
     public Gradient gradient;
 
     private void Awake()
     {
         light = GetComponent<Light>();
+        originalRotation = transform.rotation.eulerAngles; // store original lightrotation because using transform.rotation.y and z in quaternion.euler stil results in 0
 
         // convert so that 0 = midnight instead of sun-up
         dayStartTime -= 6;
         dayEndTime -= 6;
 
         // set the starting values
-        transform.rotation = Quaternion.Euler(dayStartTime * 15,  transform.rotation.y, transform.rotation.z);
+        transform.rotation = Quaternion.Euler(new Vector3(dayStartTime * 15,  originalRotation.y, originalRotation.z));
         time = dayStartTime;
         light.color = gradient.Evaluate(0);
 
@@ -36,7 +40,7 @@ public class DayNightCycle : MonoBehaviour
     {
         if (!GameManager.instance.isDayCyling) return;
         time += timeSpeed * Time.deltaTime; // use Time.deltaTime to convert from seconds to frame time
-        transform.rotation = Quaternion.Euler(time * 15, transform.rotation.y, transform.rotation.z);
+        transform.rotation = Quaternion.Euler(new Vector3(time * 15, originalRotation.y, originalRotation.z));
 
         light.color = gradient.Evaluate(time / difference);
     }
