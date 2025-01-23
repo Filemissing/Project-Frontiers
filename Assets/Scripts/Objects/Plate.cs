@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 public class Plate : Carryable
 {
     [SerializeField] List<Ingredient> ingredients = new List<Ingredient>();
-    [SerializeField] List<Recipe> validRecipes = new List<Recipe>();
+    public List<Recipe> validRecipes = new List<Recipe>();
     [SerializeField] Ingredient heldIngredient;
     private void Awake()
     {

@@ -13,8 +13,8 @@ public class RecipePopup : MonoBehaviour
     [SerializeField] GameObject ingredientPanel;
     [SerializeField] GameObject conditionTextLabel;
 
-    [Header("TESTING")]
-    [SerializeField] Recipe testRecipe;
+    public List<GameObject> currentRecipePanels = new List<GameObject>();
+
 
 
     Sprite GetCompletedRecipeSprite(Recipe recipe)
@@ -59,6 +59,7 @@ public class RecipePopup : MonoBehaviour
     {
         GameObject newRecipePanel = Instantiate<GameObject>(recipePanel);
         newRecipePanel.transform.SetParent(recipePanelParent, false);
+        newRecipePanel.name = recipe.name;
 
         RectTransform newRecipePanelRectTransform = newRecipePanel.GetComponent<RectTransform>(); // This is added cuz unity UI prefabs buggy
         newRecipePanelRectTransform.localScale = Vector3.one;
@@ -75,10 +76,55 @@ public class RecipePopup : MonoBehaviour
             IngredientRequirements ingredientRequirements = recipe.ingredients[i];
             CreateIngredientPanel(ingredientRequirements, ingredientPanelParent);
         }
+
+        currentRecipePanels.Add(newRecipePanel);
     }
 
-    void Awake()
+    void RemoveRecipePanel(GameObject thisRecipePanel)
     {
-        CreateRecipePanel(testRecipe);
+        Destroy(thisRecipePanel);
+        currentRecipePanels.Remove(thisRecipePanel);
+    }
+
+
+
+    void Update()
+    {
+        for (int i = 0; i < plate.validRecipes.Count; i++) // Adding RecipePanels
+        {
+            Recipe thisRecipe = plate.validRecipes[i];
+            bool currentRecipePanelFound = false;
+
+            for (int ii = 0; ii < currentRecipePanels.Count; ii++)
+            {
+                GameObject thisRecipePanel = currentRecipePanels[ii];
+                if (thisRecipePanel.name == thisRecipe.name)
+                    currentRecipePanelFound = true;
+            }
+
+            if (!currentRecipePanelFound)
+            {
+                CreateRecipePanel(thisRecipe);
+            }
+        }
+
+        for (int i = 0; i < currentRecipePanels.Count; i++) // Removing RecipePanels
+        {
+            GameObject thisRecipePanel = currentRecipePanels[i];
+            bool currentRecipeFound = false;
+
+            for (int ii = 0; ii < plate.validRecipes.Count; ii++)
+            {
+                Recipe thisRecipe = plate.validRecipes[ii];
+                if (thisRecipe.name == thisRecipePanel.name)
+                    currentRecipeFound = true;
+            }
+
+            if (!currentRecipeFound)
+            {
+                Debug.Log("Remove RecipePanel");
+                RemoveRecipePanel(thisRecipePanel);
+            }
+        }
     }
 }
