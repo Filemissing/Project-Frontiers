@@ -25,14 +25,14 @@ public class RecipePopup : MonoBehaviour
     void CreateCondition(string conditionString, Transform conditionsTextLabelParent)
     {
         GameObject newConditionTextLabel = Instantiate<GameObject>(conditionTextLabel);
-        newConditionTextLabel.transform.SetParent(conditionsTextLabelParent);
+        newConditionTextLabel.transform.SetParent(conditionsTextLabelParent, false);
         newConditionTextLabel.GetComponent<TMP_Text>().text = "- " + conditionString;
     }
 
     void CreateIngredientPanel(IngredientRequirements ingredientRequirements, Transform ingredientPanelParent)
     {
         GameObject newIngredientPanel = Instantiate<GameObject>(ingredientPanel);
-        newIngredientPanel.transform.SetParent(ingredientPanelParent);
+        newIngredientPanel.transform.SetParent(ingredientPanelParent, false);
 
         Image ingredientImageLabel = newIngredientPanel.transform.GetChild(0).GetComponent<Image>();
         ingredientImageLabel.sprite = ingredientRequirements.ingredient.icon;
@@ -58,13 +58,13 @@ public class RecipePopup : MonoBehaviour
     void CreateRecipePanel(Recipe recipe)
     {
         GameObject newRecipePanel = Instantiate<GameObject>(recipePanel);
-        newRecipePanel.transform.SetParent(recipePanelParent);
+        newRecipePanel.transform.SetParent(recipePanelParent, false);
 
         RectTransform newRecipePanelRectTransform = newRecipePanel.GetComponent<RectTransform>(); // This is added cuz unity UI prefabs buggy
-        newRecipePanelRectTransform.localScale = new Vector3(1, 1, 1);
-        newRecipePanelRectTransform.position = new Vector3(0, -1, 0);
-        newRecipePanelRectTransform.rotation = quaternion.identity;
-        
+        newRecipePanelRectTransform.localScale = Vector3.one;
+        newRecipePanelRectTransform.localPosition = Vector3.up * 1.5f;
+        newRecipePanelRectTransform.localRotation = quaternion.identity;
+
         Image completedRecipeImageLabel = newRecipePanel.transform.GetChild(0).GetComponent<Image>();
         completedRecipeImageLabel.sprite = GetCompletedRecipeSprite(recipe);
 

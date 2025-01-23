@@ -30,8 +30,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1927694689908376225}
+  m_Children: []
   m_Father: {fileID: 2805935926589626812}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -188,7 +187,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &8695964748013952160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,145 +218,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plate: {fileID: 0}
-  recipePanel: {fileID: 7304175952988829132}
+  recipePanel: {fileID: 3186340724628852854, guid: 522de968afc396a42bf66d84fb725bdc,
+    type: 3}
   recipePanelParent: {fileID: 382897075195877282}
   ingredientPanel: {fileID: 1883254998273196912, guid: e3e059325b74a8647b0d20c2d1c17f61,
     type: 3}
   conditionTextLabel: {fileID: 8313612340239877180, guid: e3b6d873a5fe51044b332775a768c92b,
     type: 3}
-  testRecipe: {fileID: 0}
---- !u!1001 &3207615231744780323
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 382897075195877282}
-    m_Modifications:
-    - target: {fileID: 3910022865254279810, guid: 3c6a938fde76a2b449be7da485bcca8f,
-        type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3910022865254279810, guid: 3c6a938fde76a2b449be7da485bcca8f,
-        type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3910022865254279810, guid: 3c6a938fde76a2b449be7da485bcca8f,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3910022865254279810, guid: 3c6a938fde76a2b449be7da485bcca8f,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3910022865254279810, guid: 3c6a938fde76a2b449be7da485bcca8f,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3910022865254279810, guid: 3c6a938fde76a2b449be7da485bcca8f,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3910022865254279810, guid: 3c6a938fde76a2b449be7da485bcca8f,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3910022865254279810, guid: 3c6a938fde76a2b449be7da485bcca8f,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3910022865254279810, guid: 3c6a938fde76a2b449be7da485bcca8f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3910022865254279810, guid: 3c6a938fde76a2b449be7da485bcca8f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3910022865254279810, guid: 3c6a938fde76a2b449be7da485bcca8f,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3910022865254279810, guid: 3c6a938fde76a2b449be7da485bcca8f,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3910022865254279810, guid: 3c6a938fde76a2b449be7da485bcca8f,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3910022865254279810, guid: 3c6a938fde76a2b449be7da485bcca8f,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3910022865254279810, guid: 3c6a938fde76a2b449be7da485bcca8f,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3910022865254279810, guid: 3c6a938fde76a2b449be7da485bcca8f,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3910022865254279810, guid: 3c6a938fde76a2b449be7da485bcca8f,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3910022865254279810, guid: 3c6a938fde76a2b449be7da485bcca8f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3910022865254279810, guid: 3c6a938fde76a2b449be7da485bcca8f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3910022865254279810, guid: 3c6a938fde76a2b449be7da485bcca8f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5322718590843936239, guid: 3c6a938fde76a2b449be7da485bcca8f,
-        type: 3}
-      propertyPath: m_Name
-      value: RecipePanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 5322718590843936239, guid: 3c6a938fde76a2b449be7da485bcca8f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3c6a938fde76a2b449be7da485bcca8f, type: 3}
---- !u!224 &1927694689908376225 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3910022865254279810, guid: 3c6a938fde76a2b449be7da485bcca8f,
-    type: 3}
-  m_PrefabInstance: {fileID: 3207615231744780323}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7304175952988829132 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5322718590843936239, guid: 3c6a938fde76a2b449be7da485bcca8f,
-    type: 3}
-  m_PrefabInstance: {fileID: 3207615231744780323}
-  m_PrefabAsset: {fileID: 0}
+  testRecipe: {fileID: 11400000, guid: 69f926269cd440f498deab680672958b, type: 2}
