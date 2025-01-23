@@ -10,8 +10,7 @@ public class Carryable : MonoBehaviour
 
     public virtual void Awake()
     {
-        if (!TryGetComponent<Outline>(out outline)) Debug.Log("Could not get Outline component");
-        else Debug.Log(outline);
+        outline = GetComponent<Outline>();
     }
 
     public virtual void Outline()
@@ -21,7 +20,7 @@ public class Carryable : MonoBehaviour
     }
 
 
-    public void Update()
+    public virtual void Update()
     {
         if(Time.frameCount > lastOutlineFrame)
         {

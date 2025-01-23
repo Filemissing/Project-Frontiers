@@ -9,8 +9,9 @@ public class Plate : Carryable
     [SerializeField] List<Ingredient> ingredients = new List<Ingredient>();
     [SerializeField] List<Recipe> validRecipes = new List<Recipe>();
     [SerializeField] Ingredient heldIngredient;
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
         validRecipes = new List<Recipe>(GameManager.instance.recipes);
     }
 
@@ -166,8 +167,9 @@ public class Plate : Carryable
         Instantiate(recipe.endResult, transform);
     }
 
-    private void Update()
+    public override void Update()
     {
+        base.Update();
         DisableIngredientHitBoxes();
     }
 
