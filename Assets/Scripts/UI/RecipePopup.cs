@@ -13,7 +13,15 @@ public class RecipePopup : MonoBehaviour
     [SerializeField] GameObject ingredientPanel;
     [SerializeField] GameObject conditionTextLabel;
 
-    public List<GameObject> currentRecipePanels = new List<GameObject>();
+    List<GameObject> currentRecipePanels = new List<GameObject>();
+
+    [Header("Measurements")]
+    [SerializeField] Vector2 ingredientPanelDefaultSize = new Vector2(.65f, .23f);
+    [SerializeField] float ingredientPanelMargin = .065f;
+
+    [SerializeField] Vector2 recipePanelDefaultSize = new Vector2(.7f, .735f);
+    [SerializeField] float recipePanelMargin = .065f;
+    [SerializeField] float recipePanelIngredientPanelMargin = .345f;
 
 
 
@@ -29,7 +37,7 @@ public class RecipePopup : MonoBehaviour
         newConditionTextLabel.GetComponent<TMP_Text>().text = "- " + conditionString;
     }
 
-    void CreateIngredientPanel(IngredientRequirements ingredientRequirements, Transform ingredientPanelParent)
+    void CreateIngredientPanel(IngredientRequirements ingredientRequirements, Transform ingredientPanelParent, Recipe recipe)
     {
         GameObject newIngredientPanel = Instantiate<GameObject>(ingredientPanel);
         newIngredientPanel.transform.SetParent(ingredientPanelParent, false);
@@ -53,6 +61,22 @@ public class RecipePopup : MonoBehaviour
 
         if (ingredientRequirements.isBurnt)
             CreateCondition("Burnt", conditionsTextLabelParent);
+        
+
+        // Changing Sizes
+        int conditionCount = conditionsTextLabelParent.childCount;
+
+        newIngredientPanel.GetComponent<RectTransform>().sizeDelta = new Vector2
+        (
+            ingredientPanelDefaultSize.x,
+            ingredientPanelDefaultSize.y + ingredientPanelMargin * (conditionCount - 1)
+        );
+
+        ingredientPanelParent.parent.GetComponent<RectTransform>().sizeDelta = new Vector2
+        (
+            recipePanelDefaultSize.x,
+            recipePanelDefaultSize.y + recipePanelMargin * (conditionCount - 1) + recipePanelIngredientPanelMargin * (recipe.ingredients.Length - 1) 
+        );
     }
 
     void CreateRecipePanel(Recipe recipe)
@@ -74,7 +98,7 @@ public class RecipePopup : MonoBehaviour
         for (int i = 0; i < recipe.ingredients.Length; i++)
         {
             IngredientRequirements ingredientRequirements = recipe.ingredients[i];
-            CreateIngredientPanel(ingredientRequirements, ingredientPanelParent);
+            CreateIngredientPanel(ingredientRequirements, ingredientPanelParent, recipe);
         }
 
         currentRecipePanels.Add(newRecipePanel);
@@ -122,7 +146,6 @@ public class RecipePopup : MonoBehaviour
 
             if (!currentRecipeFound)
             {
-                Debug.Log("Remove RecipePanel");
                 RemoveRecipePanel(thisRecipePanel);
             }
         }

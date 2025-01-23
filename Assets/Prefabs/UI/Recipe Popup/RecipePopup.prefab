@@ -225,4 +225,8 @@ MonoBehaviour:
     type: 3}
   conditionTextLabel: {fileID: 8313612340239877180, guid: e3b6d873a5fe51044b332775a768c92b,
     type: 3}
-  testRecipe: {fileID: 11400000, guid: 69f926269cd440f498deab680672958b, type: 2}
+  ingredientPanelDefaultSize: {x: 0.65, y: 0.23}
+  ingredientPanelMargin: 0.065
+  recipePanelDefaultSize: {x: 0.7, y: 0.735}
+  recipePanelMargin: 0.065
+  recipePanelIngredientPanelMargin: 0.345
