@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
@@ -8,12 +9,23 @@ using UnityEngine.UI;
 public class RecipePopup : MonoBehaviour
 {
     [SerializeField] Plate plate;
+    [SerializeField] Canvas canvas;
     [SerializeField] GameObject recipePanel;
     [SerializeField] Transform recipePanelParent;
     [SerializeField] GameObject ingredientPanel;
     [SerializeField] GameObject conditionTextLabel;
 
+    [SerializeField] CanvasGroup canvasGroup;
+    [SerializeField] RectTransform recipesPanelRectTransform;
+
     List<GameObject> currentRecipePanels = new List<GameObject>();
+
+    [Header("Visibility")]
+    [SerializeField] float maxDistance = 2.5f;
+
+    [SerializeField] bool isVisible = false;
+    [SerializeField] float transitionTime = .15f;
+
 
     [Header("Measurements")]
     [SerializeField] Vector2 ingredientPanelDefaultSize = new Vector2(.65f, .23f);
@@ -24,6 +36,37 @@ public class RecipePopup : MonoBehaviour
     [SerializeField] float recipePanelIngredientPanelMargin = .26f; //.345f;
 
 
+
+    bool previousIsVisible = false;
+    void VisibilityChange()
+    {
+        if (isVisible != previousIsVisible)
+        {
+            if (isVisible)
+            {
+                canvasGroup.DOFade(1, transitionTime);
+                recipesPanelRectTransform.DOScale(Vector3.one, transitionTime);
+            }
+            else
+            {
+                canvasGroup.DOFade(0, transitionTime);
+                recipesPanelRectTransform.DOScale(Vector3.one * .3f, transitionTime);
+            }
+        }
+
+        previousIsVisible = isVisible;
+    }
+
+    void LookAtPlayer()
+    {
+        if (GameManager.instance.player == null)
+            return;
+
+        Vector3 direction = GameManager.instance.player.transform.position - canvas.transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        Vector3 eulerAngles = lookRotation.eulerAngles;
+        canvas.transform.eulerAngles = new Vector3(0, eulerAngles.y + 180, 0);
+    }
 
     Sprite GetCompletedRecipeSprite(Recipe recipe)
     {
@@ -115,6 +158,14 @@ public class RecipePopup : MonoBehaviour
 
     void Update()
     {
+        LookAtPlayer();
+        VisibilityChange();
+
+
+        float distance = (GameManager.instance.player.transform.position - plate.transform.position).magnitude;
+        isVisible = distance <= maxDistance;
+
+
         for (int i = 0; i < plate.validRecipes.Count; i++) // Adding RecipePanels
         {
             Recipe thisRecipe = plate.validRecipes[i];
@@ -150,5 +201,13 @@ public class RecipePopup : MonoBehaviour
                 RemoveRecipePanel(thisRecipePanel);
             }
         }
+    }
+
+
+
+    void Awake()
+    {
+        canvasGroup.alpha = 0;
+        recipesPanelRectTransform.localScale = Vector3.one * .3f;
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6333308136247696323}
   - component: {fileID: 6153031899636880352}
   - component: {fileID: 7629576639094702587}
+  - component: {fileID: 98310268774609257}
   m_Layer: 5
   m_Name: RecipesPanel
   m_TagString: Untagged
@@ -37,7 +38,7 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.9}
 --- !u!222 &6333308136247696323
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -102,6 +103,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!225 &98310268774609257
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577862810355252258}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2519401416491806522
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +200,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &8695964748013952160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plate: {fileID: 0}
+  canvas: {fileID: 4697705227428137184}
   recipePanel: {fileID: 3186340724628852854, guid: 522de968afc396a42bf66d84fb725bdc,
     type: 3}
   recipePanelParent: {fileID: 382897075195877282}
@@ -225,6 +239,11 @@ MonoBehaviour:
     type: 3}
   conditionTextLabel: {fileID: 8313612340239877180, guid: e3b6d873a5fe51044b332775a768c92b,
     type: 3}
+  canvasGroup: {fileID: 98310268774609257}
+  recipesPanelRectTransform: {fileID: 382897075195877282}
+  maxDistance: 2.5
+  isVisible: 0
+  transitionTime: 0.15
   ingredientPanelDefaultSize: {x: 0.65, y: 0.23}
   ingredientPanelMargin: 0.065
   recipePanelDefaultSize: {x: 0.7, y: 0.735}
