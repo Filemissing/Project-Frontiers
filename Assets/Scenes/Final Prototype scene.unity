@@ -5332,8 +5332,13 @@ PrefabInstance:
     - target: {fileID: 9017446588857732350, guid: 8871b2185fbbdc542b0a2ddb382a21f0,
         type: 3}
       propertyPath: cursorSprites.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9017446588857732350, guid: 8871b2185fbbdc542b0a2ddb382a21f0,
+        type: 3}
+      propertyPath: cursorSprites.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 9017446588857732350, guid: 8871b2185fbbdc542b0a2ddb382a21f0,
         type: 3}
       propertyPath: cursorSprites.Array.data[0].component
@@ -5707,6 +5712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c84fb64adf5a3d4f9441aad391e6d6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doDayNightCycle: 0
   time: 0
   dayStartTime: 6
   dayEndTime: 18
