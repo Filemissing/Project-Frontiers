@@ -93,7 +93,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
+  m_ChildAlignment: 1
   m_Spacing: 0.1
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
@@ -229,4 +229,4 @@ MonoBehaviour:
   ingredientPanelMargin: 0.065
   recipePanelDefaultSize: {x: 0.7, y: 0.735}
   recipePanelMargin: 0.065
-  recipePanelIngredientPanelMargin: 0.345
+  recipePanelIngredientPanelMargin: 0.26

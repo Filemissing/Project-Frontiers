@@ -21,7 +21,7 @@ public class RecipePopup : MonoBehaviour
 
     [SerializeField] Vector2 recipePanelDefaultSize = new Vector2(.7f, .735f);
     [SerializeField] float recipePanelMargin = .065f;
-    [SerializeField] float recipePanelIngredientPanelMargin = .345f;
+    [SerializeField] float recipePanelIngredientPanelMargin = .26f; //.345f;
 
 
 
@@ -75,7 +75,8 @@ public class RecipePopup : MonoBehaviour
         ingredientPanelParent.parent.GetComponent<RectTransform>().sizeDelta = new Vector2
         (
             recipePanelDefaultSize.x,
-            recipePanelDefaultSize.y + recipePanelMargin * (conditionCount - 1) + recipePanelIngredientPanelMargin * (recipe.ingredients.Length - 1) 
+            recipePanelDefaultSize.y + recipePanelMargin * (conditionCount - 1) + recipePanelIngredientPanelMargin * (recipe.ingredients.Length - 1)
+            //recipePanelDefaultSize.y + recipePanelMargin * (conditionCount - 1) + recipePanelIngredientPanelMargin * (recipe.ingredients.Length - 1) 
         );
     }
 
