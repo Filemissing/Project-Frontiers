@@ -64,7 +64,7 @@ public class Plate : Carryable
 
     bool UpdateValidRecipes()
     {
-        retry:
+        List<Recipe> invalidRecipes = new List<Recipe>();
         foreach (Recipe recipe in validRecipes)
         {
             bool recipeIsPossible = true;
@@ -76,16 +76,20 @@ public class Plate : Carryable
                     break;
                 }
             }
-            if (!recipeIsPossible && validRecipes.Count > 1)
+            if (!recipeIsPossible && (validRecipes.Count - invalidRecipes.Count) > 1)
             {
-                validRecipes.Remove(recipe);
-                goto retry;
+                invalidRecipes.Add(recipe);
             }
-            else if (!recipeIsPossible && validRecipes.Count <= 1)
+            else if (!recipeIsPossible && (validRecipes.Count - invalidRecipes.Count) <= 1)
             {
                 ingredients.RemoveAt(ingredients.Count - 1); // remove the last entry aka the held ingredient
                 return false;
             }
+        }
+
+        foreach (Recipe recipe in invalidRecipes)
+        {
+            validRecipes.Remove(recipe); // only remove invalid recipe's if at least 1 valid recipe was found
         }
         return true;
     }
