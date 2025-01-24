@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class DayNightCycle : MonoBehaviour
 {
+    public bool doDayNightCycle;
     [Tooltip("All time is in simulated hours")] public float time;
     [Tooltip("All time is in simulated hours")] public float dayStartTime;
     [Tooltip("All time is in simulated hours")] public float dayEndTime;
@@ -18,6 +19,8 @@ public class DayNightCycle : MonoBehaviour
 
     private void Awake()
     {
+        if (!doDayNightCycle) return;
+
         light = GetComponent<Light>();
         originalRotation = transform.rotation.eulerAngles; // store original lightrotation because using transform.rotation.y and z in quaternion.euler stil results in 0
 
@@ -38,7 +41,9 @@ public class DayNightCycle : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!doDayNightCycle) return;
         if (!GameManager.instance.isDayCyling) return;
+
         time += timeSpeed * Time.deltaTime; // use Time.deltaTime to convert from seconds to frame time
         transform.rotation = Quaternion.Euler(new Vector3(time * 15, originalRotation.y, originalRotation.z));
 
