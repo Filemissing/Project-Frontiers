@@ -9,6 +9,8 @@ public class OrderRequest : MonoBehaviour
     public float maxTime;
     public float timeLeft;
 
+    public ParticleSystem particleSystem;
+
     CompletedOrder GetCompletedOrder()
     {
         CompletedOrder completedOrder = null;
@@ -57,6 +59,7 @@ public class OrderRequest : MonoBehaviour
         Destroy(gameObject);
         GameManager.instance.ratings.Add(maxRating);
         GameManager.instance.messageHandler.SayMessage(GetMessage((int)maxRating));
+        Instantiate(particleSystem.gameObject, transform.position, Quaternion.identity);
         Debug.Log("The CompletedOrder is correct.");
     }
 
@@ -110,6 +113,7 @@ public class OrderRequest : MonoBehaviour
         GameManager.instance.ratings.Add(1f);
         GameManager.instance.messageHandler.SayMessage(GetMessage(1));
         Destroy(gameObject);
+        Instantiate(particleSystem, transform.position, Quaternion.identity);
     }
 
     void Update()
