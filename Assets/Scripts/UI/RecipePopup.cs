@@ -162,8 +162,13 @@ public class RecipePopup : MonoBehaviour
         VisibilityChange();
 
 
-        float distance = (GameManager.instance.player.transform.position - plate.transform.position).magnitude;
-        isVisible = distance <= maxDistance;
+        if (GameManager.instance.currentRecipePopup == this)
+            isVisible = true;
+        else
+            isVisible = false;
+        
+        //float distance = (GameManager.instance.player.transform.position - plate.transform.position).magnitude;
+        //isVisible = distance <= maxDistance;
 
 
         for (int i = 0; i < plate.validRecipes.Count; i++) // Adding RecipePanels
@@ -207,7 +212,15 @@ public class RecipePopup : MonoBehaviour
 
     void Awake()
     {
+        GameManager.instance.recipePopups.Add(this); // Adds this RecipePopup to the public list
+
         canvasGroup.alpha = 0;
         recipesPanelRectTransform.localScale = Vector3.one * .3f;
+    }
+
+
+    void OnDestroy()
+    {
+        GameManager.instance.recipePopups.Remove(this); // Removes this RecipePopup from the public list
     }
 }
