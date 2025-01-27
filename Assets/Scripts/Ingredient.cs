@@ -65,9 +65,4 @@ public class Ingredient : Carryable
             }
         }
     }
-
-    public override void Update()
-    {
-        base.Update();
-    }
 }

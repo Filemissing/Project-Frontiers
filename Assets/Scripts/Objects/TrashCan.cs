@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TrashCan : MonoBehaviour
 {
-    [SerializeField] Carryable[] carryableBlacklist;
+    [SerializeField] Carryable[] carryableBlacklist; // blacklist items that cannot be thrown away
 
     void InteractLeft()
     {
@@ -20,7 +20,7 @@ public class TrashCan : MonoBehaviour
             {
                 isBlacklisted = true;
                 if (GameManager.instance.playerCarry.carryingObject.transform.childCount > 1)
-                    destroyObject = GameManager.instance.playerCarry.carryingObject.transform.GetChild(1).gameObject;
+                    destroyObject = GameManager.instance.playerCarry.carryingObject.transform.GetChild(1).gameObject; // get child 1 so you don't throw away the progress bars
             }
         }
 

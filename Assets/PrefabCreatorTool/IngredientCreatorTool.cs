@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -131,6 +132,12 @@ public class IngredientCreatorTool : EditorWindow
     static GameObject gameObject;
     void CreatePrefab()
     {
+        if (string.IsNullOrWhiteSpace(objectName) || objectName.Any(char.IsWhiteSpace))
+        {
+            Debug.LogError("Ingredient name is Invalid");
+            return;
+        }
+
         gameObject = new GameObject(objectName); // create a new GameObject
 
         // set up normal components
@@ -170,6 +177,7 @@ public class IngredientCreatorTool : EditorWindow
             cookable.burntMaterial = cookBurntMaterial;
         }
 
+        // Save GameObject as Prefab
         string prefabPath = $"Assets/Prefabs/Ingredients/{objectName}.prefab";
         string directoryPath = "Assets/Prefabs/Ingredients";
         if (!Directory.Exists(directoryPath))
@@ -179,6 +187,7 @@ public class IngredientCreatorTool : EditorWindow
         GameObject prefab = PrefabUtility.SaveAsPrefabAsset(gameObject, prefabPath);
         DestroyImmediate(gameObject);
 
+        // Store info for script reload
         info.objectName = objectName;
         info.icon = icon;
         info.gameObject = prefab;
@@ -189,14 +198,8 @@ public class IngredientCreatorTool : EditorWindow
 
     void CreateScript()
     {
-        if (string.IsNullOrWhiteSpace(objectName))
-        {
-            Debug.LogError("Ingredient name cannot be empty");
-            return;
-        }
-
-        string scriptContent = $@"
-using UnityEngine;
+        string scriptContent = 
+$@"using UnityEngine;
 
 public class {objectName} : Ingredient
 {{
@@ -208,6 +211,7 @@ public class {objectName} : Ingredient
         if (File.Exists(scriptPath))
         {
             Debug.LogError($"A file with the name {objectName} already exists at {scriptPath}");
+            DestroyImmediate(gameObject);
             return;
         }
 

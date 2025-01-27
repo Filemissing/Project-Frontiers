@@ -21,19 +21,12 @@ public class Plate : Carryable
         if (GameManager.instance.playerCarry.carryingObject == null)
         { 
             // pickup the plate
-            // NO
-            /*
-            if (transform.parent && transform.parent.TryGetComponent<Counter>(out Counter counter))
-            {
-                counter.plateSlots[positionOnCounter] = null;
-            }
-            */
             base.InteractLeft();
         }
 
         if (GetCarryingObject() == false) return;
 
-        if(UpdateValidRecipes() == false) return;
+        if (UpdateValidRecipes() == false) return;
         
         RemoveHeldObject();
 
@@ -54,11 +47,11 @@ public class Plate : Carryable
         }
         else if(GameManager.instance.playerCarry.carryingObject.TryGetComponent<FryBasket>(out FryBasket basket))
         {
-            heldIngredient = basket.ingredient;
+            heldIngredient = basket.ingredient;// if the player is carrying a frybasket
         }
         else return false;
 
-        if (heldIngredient != null) ingredients.Add(heldIngredient);
+        if (heldIngredient != null) ingredients.Add(heldIngredient); // add heldingredient to ingredients to account for it in recipecheck
         return true;
     }
 
@@ -103,6 +96,7 @@ public class Plate : Carryable
     }
     bool CompareIngredientToIngredientRequirements(Ingredient ingredient, IngredientRequirements requirements)
     {
+        // Most disgusting code in the game :(
         if (requirements.ingredient.GetType() == ingredient.GetType())
             if(requirements.isCooked == ingredient.isCooked)
                 if (requirements.isFried == ingredient.isFried)
@@ -125,7 +119,7 @@ public class Plate : Carryable
         }
         else if(GameManager.instance.playerCarry.carryingObject.TryGetComponent<FryBasket>(out FryBasket basket))
         {
-            heldIngredient = basket.ingredient;
+            heldIngredient = basket.ingredient;// if the player is carrying a frybasket
             basket.ingredient = null;
         }
         heldIngredient.transform.SetParent(transform);
@@ -135,6 +129,7 @@ public class Plate : Carryable
 
     void CheckRecipeCompletion()
     {
+        // please forgive me lord for this quadruple indentation
         foreach(Recipe recipe in validRecipes)
         {
             bool recipeIsComplete = true;
@@ -159,6 +154,7 @@ public class Plate : Carryable
             if (recipeIsComplete)
             {
                 ReplaceWithRecipeResult(recipe);
+                return;
             }
         }
     }
@@ -174,7 +170,7 @@ public class Plate : Carryable
     public override void Update()
     {
         base.Update();
-        DisableIngredientHitBoxes();
+        DisableIngredientHitBoxes(); // They were stealing the clicks
     }
 
     void DisableIngredientHitBoxes()

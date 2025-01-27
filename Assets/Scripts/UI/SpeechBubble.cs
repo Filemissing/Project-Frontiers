@@ -16,9 +16,10 @@ public class SpeechBubble : MonoBehaviour
         if (canvas == null || GameManager.instance.player == null)
             return;
 
-        Vector3 direction = GameManager.instance.player.transform.position - canvas.transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
-        canvas.transform.rotation = lookRotation;
+        //Vector3 direction = GameManager.instance.player.transform.position - canvas.transform.position;
+        //Quaternion lookRotation = Quaternion.LookRotation(direction);
+        //canvas.transform.rotation = lookRotation;
+        transform.LookAt(GameManager.instance.player.transform);
     }
 
     void UpdateCompletedOrderImage()
