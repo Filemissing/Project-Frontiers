@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public Recipe[] recipes;
     public OrderRequest[] orders;
 
+    public bool isEndlessMode = false;
     public bool isDayCyling;
     public float maxDayTime = 210;
     public float dayTimeLeft;
@@ -50,7 +51,7 @@ public class GameManager : MonoBehaviour
         dayTimeLeft -= Time.deltaTime;
         dayTimeLeft = Mathf.Clamp(dayTimeLeft, 0, maxDayTime);
 
-        if (dayTimeLeft == 0)
+        if (dayTimeLeft == 0 && !isEndlessMode)
             DayEnd();
     }
 

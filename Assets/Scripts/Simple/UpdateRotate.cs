@@ -6,9 +6,9 @@ public class UpdateRotate : MonoBehaviour
 {
     [SerializeField] Vector3 additiveVector;
 
-    void Update()
+    void FixedUpdate()
     {
-        transform.eulerAngles += additiveVector * Time.deltaTime;
+        transform.eulerAngles += additiveVector;
         Time.timeScale = 1f;
     }
 }
