@@ -34,7 +34,7 @@ public class CuttingBoard : MonoBehaviour
         {
             progressBar.gameObject.SetActive(true);
             progressBar.iconImage.sprite = progressBar.defaultIcon;
-            progressBar.progress = (float)choppable.chopCount / (float)choppable.requiredChops;
+            progressBar.progress = choppable.chopCount / choppable.requiredChops;
             progressBar.progress = Mathf.Clamp01(progressBar.progress);
             progressBar.barColor = Color.green;
         }
