@@ -4133,6 +4133,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 821065700}
+    - target: {fileID: 408182905720698994, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: isEndlessMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
         type: 3}
       propertyPath: nameLabel

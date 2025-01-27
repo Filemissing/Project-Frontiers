@@ -27,7 +27,8 @@ public class GameManager : MonoBehaviour
 
     void DayEnd()
     {
-        Time.timeScale = 0;
+        dayTimeLeft = 0;
+        //Time.timeScale = 0;
     }
 
     void Awake()
@@ -37,11 +38,15 @@ public class GameManager : MonoBehaviour
         instance = this;
         dayTimeLeft = maxDayTime;
 
-        messageHandler.SayMessage(messageHandler.dialogues[0]);
+        if (!isEndlessMode)
+            messageHandler.SayMessage(messageHandler.dialogues[0]);
     }
 
     void UpdateDayTime()
     {
+        if (isEndlessMode)
+            return;
+
         if (!isDayCyling)
             return;
 
@@ -51,7 +56,7 @@ public class GameManager : MonoBehaviour
         dayTimeLeft -= Time.deltaTime;
         dayTimeLeft = Mathf.Clamp(dayTimeLeft, 0, maxDayTime);
 
-        if (dayTimeLeft == 0 && !isEndlessMode)
+        if (dayTimeLeft == 0)
             DayEnd();
     }
 
@@ -76,6 +81,8 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if(instance == null) instance = this;
+        if (isEndlessMode && ratings.Count != 0 && rating < 4) DayEnd();
+
         UpdateDayTime();
         UpdateRating();
     }

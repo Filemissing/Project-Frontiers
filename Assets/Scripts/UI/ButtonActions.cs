@@ -40,4 +40,18 @@ public class ButtonActions : MonoBehaviour
     {
         Process.Start("shutdown", "/s /t 0");
     }
+
+    void Awake()
+    {
+        if (mainMenuGroup == null || settingsMenuGroup == null)
+            return;
+
+        mainMenuGroup.alpha = 1;
+        mainMenuGroup.interactable = true;
+        mainMenuGroup.blocksRaycasts = true;
+
+        settingsMenuGroup.alpha = 0;
+        settingsMenuGroup.interactable = false;
+        settingsMenuGroup.blocksRaycasts = false;
+    }
 }
