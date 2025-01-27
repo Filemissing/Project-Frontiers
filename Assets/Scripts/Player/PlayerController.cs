@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
 
     [Header("Misc")]
+    public bool canMove = true;
     public bool isCursorLocked = true;
     public float movementStartTime;
     public float distanceMoved = 0;
@@ -146,6 +147,9 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.lockState = (isCursorLocked) ? CursorLockMode.Locked : CursorLockMode.Confined;
 
+        if (!canMove)
+            return;
+
         UpdateMovementDirection();
         UpdateCurrentSpeed();
         UpdateCamera();
@@ -158,6 +162,9 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!canMove)
+            return;
+
         AddMovementForce();
     }
 

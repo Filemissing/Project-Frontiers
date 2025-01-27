@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Message Handler")]
     public MessageHandler messageHandler;
+    public bool isDialoguing;
 
     [Header("Rating")]
     public float rating = 0;
@@ -54,6 +55,11 @@ public class GameManager : MonoBehaviour
             DayEnd();
     }
 
+    void UpdateIsDialoguing()
+    {
+        isDialoguing = messageHandler.isDialogueVisible;
+    }
+
     void UpdateRating()
     {
         if (ratings.Count == 0)
@@ -75,7 +81,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if(instance == null) instance = this;
+        playerController.canMove = !isDialoguing; // Disables player movement while dialoguing
+
         UpdateDayTime();
+        UpdateIsDialoguing();
         UpdateRating();
     }
 
