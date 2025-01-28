@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Fries
   m_EditorClassIdentifier: 
   ingredients:
-  - ingredient: {fileID: 7296356283906436058, guid: 6c7529da78ab34644ac055e676b73335,
+  - ingredient: {fileID: 6510170055316852315, guid: 6c7529da78ab34644ac055e676b73335,
       type: 3}
+    isCooked: 0
     isFried: 1
     isBurnt: 0
     isChopped: 1

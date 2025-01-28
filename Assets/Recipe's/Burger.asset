@@ -13,7 +13,25 @@ MonoBehaviour:
   m_Name: Burger
   m_EditorClassIdentifier: 
   ingredients:
-  - ingredient: {fileID: 5219984672791855782, guid: 7e1b534aaf487aa409099ea6f97d8d9a,
+  - ingredient: {fileID: -5795337446251035284, guid: e75e05f0faee82048863f23161847c55,
+      type: 3}
+    isCooked: 0
+    isFried: 0
+    isBurnt: 0
+    isChopped: 0
+  - ingredient: {fileID: 4589041451185699018, guid: 3ef0731a168d1e349acab86a23d021cd,
+      type: 3}
+    isCooked: 0
+    isFried: 0
+    isBurnt: 0
+    isChopped: 0
+  - ingredient: {fileID: 6057934570261915515, guid: 1d7c1bd7c044a8242b6174f86666dc90,
+      type: 3}
+    isCooked: 1
+    isFried: 0
+    isBurnt: 0
+    isChopped: 0
+  - ingredient: {fileID: 7487027678834970746, guid: 7e1b534aaf487aa409099ea6f97d8d9a,
       type: 3}
     isCooked: 0
     isFried: 0
