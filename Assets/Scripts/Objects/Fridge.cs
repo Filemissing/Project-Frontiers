@@ -32,4 +32,12 @@ public class Fridge : MonoBehaviour
         GameManager.instance.ExitUIMode();
         fridgeInterface.SetActive(false);
     }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Exit();
+        }
+    }
 }

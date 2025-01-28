@@ -73,13 +73,11 @@ public class MessageHandler : MonoBehaviour
                 for (int i = 0; i < text.Length; i++)
                 {
                     char character = text[i];
-                    float waitTime = characterSpeed;
+                    bool isLineEnd = character == '.' || character == '!' || character == '?' || character == ',';
+                    float waitTime = isLineEnd ? lineSpeed : characterSpeed;
 
                     tempText += character;
                     textLabel.text = tempText;
-
-                    if (character == '.' || character == '!' || character == '?' || character == ',')
-                        waitTime = lineSpeed;
 
                     yield return new WaitForSeconds(waitTime);
                 }
@@ -107,7 +105,7 @@ public class MessageHandler : MonoBehaviour
 
             nameLabel.text = message.name;
             textLabel.text = message.text;
-            ratingLabel.fillAmount = (float)message.rating / 5f;
+            ratingLabel.fillAmount = message.rating / 5f;
 
             canvasGroup.DOFade(1, transitionTime);
             rectTransform.DOScale(endScale, transitionTime);
