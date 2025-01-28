@@ -58,6 +58,7 @@ MonoBehaviour:
   maxDayTime: 210
   dayTimeLeft: 0
   messageHandler: {fileID: 7189992599285825104}
+  isDialoguing: 0
   rating: 0
   ratings: []
 --- !u!114 &7189992599285825104
@@ -78,7 +79,8 @@ MonoBehaviour:
   rectTransform: {fileID: 0}
   nextPanelCanvasGroup: {fileID: 0}
   nextPanelRectTransform: {fileID: 0}
-  characterSpeed: 0.03
+  comicImageLabel: {fileID: 0}
+  characterSpeed: 0.02
   lineSpeed: 0.4
   startPosition: -120
   endPosition: 160
@@ -88,7 +90,7 @@ MonoBehaviour:
   nextPanelStartScale: {x: 0.7, y: 0.7, z: 0.7}
   clickTransitionTime: 0.1
   nextPanelTransitionTime: 0.4
-  isVisible: 0
+  isDialogueVisible: 0
   reviewPanelParent: {fileID: 0}
   reviewPanel: {fileID: 4867691869681592704, guid: b0be31112cca761468b597deddecefc0,
     type: 3}
@@ -97,34 +99,42 @@ MonoBehaviour:
   - name: Boss
     text: TEMP - Welcome to the restaurant! You will be the chef for today.
     rating: 0
+    comicSprite: {fileID: 0}
     messageType: 1
   - name: Boss
     text: TEMP - GET TO FUCKING WORK. I MEAN IT.
     rating: 0
+    comicSprite: {fileID: 0}
     messageType: 1
   - name: Boss
     text: TEMP - I SAID GET TO WORK U FUCKING PIECE OF SHIT.
     rating: 0
+    comicSprite: {fileID: 0}
     messageType: 1
   reviews:
   - name: Mr. French Fries
     text: TEMP - I FUCKING LOVE THESE FIRES
     rating: 5
+    comicSprite: {fileID: 0}
     messageType: 0
   - name: Coughing Baby
     text: TEMP - Cough Cough.
     rating: 5
+    comicSprite: {fileID: 0}
     messageType: 0
   - name: Hydrogen Bomb
     text: TEMP - AOWWWW
     rating: 5
+    comicSprite: {fileID: 0}
     messageType: 0
   - name: '"Normal" person'
     text: TEMP - I WANT A FUCKING REFUND WHER ETHE FUCK IS MY FOOD GIVE ME MY FOOD
       OR I KIL YOU
     rating: 1
+    comicSprite: {fileID: 0}
     messageType: 0
   - name: Happiest person in berlingham
     text: TEMP - WHAT THE FOCK M8 WHERE IS MY BLOODY FOOD?!?!
     rating: 1
+    comicSprite: {fileID: 0}
     messageType: 0

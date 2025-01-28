@@ -15,5 +15,6 @@ using UnityEngine;
     public string name;
     public string text;
     public int rating;
+    public Sprite comicSprite;
     public MessageType messageType;
 }
