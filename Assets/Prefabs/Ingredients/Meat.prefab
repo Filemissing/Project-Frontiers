@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7092737263480127647}
   - component: {fileID: 6884084922897966601}
   - component: {fileID: 6057934570261915515}
+  - component: {fileID: 1833811443674452198}
   m_Layer: 0
   m_Name: Meat
   m_TagString: Untagged
@@ -126,3 +127,21 @@ MonoBehaviour:
   isFried: 0
   isBurnt: 0
   isChopped: 0
+--- !u!114 &1833811443674452198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8099199566096315843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
