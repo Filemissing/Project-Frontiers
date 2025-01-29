@@ -125,7 +125,7 @@ MonoBehaviour:
   fryTime: 4
   burnTime: 10
   fryTimeCounter: 0
-  friedMaterial: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
+  friedMaterial: {fileID: 2100000, guid: 21f3f1d8162790c47a4c8dfc8635e398, type: 2}
   burntMaterial: {fileID: 2100000, guid: 8caf9867253878e48b12eec8a41753d1, type: 2}
 --- !u!114 &8629493896889951330
 MonoBehaviour:
