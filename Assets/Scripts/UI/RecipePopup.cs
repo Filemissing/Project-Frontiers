@@ -200,11 +200,11 @@ public class RecipePopup : MonoBehaviour
             isVisible = true;
         else
             isVisible = false;
-        
+
         //float distance = (GameManager.instance.player.transform.position - plate.transform.position).magnitude;
         //isVisible = distance <= maxDistance;
-
-
+        Debug.Log(plate);
+        Debug.Log(plate.validRecipes);
         for (int i = 0; i < plate.validRecipes.Count; i++) // Adding RecipePanels
         {
             Recipe thisRecipe = plate.validRecipes[i];
