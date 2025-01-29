@@ -15,7 +15,7 @@ public class CounterSpot : MonoBehaviour
                     newPosition.y += renderer.bounds.size.y / 2;
 
                 transformCarryingObject.position = newPosition;
-                transformCarryingObject.rotation = transform.rotation;
+                //transformCarryingObject.rotation = transform.rotation;
             }
         }
     }
