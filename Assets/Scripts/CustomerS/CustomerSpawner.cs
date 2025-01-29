@@ -99,7 +99,7 @@ public class CustomerSpawner : MonoBehaviour
 
         newOrder.order = completedOrders[Random.Range(0, completedOrders.Count)];
         float distance = (3f / GameManager.instance.orders.Length); // Calculates the distance between customers based on the max amount of customers
-        newOrder.transform.position = transform.position + Vector3.left * ordersSlotIndex * distance; // Calculates and sets the position of the orders
+        newOrder.transform.position = transform.position + Vector3.right * ordersSlotIndex * distance; // Calculates and sets the position of the orders
         newOrder.transform.parent = transform;
         newOrder.transform.rotation = transform.rotation;
 
@@ -112,7 +112,7 @@ public class CustomerSpawner : MonoBehaviour
         if (!GameManager.instance.isDayCyling && !GameManager.instance.isEndlessMode)
             return;
         
-        int allowedCustomersAmount = 1;
+        float allowedCustomersAmount = 1;
 
         if (GameManager.instance.isEndlessMode)
         {
@@ -150,7 +150,7 @@ public class CustomerSpawner : MonoBehaviour
         {
             float a = GetCurrentOrders();
             float b = GameManager.instance.orders.Length;
-            allowedCustomersAmount = (int)(a / b);
+            allowedCustomersAmount = a / b;
         }
 
         float currentDayTime = GameManager.instance.maxDayTime - GameManager.instance.dayTimeLeft;
@@ -169,12 +169,12 @@ public class CustomerSpawner : MonoBehaviour
                 CreateOrder();
                 UpdateNextOrderTime();
             }
-            else if (GameManager.instance.isEndlessMode && GetCurrentOrders() < allowedCustomersAmount)
+            else if (GameManager.instance.isEndlessMode && GetCurrentOrders() < allowedCustomersAmount) // Endless mode
             {
                 CreateOrder();
                 UpdateNextOrderTime();
             }
-            else if (currentDayTime >= allowedCustomersAmount * GameManager.instance.maxDayTime)
+            else if (currentDayTime >= allowedCustomersAmount * GameManager.instance.maxDayTime) // Not endless mode
             {
                 CreateOrder();
                 UpdateNextOrderTime();
