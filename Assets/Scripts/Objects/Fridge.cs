@@ -37,7 +37,7 @@ public class Fridge : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            Exit();
+            fridgeInterface.SetActive(false);
         }
     }
 }

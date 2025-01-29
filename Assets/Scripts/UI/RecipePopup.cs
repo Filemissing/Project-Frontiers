@@ -133,7 +133,6 @@ public class RecipePopup : MonoBehaviour
         Image ingredientPanelImage = newIngredientPanel.GetComponent<Image>();
         IEnumerator UpdateIngredientColor()
         {
-            Debug.Log(ingredientRequirements.ingredient.icon);
             while (true)
             {
                 yield return new WaitForEndOfFrame(); // Waits untill end of frame
@@ -143,7 +142,6 @@ public class RecipePopup : MonoBehaviour
                 for (int i = 0; i < plate.ingredients.Count; i++)
                 {
                     Ingredient ingredient = plate.ingredients[i];
-                    Debug.Log(ingredient.icon);
                     if (ingredientRequirements.ingredient.icon == ingredient.icon)
                         hasIngredient = true;
                 }
@@ -203,8 +201,6 @@ public class RecipePopup : MonoBehaviour
 
         //float distance = (GameManager.instance.player.transform.position - plate.transform.position).magnitude;
         //isVisible = distance <= maxDistance;
-        Debug.Log(plate);
-        Debug.Log(plate.validRecipes);
         for (int i = 0; i < plate.validRecipes.Count; i++) // Adding RecipePanels
         {
             Recipe thisRecipe = plate.validRecipes[i];

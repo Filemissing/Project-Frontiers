@@ -143,8 +143,8 @@ MonoBehaviour:
   cookTime: 4
   burnTime: 10
   cookTimeCounter: 0
-  cookedMaterial: {fileID: 0}
-  burntMaterial: {fileID: 0}
+  cookedMaterial: {fileID: 2100000, guid: dd7dd8ae447f235419dcfdf5e3c7c8d4, type: 2}
+  burntMaterial: {fileID: 2100000, guid: 8caf9867253878e48b12eec8a41753d1, type: 2}
 --- !u!114 &1833811443674452198
 MonoBehaviour:
   m_ObjectHideFlags: 0

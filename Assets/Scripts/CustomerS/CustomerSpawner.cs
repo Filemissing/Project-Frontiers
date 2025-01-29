@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
 {
+    public enum Difficulty
+    {
+        Easy,
+        Intermediate,
+        Hard
+    }
+
+    public Difficulty currentDifficulty = Difficulty.Easy;
+
     [SerializeField] GameObject[] customerPrefabs;
 
     [SerializeField] float timeBetweenOrdersMin = 1;
@@ -90,22 +99,61 @@ public class CustomerSpawner : MonoBehaviour
 
         newOrder.order = completedOrders[Random.Range(0, completedOrders.Count)];
         float distance = (3f / GameManager.instance.orders.Length); // Calculates the distance between customers based on the max amount of customers
-        newOrder.transform.position = transform.position + Vector3.left * ordersSlotIndex * distance; // Calculates and sets the position of the orders
+        newOrder.transform.position = transform.position + Vector3.right * ordersSlotIndex * distance; // Calculates and sets the position of the orders
         newOrder.transform.parent = transform;
         newOrder.transform.rotation = transform.rotation;
 
         GameManager.instance.orders[ordersSlotIndex] = newOrder; // Puts the order in the Orders array
     }
 
+    float endlessModeStartTime = 0;
     void Update()
     {
-        if (!GameManager.instance.isDayCyling)
+        if (!GameManager.instance.isDayCyling && !GameManager.instance.isEndlessMode)
             return;
+        
+        float allowedCustomersAmount = 1;
+
+        if (GameManager.instance.isEndlessMode)
+        {
+            if (endlessModeStartTime == 0)
+                endlessModeStartTime = Time.time;
+            
+            float timeElapsedSinceEndlessModeStartTime = Time.time - endlessModeStartTime;
+
+            if (timeElapsedSinceEndlessModeStartTime >= 60) // Changes difficulty to intermediate
+                if (currentDifficulty == Difficulty.Easy)
+                    currentDifficulty = Difficulty.Intermediate;
+
+            if (timeElapsedSinceEndlessModeStartTime >= 120) // Changes difficulty to intermediate
+                if (currentDifficulty == Difficulty.Intermediate)
+                    currentDifficulty = Difficulty.Hard;
+
+
+            switch (currentDifficulty)
+            {
+                case Difficulty.Easy:
+                    allowedCustomersAmount = 1;
+                    break;
+                case Difficulty.Intermediate:
+                    allowedCustomersAmount = 2;
+                    break;
+                case Difficulty.Hard:
+                    allowedCustomersAmount = 3;
+                    break;
+                default:
+                    allowedCustomersAmount = 1;
+                    break;
+            }
+        }
+        else
+        {
+            float a = GetCurrentOrders();
+            float b = GameManager.instance.orders.Length;
+            allowedCustomersAmount = a / b;
+        }
 
         float currentDayTime = GameManager.instance.maxDayTime - GameManager.instance.dayTimeLeft;
-        float a = GetCurrentOrders();
-        float b = GameManager.instance.orders.Length;
-        float percentage = a / b;
 
         //Debug.Log(percentage);
         //Debug.Log(GetCurrentOrders() + " / " + GameManager.instance.orders.Length);
@@ -121,7 +169,12 @@ public class CustomerSpawner : MonoBehaviour
                 CreateOrder();
                 UpdateNextOrderTime();
             }
-            else if (currentDayTime >= percentage * GameManager.instance.maxDayTime)
+            else if (GameManager.instance.isEndlessMode && GetCurrentOrders() < allowedCustomersAmount) // Endless mode
+            {
+                CreateOrder();
+                UpdateNextOrderTime();
+            }
+            else if (currentDayTime >= allowedCustomersAmount * GameManager.instance.maxDayTime) // Not endless mode
             {
                 CreateOrder();
                 UpdateNextOrderTime();

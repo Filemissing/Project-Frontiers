@@ -17,6 +17,8 @@ public class MessageHandler : MonoBehaviour
     [SerializeField] CanvasGroup nextPanelCanvasGroup;
     [SerializeField] RectTransform nextPanelRectTransform;
 
+    [SerializeField] Image comicImageLabel;
+
     [SerializeField] float characterSpeed = .2f;
     [SerializeField] float lineSpeed = .5f;
 
@@ -63,6 +65,7 @@ public class MessageHandler : MonoBehaviour
 
             currentDialogueMessage = message;
             nameLabel.text = message.name;
+            comicImageLabel.sprite = message.comicSprite;
             //textLabel.text = message.text;
 
             StartCoroutine(ApplyTextWithEffect(message.text));
@@ -73,7 +76,7 @@ public class MessageHandler : MonoBehaviour
                 for (int i = 0; i < text.Length; i++)
                 {
                     char character = text[i];
-                    bool isLineEnd = character == '.' || character == '!' || character == '?' || character == ',';
+                    bool isLineEnd = character == '.' || character == '!' || character == '?' || character == ',' || character == '-';
                     float waitTime = isLineEnd ? lineSpeed : characterSpeed;
 
                     tempText += character;
@@ -207,6 +210,9 @@ public class MessageHandler : MonoBehaviour
         CanNextChange();
         VisibilityChange(transitionTime);
         Next();
+
+        if (GameManager.instance.isEndlessMode) // Disables DayCycling on Endless Mode
+            GameManager.instance.isDayCyling = false;
     }
 
     void Awake()

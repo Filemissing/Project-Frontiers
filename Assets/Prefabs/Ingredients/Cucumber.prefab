@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 112604242559604808}
   - component: {fileID: 1385171741160269927}
   - component: {fileID: 3706152699496638308}
-  - component: {fileID: 27309408328735002}
   - component: {fileID: 792612546385920841}
   - component: {fileID: 6995290367202740639}
   m_Layer: 0
@@ -126,23 +125,6 @@ MonoBehaviour:
   chopCount: 0
   choppedMesh: {fileID: 8701528089832100230, guid: 760156b562aca02449cff607b0ae0a81,
     type: 3}
---- !u!114 &27309408328735002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7766635948603958778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48bfa4b0550b3bc45a35b8ca2858306e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cookTime: 0
-  burnTime: 0
-  cookTimeCounter: 0
-  cookedMaterial: {fileID: 0}
-  burntMaterial: {fileID: 0}
 --- !u!114 &792612546385920841
 MonoBehaviour:
   m_ObjectHideFlags: 0

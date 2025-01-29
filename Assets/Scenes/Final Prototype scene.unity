@@ -972,6 +972,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 559635627673856363}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1 &433482218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 433482219}
+  - component: {fileID: 433482221}
+  - component: {fileID: 433482220}
+  m_Layer: 5
+  m_Name: ComicImageLabel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &433482219
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433482218}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 557959585}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 378}
+  m_SizeDelta: {x: 639, y: 519}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &433482220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433482218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 39aac8d476b19ac4b8f74bc6602f4f1f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &433482221
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433482218}
+  m_CullTransparentMesh: 1
 --- !u!1 &434232455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,6 +1581,7 @@ RectTransform:
   - {fileID: 1999967835}
   - {fileID: 2079060534}
   - {fileID: 1138990447}
+  - {fileID: 433482219}
   m_Father: {fileID: 1965913112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
@@ -4009,9 +4085,24 @@ PrefabInstance:
       objectReference: {fileID: 557959585}
     - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
         type: 3}
+      propertyPath: characterSpeed
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: comicImageLabel
+      value: 
+      objectReference: {fileID: 433482220}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
       propertyPath: reviewPanelParent
       value: 
       objectReference: {fileID: 851100862}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: dialogues.Array.size
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
         type: 3}
       propertyPath: nextPanelCanvasGroup
@@ -4022,6 +4113,126 @@ PrefabInstance:
       propertyPath: nextPanelRectTransform
       value: 
       objectReference: {fileID: 1138990447}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: dialogues.Array.data[0].text
+      value: Good morning. Glad to see you on time today.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: dialogues.Array.data[1].text
+      value: As you know, the last employee (other than you) left his job position
+        yesterday.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: dialogues.Array.data[2].text
+      value: Therefore, I am giving you an excellent opportunity -
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: dialogues.Array.data[3].name
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: dialogues.Array.data[3].text
+      value: A promotion!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: dialogues.Array.data[4].name
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: dialogues.Array.data[4].text
+      value: "Make sure to get all reviews 4 stars or over and it\u2019s yours (not
+        that I could give it to anyone else)."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: dialogues.Array.data[5].name
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: dialogues.Array.data[5].text
+      value: "If you get anything else, though\u2026 I am selling this place - I
+        can\u2019t take this for much longer."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: dialogues.Array.data[6].name
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: dialogues.Array.data[6].text
+      value: "Well\u2026 Good luck! Don\u2019t disappoint me!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: dialogues.Array.data[0].comicSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 39aac8d476b19ac4b8f74bc6602f4f1f,
+        type: 3}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: dialogues.Array.data[1].comicSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b11c5df4c6a40244e9f30959aaccf965,
+        type: 3}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: dialogues.Array.data[2].comicSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 39aac8d476b19ac4b8f74bc6602f4f1f,
+        type: 3}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: dialogues.Array.data[3].comicSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a1bdef3458cd008449b99da1b7155532,
+        type: 3}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: dialogues.Array.data[3].messageType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: dialogues.Array.data[4].comicSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3770ec7a5ffcc8a47bae286524e575cd,
+        type: 3}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: dialogues.Array.data[4].messageType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: dialogues.Array.data[5].comicSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a1bdef3458cd008449b99da1b7155532,
+        type: 3}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: dialogues.Array.data[5].messageType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: dialogues.Array.data[6].comicSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ba78a97ddfb26bd4a8b2e56e587f715a,
+        type: 3}
+    - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: dialogues.Array.data[6].messageType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7347963214056942460, guid: abccfa8de0404964fb7a2abbc70acf4f,
         type: 3}
       propertyPath: m_Name
@@ -4520,26 +4731,35 @@ MonoBehaviour:
   gameplayCanvasGroup: {fileID: 1965913113}
   textLabel: {fileID: 407346352}
   transitionTime: 0.3
+  timeLabel: {fileID: 0}
+  customersLabel: {fileID: 0}
+  timeTextLabelCanvasGroup: {fileID: 0}
+  customersTextLabelCanvasGroup: {fileID: 0}
   messages:
   - name: 
     text: TEMP - Well done chef! You've got a perfect score!
     rating: 5
+    comicSprite: {fileID: 0}
     messageType: 2
   - name: 
     text: TEMP - Well Done! You haven't gotten lower than a 4 star rating.
     rating: 4
+    comicSprite: {fileID: 0}
     messageType: 2
   - name: 
     text: TEMP - YOU HAVENT ACHIEVED A HIGH ENOUGH RATING!
     rating: 3
+    comicSprite: {fileID: 0}
     messageType: 2
   - name: 
     text: TEMP - WHAT HTE FUCK IS THIS POOR PEFORMANCE! BACK TO THE GULAG WITH YOU!
     rating: 2
+    comicSprite: {fileID: 0}
     messageType: 2
   - name: 
     text: TEMP - YOUR FREE TRIAL PERIOD OF LIFE HAS BEEN SUSPENDED.
     rating: 1
+    comicSprite: {fileID: 0}
     messageType: 2
 --- !u!225 &1479440215
 CanvasGroup:
@@ -4613,10 +4833,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f01b4ac102f7526448f6ce8bfd3761d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentDifficulty: 0
   customerPrefabs:
   - {fileID: 5705143447413767023, guid: eb5c86282912d4f4ba3fefa31ca0d38d, type: 3}
-  - {fileID: 5705143447413767023, guid: 5e8a3a00de723444986b1e1324ebe7f0, type: 3}
-  - {fileID: 5705143447413767023, guid: 7fbc7651d6303cc4092e5753599d2add, type: 3}
+  - {fileID: 5705143447413767023, guid: 4a9097b0eb6e1c44bb62affb5931c4a7, type: 3}
+  - {fileID: 5705143447413767023, guid: 8a6bdc04e2016e04494fac056d8e2215, type: 3}
+  - {fileID: 5705143447413767023, guid: 1a8daa9fed79f9e44bd32065002a806f, type: 3}
+  - {fileID: 5705143447413767023, guid: 64de134581fbdee44949031e64c2bf0c, type: 3}
+  - {fileID: 5705143447413767023, guid: e0cadf4bad9e08541bad135533207b86, type: 3}
+  - {fileID: 5705143447413767023, guid: cfe6138c90793d74f890a0dc8d347f85, type: 3}
+  - {fileID: 5705143447413767023, guid: f6156151c1ee3aa43a9d98427025e767, type: 3}
+  - {fileID: 5705143447413767023, guid: 690756b3c611b98409fcb5e9188d60e7, type: 3}
   timeBetweenOrdersMin: 1
   timeBetweenOrdersMax: 5
 --- !u!4 &1484720667
@@ -4717,7 +4944,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5949386835940044411}
         m_TargetAssemblyTypeName: Fridge, Assembly-CSharp
         m_MethodName: Exit
         m_Mode: 1
