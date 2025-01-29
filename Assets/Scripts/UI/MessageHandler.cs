@@ -17,6 +17,8 @@ public class MessageHandler : MonoBehaviour
     [SerializeField] CanvasGroup nextPanelCanvasGroup;
     [SerializeField] RectTransform nextPanelRectTransform;
 
+    [SerializeField] Image comicImageLabel;
+
     [SerializeField] float characterSpeed = .2f;
     [SerializeField] float lineSpeed = .5f;
 
@@ -63,6 +65,7 @@ public class MessageHandler : MonoBehaviour
 
             currentDialogueMessage = message;
             nameLabel.text = message.name;
+            comicImageLabel.sprite = message.comicSprite;
             //textLabel.text = message.text;
 
             StartCoroutine(ApplyTextWithEffect(message.text));
