@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -13,12 +14,19 @@ public class GameManager : MonoBehaviour
     public Recipe[] recipes;
     public OrderRequest[] orders;
 
+    [Header("Day Time")]
     public bool isDayCyling;
     public float maxDayTime = 210;
     public float dayTimeLeft;
 
+    [Header("Recipe Popup")]
+    public float recipePopupRange = 2.5f;
+    public RecipePopup currentRecipePopup = null;
+    public List<RecipePopup> recipePopups = new List<RecipePopup>();
+
     [Header("Message Handler")]
     public MessageHandler messageHandler;
+    public bool isDialoguing;
 
     [Header("Rating")]
     public float rating = 0;
@@ -54,6 +62,53 @@ public class GameManager : MonoBehaviour
             DayEnd();
     }
 
+    void UpdateCurrentRecipePopup()
+    {
+        List<RecipePopup> recipePopupsCandidates = new List<RecipePopup>();
+        RecipePopup closestRecipePopup = null;
+        float closestRecipePopupDistance = 10000;
+
+
+        for (int i = 0; i < recipePopups.Count; i++) // Makes RecipePopupsCandidates list
+        {
+            RecipePopup recipePopup = recipePopups[i];
+            bool willGetAdded = true;
+
+            if (playerCarry.carryingObject) // Checks if player is holding the plate containing this RecipePopup
+                if (playerCarry.carryingObject.transform.childCount > 0)
+                    if (playerCarry.carryingObject.transform.GetChild(0).GetComponent<RecipePopup>())
+                        if (playerCarry.carryingObject.transform.GetChild(0).GetComponent<RecipePopup>() == recipePopup)
+                            willGetAdded = false;
+
+
+            if (willGetAdded)
+                recipePopupsCandidates.Add(recipePopup);
+        }
+
+
+        for (int i = 0; i < recipePopupsCandidates.Count; i++) // Gets closest RecipePopup
+        {
+            RecipePopup recipePopup = recipePopupsCandidates[i];
+            float distance = (recipePopup.transform.position - playerController.transform.position).magnitude;
+
+            if (distance < closestRecipePopupDistance)
+            {
+                closestRecipePopup = recipePopup;
+                closestRecipePopupDistance = distance;
+            }
+        }
+
+        if (closestRecipePopupDistance <= recipePopupRange) // Checks if within range
+            currentRecipePopup = closestRecipePopup;
+        else
+            currentRecipePopup = null;
+    }
+
+    void UpdateIsDialoguing()
+    {
+        isDialoguing = messageHandler.isDialogueVisible;
+    }
+
     void UpdateRating()
     {
         if (ratings.Count == 0)
@@ -75,7 +130,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if(instance == null) instance = this;
+        playerController.canMove = !isDialoguing; // Disables player movement while dialoguing
+
         UpdateDayTime();
+        UpdateCurrentRecipePopup();
+        UpdateIsDialoguing();
         UpdateRating();
     }
 
@@ -108,6 +167,7 @@ public class GameManager : MonoBehaviour
         playerController.enabled = false;
         Cursor.lockState = CursorLockMode.Confined;
     }
+
     public void ExitUIMode()
     {
         playerController.enabled = true;

@@ -15,7 +15,8 @@ public class Interact : MonoBehaviour
     [Header("Cursor")]
     public Image cursorImage;
     public Sprite defaultSprite;
-    public CursorSprite[] cursorSprites;
+    public Sprite interactableSprite;
+    //public CursorSprite[] cursorSprites;
     
     void Update()
     {
@@ -32,16 +33,18 @@ public class Interact : MonoBehaviour
     {
         if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, interactionRange, interactionMask, QueryTriggerInteraction.Collide))
         {
-            foreach (CursorSprite cursorSprite in cursorSprites)
-            {
-                if (cursorSprite.CheckComponent(hit.transform.gameObject))
-                {
-                    cursorImage.sprite = cursorSprite.sprite;
-                    return;
-                }
-            }
+            cursorImage.sprite = interactableSprite;
+
+            //foreach (CursorSprite cursorSprite in cursorSprites)
+            //{
+            //    if (cursorSprite.CheckComponent(hit.transform.gameObject))
+            //    {
+            //        cursorImage.sprite = cursorSprite.sprite;
+            //        return;
+            //    }
+            //}
         }
-        cursorImage.sprite = defaultSprite;
+        else cursorImage.sprite = defaultSprite;
     }
 
     void OutLineObject()
@@ -74,19 +77,19 @@ public class Interact : MonoBehaviour
         }
     }
 
-    [System.Serializable]
-    public struct CursorSprite
-    {
-        public Component component;
-        public Sprite sprite;
-        public bool CheckComponent(GameObject target)
-        {
-            Type type = component.GetType();
-            if (target.TryGetComponent(type, out Component c))
-            {
-                return true;
-            }
-            return false;
-        }
-    }
+    //[System.Serializable]
+    //public struct CursorSprite
+    //{
+    //    public Component component;
+    //    public Sprite sprite;
+    //    public bool CheckComponent(GameObject target)
+    //    {
+    //        Type type = component.GetType();
+    //        if (target.TryGetComponent(type, out Component c))
+    //        {
+    //            return true;
+    //        }
+    //        return false;
+    //    }
+    //}
 }

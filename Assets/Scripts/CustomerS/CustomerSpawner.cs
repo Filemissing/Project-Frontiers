@@ -92,6 +92,7 @@ public class CustomerSpawner : MonoBehaviour
         float distance = (3f / GameManager.instance.orders.Length); // Calculates the distance between customers based on the max amount of customers
         newOrder.transform.position = transform.position + Vector3.left * ordersSlotIndex * distance; // Calculates and sets the position of the orders
         newOrder.transform.parent = transform;
+        newOrder.transform.rotation = transform.rotation;
 
         GameManager.instance.orders[ordersSlotIndex] = newOrder; // Puts the order in the Orders array
     }

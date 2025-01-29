@@ -9,16 +9,16 @@ public class OrderRequest : MonoBehaviour
     public float maxTime;
     public float timeLeft;
 
+    public ParticleSystem particleSystem;
+
     CompletedOrder GetCompletedOrder()
     {
         CompletedOrder completedOrder = null;
-        
-        if (GameManager.instance.playerCarry)
-            if (GameManager.instance.playerCarry.carryingObject)
-                if (GameManager.instance.playerCarry.carryingObject.TryGetComponent<Plate>(out Plate plate))
-                    if (GameManager.instance.playerCarry.carryingObject.transform.childCount != 0)
-                        if (GameManager.instance.playerCarry.carryingObject.transform.GetChild(0).TryGetComponent<CompletedOrder>(out CompletedOrder component))
-                            completedOrder = component;
+
+        if (GameManager.instance.playerCarry.carryingObject != null)
+            if (GameManager.instance.playerCarry.carryingObject.TryGetComponent<Plate>(out Plate plate))
+                if (GameManager.instance.playerCarry.carryingObject.transform.childCount != 0)
+                    GameManager.instance.playerCarry.carryingObject.transform.GetChild(0).TryGetComponent<CompletedOrder>(out completedOrder);
 
         return completedOrder;
     }
@@ -53,10 +53,11 @@ public class OrderRequest : MonoBehaviour
                 orders[i] = null;
         }
 
-        Destroy(GameManager.instance.playerCarry.carryingObject);
-        Destroy(gameObject);
+        Destroy(GameManager.instance.playerCarry.carryingObject); // destroy the plate with the order
+        Destroy(gameObject); // destroy the customer
         GameManager.instance.ratings.Add(maxRating);
         GameManager.instance.messageHandler.SayMessage(GetMessage((int)maxRating));
+        Instantiate(particleSystem.gameObject, transform.position, Quaternion.identity); // instantiate despawn effect
         Debug.Log("The CompletedOrder is correct.");
     }
 
@@ -110,6 +111,7 @@ public class OrderRequest : MonoBehaviour
         GameManager.instance.ratings.Add(1f);
         GameManager.instance.messageHandler.SayMessage(GetMessage(1));
         Destroy(gameObject);
+        Instantiate(particleSystem, transform.position, Quaternion.identity);
     }
 
     void Update()
@@ -126,19 +128,16 @@ public class OrderRequest : MonoBehaviour
     }
 }
 
+//Component[] components = child.GetComponents<Component>();
+//System.Type baseType = typeof(Ingredient);
 
-/*
-                Component[] components = child.GetComponents<Component>();
-                System.Type baseType = typeof(Ingredient);
+//foreach (Component component in components)
+//{
+//    if (component == null)
+//        continue;
 
-                foreach (Component component in components)
-                {
-                    if (component == null)
-                        continue;
-                    
-                    if (component.GetType().IsSubclassOf(baseType))
-                    {
-                        Debug.Log(component.GetType().Name);
-                    }
-                }
-                */
+//    if (component.GetType().IsSubclassOf(baseType))
+//    {
+//        Debug.Log(component.GetType().Name);
+//    }
+//}

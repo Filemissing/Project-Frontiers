@@ -14,6 +14,7 @@ public class PlateStack : MonoBehaviour
             return;
         }
 
+        // give the player a new plate
         if (GameManager.instance.playerCarry.carryingObject == null)
             GameManager.instance.playerCarry.carryingObject = Instantiate<GameObject>(plate);
     }

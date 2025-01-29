@@ -21,7 +21,7 @@ public class ProgressBar : MonoBehaviour
     public void Update()
     {
         transform.LookAt(Camera.main.transform);
-        transform.Rotate(new Vector3(0, 180, 0));
+        transform.Rotate(new Vector3(0, 180, 0)); // rotate 180 because UI points at -z
 
         progressBar.localScale = new Vector3(progress, 1, 1);
 

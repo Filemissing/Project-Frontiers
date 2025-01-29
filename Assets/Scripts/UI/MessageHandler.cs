@@ -31,7 +31,7 @@ public class MessageHandler : MonoBehaviour
     [SerializeField] float clickTransitionTime = .1f;
     [SerializeField] float nextPanelTransitionTime = .6f;
 
-    public bool isVisible;
+    public bool isDialogueVisible;
     bool canNext;
     Message currentDialogueMessage;
 
@@ -56,8 +56,8 @@ public class MessageHandler : MonoBehaviour
     {
         if (message.messageType == Message.MessageType.Dialogue)
         {
-            if (!isVisible)
-                isVisible = true;
+            if (!isDialogueVisible)
+                isDialogueVisible = true;
 
             canNext = false; // Disable nextPanel
 
@@ -73,13 +73,11 @@ public class MessageHandler : MonoBehaviour
                 for (int i = 0; i < text.Length; i++)
                 {
                     char character = text[i];
-                    float waitTime = characterSpeed;
+                    bool isLineEnd = character == '.' || character == '!' || character == '?' || character == ',';
+                    float waitTime = isLineEnd ? lineSpeed : characterSpeed;
 
                     tempText += character;
                     textLabel.text = tempText;
-
-                    if (character == '.' || character == '!' || character == '?' || character == ',')
-                        waitTime = lineSpeed;
 
                     yield return new WaitForSeconds(waitTime);
                 }
@@ -107,7 +105,7 @@ public class MessageHandler : MonoBehaviour
 
             nameLabel.text = message.name;
             textLabel.text = message.text;
-            ratingLabel.fillAmount = (float)message.rating / 5f;
+            ratingLabel.fillAmount = message.rating / 5f;
 
             canvasGroup.DOFade(1, transitionTime);
             rectTransform.DOScale(endScale, transitionTime);
@@ -144,7 +142,7 @@ public class MessageHandler : MonoBehaviour
                 SayMessage(dialogues[nextDialogueMessageIndex]);
             else
             {
-                isVisible = false;
+                isDialogueVisible = false;
                 GameManager.instance.isDayCyling = true;
             }
             
@@ -178,13 +176,13 @@ public class MessageHandler : MonoBehaviour
         previousCanNext = canNext;
     }
 
-    bool previousIsVisible = false;
+    bool previousisDialogueVisible = false;
     void VisibilityChange(float transitionTime)
     {
-        if (isVisible == previousIsVisible)
+        if (isDialogueVisible == previousisDialogueVisible)
             return;
 
-        if (isVisible)
+        if (isDialogueVisible)
         {
             DOTween.Kill(rectTransform);
             DOTween.Kill(canvasGroup);
@@ -201,7 +199,7 @@ public class MessageHandler : MonoBehaviour
             canvasGroup.DOFade(0, transitionTime);
         }
 
-        previousIsVisible = isVisible;
+        previousisDialogueVisible = isDialogueVisible;
     }
 
     void Update()

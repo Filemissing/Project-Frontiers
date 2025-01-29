@@ -11,6 +11,7 @@ public class Stove : MonoBehaviour
     {
         if(GameManager.instance.playerCarry.carryingObject == null) return;
 
+        // put the pan on the stove
         if(GameManager.instance.TakeCarryingObject<Pan>(gameObject, out Pan pan))
         {
             for (int i = 0; i < panSlots.Length; i++)
@@ -33,7 +34,7 @@ public class Stove : MonoBehaviour
         {
             if (panSlots[i] != null && panSlots[i].ingredient != null)
             {
-                panSlots[i].ingredient.SendMessage("Cook");
+                panSlots[i].ingredient.SendMessage("Cook"); // cook the ingredient in the pan
             }
         }
     }
