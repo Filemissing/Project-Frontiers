@@ -20,11 +20,14 @@ public class RecipePopup : MonoBehaviour
 
     List<GameObject> currentRecipePanels = new List<GameObject>();
 
+
     [Header("Visibility")]
     [SerializeField] float maxDistance = 2.5f;
 
     [SerializeField] bool isVisible = false;
     [SerializeField] float transitionTime = .15f;
+
+    [SerializeField] Color greenColor;
 
 
     [Header("Measurements")]
@@ -34,6 +37,9 @@ public class RecipePopup : MonoBehaviour
     [SerializeField] Vector2 recipePanelDefaultSize = new Vector2(.7f, .735f);
     [SerializeField] float recipePanelMargin = .065f;
     [SerializeField] float recipePanelIngredientPanelMargin = .26f; //.345f;
+
+
+
 
 
 
@@ -80,7 +86,7 @@ public class RecipePopup : MonoBehaviour
         newConditionTextLabel.GetComponent<TMP_Text>().text = "- " + conditionString;
     }
 
-    void CreateIngredientPanel(IngredientRequirements ingredientRequirements, Transform ingredientPanelParent, Recipe recipe)
+    void CreateIngredientPanel(IngredientRequirements ingredientRequirements, Transform ingredientPanelParent, Recipe recipe, Plate plate)
     {
         GameObject newIngredientPanel = Instantiate<GameObject>(ingredientPanel);
         newIngredientPanel.transform.SetParent(ingredientPanelParent, false);
@@ -121,9 +127,37 @@ public class RecipePopup : MonoBehaviour
             recipePanelDefaultSize.y + recipePanelMargin * (conditionCount - 1) + recipePanelIngredientPanelMargin * (recipe.ingredients.Length - 1)
             //recipePanelDefaultSize.y + recipePanelMargin * (conditionCount - 1) + recipePanelIngredientPanelMargin * (recipe.ingredients.Length - 1) 
         );
+
+
+        // Green
+        Image ingredientPanelImage = newIngredientPanel.GetComponent<Image>();
+        IEnumerator UpdateIngredientColor()
+        {
+            Debug.Log(ingredientRequirements.ingredient.icon);
+            while (true)
+            {
+                yield return new WaitForEndOfFrame(); // Waits untill end of frame
+
+                bool hasIngredient = false;
+
+                for (int i = 0; i < plate.ingredients.Count; i++)
+                {
+                    Ingredient ingredient = plate.ingredients[i];
+                    Debug.Log(ingredient.icon);
+                    if (ingredientRequirements.ingredient.icon == ingredient.icon)
+                        hasIngredient = true;
+                }
+
+                if (hasIngredient)
+                    ingredientPanelImage.color = greenColor;
+                else
+                    ingredientPanelImage.color = Color.white;
+            }
+        }
+        StartCoroutine(UpdateIngredientColor());
     }
 
-    void CreateRecipePanel(Recipe recipe)
+    void CreateRecipePanel(Recipe recipe, Plate plate)
     {
         GameObject newRecipePanel = Instantiate<GameObject>(recipePanel);
         newRecipePanel.transform.SetParent(recipePanelParent, false);
@@ -142,7 +176,7 @@ public class RecipePopup : MonoBehaviour
         for (int i = 0; i < recipe.ingredients.Length; i++)
         {
             IngredientRequirements ingredientRequirements = recipe.ingredients[i];
-            CreateIngredientPanel(ingredientRequirements, ingredientPanelParent, recipe);
+            CreateIngredientPanel(ingredientRequirements, ingredientPanelParent, recipe, plate);
         }
 
         currentRecipePanels.Add(newRecipePanel);
@@ -185,7 +219,7 @@ public class RecipePopup : MonoBehaviour
 
             if (!currentRecipePanelFound)
             {
-                CreateRecipePanel(thisRecipe);
+                CreateRecipePanel(thisRecipe, plate);
             }
         }
 

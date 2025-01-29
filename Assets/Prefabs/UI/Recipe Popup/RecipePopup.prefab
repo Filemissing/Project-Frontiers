@@ -200,7 +200,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &8695964748013952160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,9 +241,10 @@ MonoBehaviour:
     type: 3}
   canvasGroup: {fileID: 98310268774609257}
   recipesPanelRectTransform: {fileID: 382897075195877282}
-  maxDistance: 2.5
+  maxDistance: 1.5
   isVisible: 0
   transitionTime: 0.15
+  greenColor: {r: 0.8235295, g: 1, b: 0.83921576, a: 1}
   ingredientPanelDefaultSize: {x: 0.65, y: 0.23}
   ingredientPanelMargin: 0.065
   recipePanelDefaultSize: {x: 0.7, y: 0.735}
