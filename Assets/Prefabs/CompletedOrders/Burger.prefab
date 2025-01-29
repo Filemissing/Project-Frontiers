@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4617950721930812412}
   - component: {fileID: 9132297081260431117}
-  - component: {fileID: 12721738387069909}
   m_Layer: 0
   m_Name: Burger
   m_TagString: Untagged
@@ -47,28 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 41988b73d8ca1ac49b50b0738465479b, type: 3}
---- !u!64 &12721738387069909
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 772926955943895418}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7157700195584612291, guid: 760156b562aca02449cff607b0ae0a81, type: 3}
 --- !u!1 &7807034509798928141
 GameObject:
   m_ObjectHideFlags: 0

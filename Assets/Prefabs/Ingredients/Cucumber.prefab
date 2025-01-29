@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3706152699496638308}
   - component: {fileID: 27309408328735002}
   - component: {fileID: 792612546385920841}
+  - component: {fileID: 6995290367202740639}
   m_Layer: 0
   m_Name: Cucumber
   m_TagString: Untagged
@@ -102,7 +103,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -154,10 +155,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1abfc751d632a5044923e6f7b6b77d7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 24d74f36e4c2a8941b5644a07ddc7cb2, type: 3}
+  icon: {fileID: 21300000, guid: f56bceec7d081d54d93ef31f3ff78b6a, type: 3}
   meshFilter: {fileID: 0}
   meshRenderer: {fileID: 0}
   isCooked: 0
   isFried: 0
   isBurnt: 0
   isChopped: 0
+--- !u!114 &6995290367202740639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7766635948603958778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

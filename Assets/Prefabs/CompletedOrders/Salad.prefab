@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4011054564565958543}
-  - component: {fileID: 4639442851925804662}
   - component: {fileID: 2051459359832214710}
   m_Layer: 0
   m_Name: Salad
@@ -34,28 +33,6 @@ Transform:
   - {fileID: 7886367237861343031}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!64 &4639442851925804662
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1651802072336799040}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1974554872764265884, guid: f1ea0bb66a71a634399cfade5c7e4809, type: 3}
 --- !u!114 &2051459359832214710
 MonoBehaviour:
   m_ObjectHideFlags: 0
