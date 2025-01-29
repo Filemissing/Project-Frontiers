@@ -13,13 +13,25 @@ MonoBehaviour:
   m_Name: Salad
   m_EditorClassIdentifier: 
   ingredients:
-  - ingredient: {fileID: 8150760410510220236, guid: 623a66bd8cb101b45916a7737d9d8a7f,
+  - ingredient: {fileID: 4502956473049157808, guid: 623a66bd8cb101b45916a7737d9d8a7f,
       type: 3}
     isCooked: 0
     isFried: 0
     isBurnt: 0
     isChopped: 1
-  - ingredient: {fileID: 5219984672791855782, guid: 7e1b534aaf487aa409099ea6f97d8d9a,
+  - ingredient: {fileID: 7487027678834970746, guid: 7e1b534aaf487aa409099ea6f97d8d9a,
+      type: 3}
+    isCooked: 0
+    isFried: 0
+    isBurnt: 0
+    isChopped: 1
+  - ingredient: {fileID: 3452222238250917913, guid: c32575c35157b9d4bb534c05b2c2598a,
+      type: 3}
+    isCooked: 0
+    isFried: 0
+    isBurnt: 0
+    isChopped: 0
+  - ingredient: {fileID: 792612546385920841, guid: e41869af289d96e45875cf57a8c7928f,
       type: 3}
     isCooked: 0
     isFried: 0

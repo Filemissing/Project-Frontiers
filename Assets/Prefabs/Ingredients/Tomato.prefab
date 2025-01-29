@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 268669897810972153}
   - component: {fileID: 8026825598468381584}
   - component: {fileID: 4502956473049157808}
+  - component: {fileID: 2013748810175759685}
   m_Layer: 0
   m_Name: Tomato
   m_TagString: Untagged
@@ -102,7 +103,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -154,10 +155,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41a73f85fdfe4a4a8435a3c5dd2b395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: d77791634185aa74bbe875c2692ada86, type: 3}
+  icon: {fileID: 21300000, guid: 0686978778a453f468f933b241300d3f, type: 3}
   meshFilter: {fileID: 0}
   meshRenderer: {fileID: 0}
   isCooked: 0
   isFried: 0
   isBurnt: 0
   isChopped: 0
+--- !u!114 &2013748810175759685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2182469825207866066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

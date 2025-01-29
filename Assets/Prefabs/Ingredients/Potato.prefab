@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8629493896889951330}
   - component: {fileID: 910769902589452659}
   - component: {fileID: 6510170055316852315}
+  - component: {fileID: 2131235668310985382}
   m_Layer: 0
   m_Name: Potato
   m_TagString: Untagged
@@ -103,7 +104,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -172,10 +173,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe8966dff201762458cd7f9bbbb80dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: a2d01f65101050a42873a7fc80ee763b, type: 3}
+  icon: {fileID: 21300000, guid: a9e57744d8064174b974fed631f7d7c4, type: 3}
   meshFilter: {fileID: 0}
   meshRenderer: {fileID: 0}
   isCooked: 0
   isFried: 0
   isBurnt: 0
   isChopped: 0
+--- !u!114 &2131235668310985382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5514038701093447929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
