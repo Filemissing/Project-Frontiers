@@ -4836,8 +4836,14 @@ MonoBehaviour:
   currentDifficulty: 0
   customerPrefabs:
   - {fileID: 5705143447413767023, guid: eb5c86282912d4f4ba3fefa31ca0d38d, type: 3}
-  - {fileID: 5705143447413767023, guid: 5e8a3a00de723444986b1e1324ebe7f0, type: 3}
-  - {fileID: 5705143447413767023, guid: 7fbc7651d6303cc4092e5753599d2add, type: 3}
+  - {fileID: 5705143447413767023, guid: 4a9097b0eb6e1c44bb62affb5931c4a7, type: 3}
+  - {fileID: 5705143447413767023, guid: 8a6bdc04e2016e04494fac056d8e2215, type: 3}
+  - {fileID: 5705143447413767023, guid: 1a8daa9fed79f9e44bd32065002a806f, type: 3}
+  - {fileID: 5705143447413767023, guid: 64de134581fbdee44949031e64c2bf0c, type: 3}
+  - {fileID: 5705143447413767023, guid: e0cadf4bad9e08541bad135533207b86, type: 3}
+  - {fileID: 5705143447413767023, guid: cfe6138c90793d74f890a0dc8d347f85, type: 3}
+  - {fileID: 5705143447413767023, guid: f6156151c1ee3aa43a9d98427025e767, type: 3}
+  - {fileID: 5705143447413767023, guid: 690756b3c611b98409fcb5e9188d60e7, type: 3}
   timeBetweenOrdersMin: 1
   timeBetweenOrdersMax: 5
 --- !u!4 &1484720667
