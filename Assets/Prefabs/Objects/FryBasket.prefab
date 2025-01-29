@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ingredient: {fileID: 0}
-  ingredientPosition: {x: 0.4, y: -4.6, z: -19.5}
+  ingredientPosition: {x: 0, y: 0, z: 0.225}
   positionOnFryer: 0
 --- !u!1001 &5376169436784848096
 PrefabInstance:

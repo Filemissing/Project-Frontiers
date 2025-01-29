@@ -23,7 +23,15 @@ public class Ingredient : Carryable
 
     public override void InteractLeft()
     {
-        if(GameManager.instance.playerCarry.carryingObject != null) return;
+        if (transform.parent && transform.parent.TryGetComponent<CuttingBoard>(out CuttingBoard cuttingBoard1))
+        {
+            if (GameManager.instance.playerCarry.carryingObject && GameManager.instance.playerCarry.carryingObject.TryGetComponent<Knife>(out Knife knife))
+            {
+                SendMessage("Chop");
+            }
+        }
+
+        if (GameManager.instance.playerCarry.carryingObject != null) return;
 
         if(transform.parent)
         {
@@ -55,6 +63,7 @@ public class Ingredient : Carryable
         }
     }
 
+    /*
     public void InteractRight()
     {
         if(transform.parent && transform.parent.TryGetComponent<CuttingBoard>(out CuttingBoard cuttingBoard))
@@ -65,4 +74,5 @@ public class Ingredient : Carryable
             }
         }
     }
+    */
 }
