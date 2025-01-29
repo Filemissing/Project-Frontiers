@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3298467127260968776}
   - component: {fileID: 7466659179748859223}
   - component: {fileID: 6528903136471705059}
-  - component: {fileID: 8441498281491575244}
   - component: {fileID: 8190528297608975747}
   - component: {fileID: 1075667111636566182}
+  - component: {fileID: 7920726739688999190}
   m_Layer: 0
   m_Name: FryBasket
   m_TagString: Untagged
@@ -87,28 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8441498281491575244
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5025356755584633560}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4976957901415362066, guid: 4bb45759f938d8147a8026a6f0cbf7e7, type: 3}
 --- !u!114 &8190528297608975747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,7 +119,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredient: {fileID: 0}
   ingredientPosition: {x: 0, y: 0, z: 0.225}
-  positionOnFryer: 0
+  positionOnFryer: 1
+--- !u!65 &7920726739688999190
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5025356755584633560}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3046723, y: 0.38964462, z: 1.0083773}
+  m_Center: {x: -0.0000051110997, y: 0, z: 0.00000035762795}
 --- !u!1001 &5376169436784848096
 PrefabInstance:
   m_ObjectHideFlags: 0

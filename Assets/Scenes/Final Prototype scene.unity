@@ -3791,11 +3791,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 559635627673856363}
     m_Modifications:
-    - target: {fileID: 1075667111636566182, guid: 5220d1cec8670924088f9e0a62acbe14,
-        type: 3}
-      propertyPath: positionOnFryer
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3298467127260968776, guid: 5220d1cec8670924088f9e0a62acbe14,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5540,11 +5535,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3283062765066129662}
     m_Modifications:
-    - target: {fileID: 1760324737500175292, guid: 4bc073c8df3109e4cbe3a098bf6d0472,
-        type: 3}
-      propertyPath: positionOnStove
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8194016327662660601, guid: 4bc073c8df3109e4cbe3a098bf6d0472,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7156,8 +7146,8 @@ GameObject:
   - component: {fileID: 559635627673856363}
   - component: {fileID: 3445000297362570091}
   - component: {fileID: 2963982711319951154}
-  - component: {fileID: 3445000297362570093}
   - component: {fileID: 3445000297362570092}
+  - component: {fileID: 3445000297362570093}
   m_Layer: 0
   m_Name: DeepFryer
   m_TagString: Untagged
@@ -7615,8 +7605,8 @@ GameObject:
   - component: {fileID: 3283062765066129662}
   - component: {fileID: 1710842680522681871}
   - component: {fileID: 4982277920489194238}
-  - component: {fileID: 4982277920489194239}
   - component: {fileID: 4982277920489194240}
+  - component: {fileID: 4982277920489194241}
   m_Layer: 0
   m_Name: Gas_Stove_Unit
   m_TagString: Untagged
@@ -8070,8 +8060,8 @@ MonoBehaviour:
   positions:
   - {fileID: 411904007}
   - {fileID: 687094877}
---- !u!64 &3445000297362570093
-MeshCollider:
+--- !u!65 &3445000297362570093
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -8088,10 +8078,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2640630311934905682, guid: 760156b562aca02449cff607b0ae0a81, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 1.2500272, y: 1.0866436, z: 0.80511093}
+  m_Center: {x: -0.00692153, y: -0.29186136, z: 0}
 --- !u!1 &3531479457114311093
 GameObject:
   m_ObjectHideFlags: 0
@@ -8459,28 +8448,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4982277920489194239
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2133057279025435751}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4014724794490016833, guid: 760156b562aca02449cff607b0ae0a81, type: 3}
 --- !u!114 &4982277920489194240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8499,6 +8466,27 @@ MonoBehaviour:
   positions:
   - {fileID: 1843421178}
   - {fileID: 1815327728}
+--- !u!65 &4982277920489194241
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133057279025435751}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.98093057, y: 0.9864297, z: 0.8929529}
+  m_Center: {x: -0.044118762, y: -0.41184855, z: 0}
 --- !u!1 &5011437859461345478
 GameObject:
   m_ObjectHideFlags: 0
@@ -9713,6 +9701,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TrashCan
+      objectReference: {fileID: 0}
+    - target: {fileID: 1678328241526129246, guid: 6a2c7a555596a3741bfe167768eb41a2,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1678328241526129246, guid: 6a2c7a555596a3741bfe167768eb41a2,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5757113669541212734, guid: 6a2c7a555596a3741bfe167768eb41a2,
         type: 3}
