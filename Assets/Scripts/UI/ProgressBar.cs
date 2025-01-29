@@ -5,26 +5,20 @@ using UnityEngine.UI;
 
 public class ProgressBar : MonoBehaviour
 {
-    public RectTransform progressBar;
-    Image progressBarImage;
+    public Image progressBar;
     public float progress;
     public Color barColor;
     public Image iconImage;
     public Sprite defaultIcon;
     public Sprite alternateIcon;
 
-    private void Awake()
-    {
-        progressBarImage = progressBar.GetComponent<Image>();
-    }
-
     public void Update()
     {
         transform.LookAt(Camera.main.transform);
         transform.Rotate(new Vector3(0, 180, 0)); // rotate 180 because UI points at -z
 
-        progressBar.localScale = new Vector3(progress, 1, 1);
+        progressBar.fillAmount = progress;
 
-        progressBarImage.color = barColor;
+        progressBar.color = barColor;
     }
 }
