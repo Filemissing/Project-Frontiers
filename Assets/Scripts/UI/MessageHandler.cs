@@ -76,7 +76,7 @@ public class MessageHandler : MonoBehaviour
                 for (int i = 0; i < text.Length; i++)
                 {
                     char character = text[i];
-                    bool isLineEnd = character == '.' || character == '!' || character == '?' || character == ',';
+                    bool isLineEnd = character == '.' || character == '!' || character == '?' || character == ',' || character == '-';
                     float waitTime = isLineEnd ? lineSpeed : characterSpeed;
 
                     tempText += character;
