@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     PlayerController playerController;
     public Carry playerCarry;
+    public Fridge fridge;
     public Recipe[] recipes;
     public OrderRequest[] orders;
 
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
     {
         dayTimeLeft = 0;
         //Time.timeScale = 0;
+        fridge.fridgeInterface.SetActive(false);
     }
 
     void Awake()
