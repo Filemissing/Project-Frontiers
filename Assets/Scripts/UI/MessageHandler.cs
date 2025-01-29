@@ -207,6 +207,9 @@ public class MessageHandler : MonoBehaviour
         CanNextChange();
         VisibilityChange(transitionTime);
         Next();
+
+        if (GameManager.instance.isEndlessMode) // Disables DayCycling on Endless Mode
+            GameManager.instance.isDayCyling = false;
     }
 
     void Awake()

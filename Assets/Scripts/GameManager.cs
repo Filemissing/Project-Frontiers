@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public OrderRequest[] orders;
 
     [Header("Day Time")]
+    public bool isEndlessMode = false;
     public bool isDayCyling;
     public float maxDayTime = 210;
     public float dayTimeLeft;
@@ -34,7 +35,8 @@ public class GameManager : MonoBehaviour
 
     void DayEnd()
     {
-        Time.timeScale = 0;
+        dayTimeLeft = 0;
+        //Time.timeScale = 0;
     }
 
     void Awake()
@@ -44,11 +46,15 @@ public class GameManager : MonoBehaviour
         instance = this;
         dayTimeLeft = maxDayTime;
 
-        messageHandler.SayMessage(messageHandler.dialogues[0]);
+        if (!isEndlessMode)
+            messageHandler.SayMessage(messageHandler.dialogues[0]);
     }
 
     void UpdateDayTime()
     {
+        if (isEndlessMode)
+            return;
+
         if (!isDayCyling)
             return;
 
@@ -130,6 +136,8 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if(instance == null) instance = this;
+        if (isEndlessMode && ratings.Count != 0 && rating < 4) DayEnd();
+
         playerController.canMove = !isDialoguing; // Disables player movement while dialoguing
 
         UpdateDayTime();
