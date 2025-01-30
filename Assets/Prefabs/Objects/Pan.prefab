@@ -269,6 +269,18 @@ PrefabInstance:
       propertyPath: barColor.g
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3229049334785153731, guid: ae007b119d35c2546a4dab0d2365241e,
+        type: 3}
+      propertyPath: defaultIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 8400901cf78f52a41a02b078bd1838fd,
+        type: 3}
+    - target: {fileID: 3229049334785153731, guid: ae007b119d35c2546a4dab0d2365241e,
+        type: 3}
+      propertyPath: alternateIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: b2e3e6435cc095b46a4c7e162a67c7db,
+        type: 3}
     - target: {fileID: 8031159242461425900, guid: ae007b119d35c2546a4dab0d2365241e,
         type: 3}
       propertyPath: m_PresetInfoIsWorld
