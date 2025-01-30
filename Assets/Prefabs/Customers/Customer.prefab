@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   order: {fileID: 7335632310184260871, guid: eb7f9db8319938b45bff8ad9886774a6, type: 3}
-  maxTime: 45
+  maxTime: 80
   timeLeft: 0
   particleSystem: {fileID: -2528019085971312257, guid: 44479f9284e43ff4982e990916535ce9,
     type: 3}
