@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class CuttingBoard : MonoBehaviour
 {
+    public AudioSource source;
     public Ingredient ingredient;
     public Vector3 ingredientPosition;
     ProgressBar progressBar;
@@ -12,6 +14,7 @@ public class CuttingBoard : MonoBehaviour
     private void Awake()
     {
         progressBar = GetComponentInChildren<ProgressBar>();
+        source = GetComponent<AudioSource>();
     }
 
     public void InteractLeft()

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3298467127260968776}
   - component: {fileID: 7466659179748859223}
   - component: {fileID: 6528903136471705059}
-  - component: {fileID: 8441498281491575244}
   - component: {fileID: 8190528297608975747}
   - component: {fileID: 1075667111636566182}
+  - component: {fileID: 7920726739688999190}
   m_Layer: 0
   m_Name: FryBasket
   m_TagString: Untagged
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b33cf745fac1def4aae7fc63bca605f2, type: 2}
+  - {fileID: 2100000, guid: 04bc133ce844706448f1dab04b364f33, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -87,28 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8441498281491575244
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5025356755584633560}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4976957901415362066, guid: 4bb45759f938d8147a8026a6f0cbf7e7, type: 3}
 --- !u!114 &8190528297608975747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,7 +119,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredient: {fileID: 0}
   ingredientPosition: {x: 0, y: 0, z: 0.225}
-  positionOnFryer: 0
+  positionOnFryer: 1
+--- !u!65 &7920726739688999190
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5025356755584633560}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3046723, y: 0.38964462, z: 1.0083773}
+  m_Center: {x: -0.0000051110997, y: 0, z: 0.00000035762795}
 --- !u!1001 &5376169436784848096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -270,6 +269,18 @@ PrefabInstance:
       propertyPath: barColor.g
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3229049334785153731, guid: ae007b119d35c2546a4dab0d2365241e,
+        type: 3}
+      propertyPath: defaultIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 4f411c5d50b18f1438f0a41211a64b44,
+        type: 3}
+    - target: {fileID: 3229049334785153731, guid: ae007b119d35c2546a4dab0d2365241e,
+        type: 3}
+      propertyPath: alternateIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: b2e3e6435cc095b46a4c7e162a67c7db,
+        type: 3}
     - target: {fileID: 8031159242461425900, guid: ae007b119d35c2546a4dab0d2365241e,
         type: 3}
       propertyPath: m_PresetInfoIsWorld

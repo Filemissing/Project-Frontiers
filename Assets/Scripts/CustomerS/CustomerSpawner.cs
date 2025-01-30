@@ -90,7 +90,9 @@ public class CustomerSpawner : MonoBehaviour
             return;
 
 
-        GameObject newCustomer = Instantiate<GameObject>(customerPrefabs[Random.Range(0, customerPrefabs.Length)]);
+        GameObject selectedCustomerPrefab = customerPrefabs[Random.Range(0, customerPrefabs.Length)];
+        GameObject newCustomer = Instantiate<GameObject>(selectedCustomerPrefab);
+        newCustomer.name = selectedCustomerPrefab.name;
         OrderRequest newOrder = null;
 
         if (newCustomer.TryGetComponent<OrderRequest>(out OrderRequest orderRequest))

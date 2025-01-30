@@ -4,14 +4,17 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
 
+[RequireComponent(typeof(AudioSource))]
 public class Plate : Carryable
 {
+    AudioSource audioSource;
     public List<Ingredient> ingredients = new List<Ingredient>();
     public List<Recipe> validRecipes = new List<Recipe>();
     [SerializeField] Ingredient heldIngredient;
     public override void Awake()
     {
         base.Awake();
+        audioSource = GetComponent<AudioSource>();
         validRecipes = new List<Recipe>(GameManager.instance.recipes);
     }
 
@@ -165,6 +168,7 @@ public class Plate : Carryable
             Destroy(transform.GetChild(i).gameObject);
         }
         Instantiate(recipe.endResult, transform);
+        audioSource.Play();
     }
 
     public override void Update()

@@ -28,13 +28,11 @@ public class PauseScreen : MonoBehaviour
         {
             if (isPaused)
             {
-                Debug.Log("isPaused");
                 Time.timeScale = 0;
                 GameManager.instance.EnterUIMode();
             }
             else
             {
-                Debug.Log("isNotPaused");
                 Time.timeScale = 1;
                 GameManager.instance.ExitUIMode();
             }

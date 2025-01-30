@@ -54,7 +54,7 @@ public class MessageHandler : MonoBehaviour
 
 
 
-    public void SayMessage(Message message)
+    public void SayMessage(Message message, string customerName)
     {
         if (message.messageType == Message.MessageType.Dialogue)
         {
@@ -106,7 +106,7 @@ public class MessageHandler : MonoBehaviour
             canvasGroup.alpha = 0;
             rectTransform.localScale = new Vector3(.1f, .1f, .1f);
 
-            nameLabel.text = message.name;
+            nameLabel.text = customerName;
             textLabel.text = message.text;
             ratingLabel.fillAmount = message.rating / 5f;
 
@@ -142,7 +142,7 @@ public class MessageHandler : MonoBehaviour
             }
 
             if (nextDialogueMessageIndex < dialogues.Length)
-                SayMessage(dialogues[nextDialogueMessageIndex]);
+                SayMessage(dialogues[nextDialogueMessageIndex], "");
             else
             {
                 isDialogueVisible = false;
