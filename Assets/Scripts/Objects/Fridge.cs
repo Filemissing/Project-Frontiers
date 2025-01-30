@@ -39,5 +39,13 @@ public class Fridge : MonoBehaviour
         {
             fridgeInterface.SetActive(false);
         }
+        else if(GameManager.instance.dayTimeLeft == 0)
+        {
+            fridgeInterface.SetActive(false);
+        }
+        if (fridgeInterface.activeSelf)
+        {
+            GameManager.instance.EnterUIMode();
+        }
     }
 }

@@ -4683,6 +4683,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 408182905720698994, guid: abccfa8de0404964fb7a2abbc70acf4f,
         type: 3}
+      propertyPath: fridge
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 408182905720698994, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 821065700}
@@ -5209,7 +5214,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_TargetDisplay: 0
 --- !u!224 &1479440213
 RectTransform:

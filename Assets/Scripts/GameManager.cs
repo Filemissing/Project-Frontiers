@@ -175,14 +175,14 @@ public class GameManager : MonoBehaviour
     public void EnterUIMode()
     {
         Debug.Log("enterUIMode");
-        playerController.enabled = false;
+        player.SetActive(false);
         Cursor.lockState = CursorLockMode.Confined;
     }
 
     public void ExitUIMode()
     {
         Debug.Log("ExitUIMode");
-        playerController.enabled = true;
+        player.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
     }
 }
