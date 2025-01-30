@@ -4228,13 +4228,25 @@ PrefabInstance:
     - target: {fileID: 408182905720698994, guid: abccfa8de0404964fb7a2abbc70acf4f,
         type: 3}
       propertyPath: recipes.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 408182905720698994, guid: abccfa8de0404964fb7a2abbc70acf4f,
         type: 3}
       propertyPath: recipes.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: a18c815f888e58449af208df7a057884,
+        type: 2}
+    - target: {fileID: 408182905720698994, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: recipes.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6295c5338277b13409738dae93545cfd,
+        type: 2}
+    - target: {fileID: 408182905720698994, guid: abccfa8de0404964fb7a2abbc70acf4f,
+        type: 3}
+      propertyPath: recipes.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: d8f7f52c7f39c334591e29a7c8de124b,
         type: 2}
     - target: {fileID: 7189992599285825104, guid: abccfa8de0404964fb7a2abbc70acf4f,
         type: 3}
@@ -9307,6 +9319,9 @@ MonoBehaviour:
   - {fileID: 7487027678834970746, guid: 7e1b534aaf487aa409099ea6f97d8d9a, type: 3}
   - {fileID: 6510170055316852315, guid: 6c7529da78ab34644ac055e676b73335, type: 3}
   - {fileID: 4502956473049157808, guid: 623a66bd8cb101b45916a7737d9d8a7f, type: 3}
+  - {fileID: 7000469404182431460, guid: 24bc9203433a80248a6659ab2ecc39fe, type: 3}
+  - {fileID: 4808461624401131195, guid: 7b09d1a7a59ae904280f7029e343123f, type: 3}
+  - {fileID: 3153206213573300375, guid: f1c12e4870dce7d4a8478f664426527d, type: 3}
 --- !u!23 &5971324285964174672
 MeshRenderer:
   m_ObjectHideFlags: 0
