@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         dayTimeLeft = maxDayTime;
 
         if (!isEndlessMode)
-            messageHandler.SayMessage(messageHandler.dialogues[0]);
+            messageHandler.SayMessage(messageHandler.dialogues[0], "");
     }
 
     void UpdateDayTime()

@@ -56,7 +56,7 @@ public class OrderRequest : MonoBehaviour
         Destroy(GameManager.instance.playerCarry.carryingObject); // destroy the plate with the order
         Destroy(gameObject); // destroy the customer
         GameManager.instance.ratings.Add(maxRating);
-        GameManager.instance.messageHandler.SayMessage(GetMessage((int)maxRating));
+        GameManager.instance.messageHandler.SayMessage(GetMessage((int)maxRating), gameObject.name);
         Instantiate(particleSystem.gameObject, transform.position, Quaternion.identity); // instantiate despawn effect
         Debug.Log("The CompletedOrder is correct.");
     }
@@ -109,7 +109,7 @@ public class OrderRequest : MonoBehaviour
     void OutOfTime()
     {
         GameManager.instance.ratings.Add(1f);
-        GameManager.instance.messageHandler.SayMessage(GetMessage(1));
+        GameManager.instance.messageHandler.SayMessage(GetMessage(1), gameObject.name);
         Destroy(gameObject);
         Instantiate(particleSystem, transform.position, Quaternion.identity);
     }

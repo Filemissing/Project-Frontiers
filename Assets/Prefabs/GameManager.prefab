@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   playerCarry: {fileID: 0}
+  fridge: {fileID: 0}
   recipes:
   - {fileID: 11400000, guid: 82f8c6abc092c5d4fa6dcca18ad7d7a3, type: 2}
   - {fileID: 11400000, guid: 69f926269cd440f498deab680672958b, type: 2}
@@ -54,9 +55,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  isEndlessMode: 0
   isDayCyling: 0
   maxDayTime: 210
   dayTimeLeft: 0
+  recipePopupRange: 2.5
+  currentRecipePopup: {fileID: 0}
+  recipePopups: []
   messageHandler: {fileID: 7189992599285825104}
   isDialoguing: 0
   rating: 0
@@ -80,7 +85,7 @@ MonoBehaviour:
   nextPanelCanvasGroup: {fileID: 0}
   nextPanelRectTransform: {fileID: 0}
   comicImageLabel: {fileID: 0}
-  characterSpeed: 0.02
+  characterSpeed: 0.01
   lineSpeed: 0.4
   startPosition: -120
   endPosition: 160
@@ -97,44 +102,138 @@ MonoBehaviour:
   transitionTime: 0.3
   dialogues:
   - name: Boss
-    text: TEMP - Welcome to the restaurant! You will be the chef for today.
+    text: Good morning. Glad to see you on time today.
     rating: 0
-    comicSprite: {fileID: 0}
+    comicSprite: {fileID: 21300000, guid: 39aac8d476b19ac4b8f74bc6602f4f1f, type: 3}
     messageType: 1
   - name: Boss
-    text: TEMP - GET TO FUCKING WORK. I MEAN IT.
+    text: As you know, the last employee (other than you) left his job position yesterday.
     rating: 0
-    comicSprite: {fileID: 0}
+    comicSprite: {fileID: 21300000, guid: b11c5df4c6a40244e9f30959aaccf965, type: 3}
     messageType: 1
   - name: Boss
-    text: TEMP - I SAID GET TO WORK U FUCKING PIECE OF SHIT.
+    text: Therefore, I am giving you an excellent opportunity -
     rating: 0
-    comicSprite: {fileID: 0}
+    comicSprite: {fileID: 21300000, guid: 39aac8d476b19ac4b8f74bc6602f4f1f, type: 3}
+    messageType: 1
+  - name: Boss
+    text: A promotion!
+    rating: 0
+    comicSprite: {fileID: 21300000, guid: a1bdef3458cd008449b99da1b7155532, type: 3}
+    messageType: 1
+  - name: Boss
+    text: "Make sure to get all reviews 4 stars or over and it\u2019s yours (not
+      that I could give it to anyone else)."
+    rating: 0
+    comicSprite: {fileID: 21300000, guid: 3770ec7a5ffcc8a47bae286524e575cd, type: 3}
+    messageType: 1
+  - name: Boss
+    text: "If you get anything else, though\u2026 I am selling this place - I can\u2019t
+      take this for much longer."
+    rating: 0
+    comicSprite: {fileID: 21300000, guid: a1bdef3458cd008449b99da1b7155532, type: 3}
+    messageType: 1
+  - name: Boss
+    text: "Well\u2026 Good luck! Don\u2019t disappoint me!"
+    rating: 0
+    comicSprite: {fileID: 21300000, guid: ba78a97ddfb26bd4a8b2e56e587f715a, type: 3}
     messageType: 1
   reviews:
-  - name: Mr. French Fries
-    text: TEMP - I FUCKING LOVE THESE FIRES
-    rating: 5
-    comicSprite: {fileID: 0}
-    messageType: 0
-  - name: Coughing Baby
-    text: TEMP - Cough Cough.
-    rating: 5
-    comicSprite: {fileID: 0}
-    messageType: 0
-  - name: Hydrogen Bomb
-    text: TEMP - AOWWWW
-    rating: 5
-    comicSprite: {fileID: 0}
-    messageType: 0
-  - name: '"Normal" person'
-    text: TEMP - I WANT A FUCKING REFUND WHER ETHE FUCK IS MY FOOD GIVE ME MY FOOD
-      OR I KIL YOU
+  - name: CustomerName
+    text: 'Never got anything edible, unless you count the napkins. '
     rating: 1
     comicSprite: {fileID: 0}
     messageType: 0
-  - name: Happiest person in berlingham
-    text: TEMP - WHAT THE FOCK M8 WHERE IS MY BLOODY FOOD?!?!
+  - name: CustomerName
+    text: Have you considered ACTUALLY serving food?
     rating: 1
+    comicSprite: {fileID: 0}
+    messageType: 0
+  - name: CustomerName
+    text: Do NOT go here, wasted VALUABLE time out of my day.
+    rating: 1
+    comicSprite: {fileID: 0}
+    messageType: 0
+  - name: CustomerName
+    text: No.
+    rating: 1
+    comicSprite: {fileID: 0}
+    messageType: 0
+  - name: CustomerName
+    text: i am hungry
+    rating: 1
+    comicSprite: {fileID: 0}
+    messageType: 0
+  - name: CustomerName
+    text: "I got my order. That\u2019s all I can say. "
+    rating: 2
+    comicSprite: {fileID: 0}
+    messageType: 0
+  - name: CustomerName
+    text: How is this place still open??
+    rating: 2
+    comicSprite: {fileID: 0}
+    messageType: 0
+  - name: CustomerName
+    text: "I\u2019d rather just eat at home. "
+    rating: 2
+    comicSprite: {fileID: 0}
+    messageType: 0
+  - name: CustomerName
+    text: "it\u2019s ok"
+    rating: 3
+    comicSprite: {fileID: 0}
+    messageType: 0
+  - name: CustomerName
+    text: cheaper than uni food
+    rating: 3
+    comicSprite: {fileID: 0}
+    messageType: 0
+  - name: CustomerName
+    text: Terrell did a great job.
+    rating: 3
+    comicSprite: {fileID: 0}
+    messageType: 0
+  - name: CustomerName
+    text: 'it was good! I want free breadsticks tho '
+    rating: 4
+    comicSprite: {fileID: 0}
+    messageType: 0
+  - name: CustomerName
+    text: yeah I like it
+    rating: 4
+    comicSprite: {fileID: 0}
+    messageType: 0
+  - name: CustomerName
+    text: "Have you tried our new fryer, FryIt 5600\xA9?"
+    rating: 4
+    comicSprite: {fileID: 0}
+    messageType: 0
+  - name: CustomerName
+    text: yea
+    rating: 5
+    comicSprite: {fileID: 0}
+    messageType: 0
+  - name: CustomerName
+    text: I come here every day! I eat here every day!
+    rating: 5
+    comicSprite: {fileID: 0}
+    messageType: 0
+  - name: CustomerName
+    text: pretty decent place for their location
+    rating: 5
+    comicSprite: {fileID: 0}
+    messageType: 0
+  - name: CustomerName
+    text: 'According to all known laws of aviation, there is no way a bee should
+      be able to fly. Its wings are too small to get its fat little body off the
+      ground. The bee, of course, flies anyway because bees don''t care what humans
+      think is impossible. '
+    rating: 5
+    comicSprite: {fileID: 0}
+    messageType: 0
+  - name: CustomerName
+    text: I EAT GOOD
+    rating: 5
     comicSprite: {fileID: 0}
     messageType: 0
