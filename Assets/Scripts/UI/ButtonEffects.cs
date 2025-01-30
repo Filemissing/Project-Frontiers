@@ -27,7 +27,7 @@ public class ButtonEffects : MonoBehaviour
         image.sprite = defaultSprite;
         image.color = enterColor;
 
-        rectTransform.position = defaultPosition;
+        //rectTransform.position = defaultPosition;
     }
 
     public void MouseExit()
@@ -37,7 +37,7 @@ public class ButtonEffects : MonoBehaviour
         image.sprite = defaultSprite;
         image.color = defaultColor;
 
-        rectTransform.position = defaultPosition;
+        //rectTransform.position = defaultPosition;
     }
 
     public void MouseDown()
@@ -45,7 +45,7 @@ public class ButtonEffects : MonoBehaviour
         image.sprite = downSprite;
         image.color = defaultColor;
 
-        rectTransform.position = offsetPosition;
+        //rectTransform.position = offsetPosition;
     }
 
     public void MouseUp()
@@ -55,7 +55,7 @@ public class ButtonEffects : MonoBehaviour
         if (isMouseOnButton)
             image.color = enterColor;
 
-        rectTransform.position = defaultPosition;
+        //rectTransform.position = defaultPosition;
     }
 
 
@@ -64,8 +64,10 @@ public class ButtonEffects : MonoBehaviour
         image = GetComponent<Image>();
         rectTransform = GetComponent<RectTransform>();
 
-        defaultPosition = rectTransform.position;
-        offsetPosition = defaultPosition + downOffset;
+        //defaultPosition = rectTransform.position;
+        //Debug.LogWarning("defaultPosition: " + defaultPosition);
+        //offsetPosition = defaultPosition + downOffset;
+        //Debug.LogWarning("offsetPosition: " + offsetPosition);
 
         defaultColor = Color.white;
         defaultSprite = image.sprite;
