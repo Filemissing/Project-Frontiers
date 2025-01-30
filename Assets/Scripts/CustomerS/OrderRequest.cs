@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class OrderRequest : MonoBehaviour
 {
+    public AudioClip satisfiedClip;
+    public AudioClip dissatisfiedClip;
     public CompletedOrder order;
     public float maxTime;
     public float timeLeft;
@@ -58,6 +60,7 @@ public class OrderRequest : MonoBehaviour
         GameManager.instance.ratings.Add(maxRating);
         GameManager.instance.messageHandler.SayMessage(GetMessage((int)maxRating), gameObject.name);
         Instantiate(particleSystem.gameObject, transform.position, Quaternion.identity); // instantiate despawn effect
+        AudioSource.PlayClipAtPoint(satisfiedClip, transform.position);
         Debug.Log("The CompletedOrder is correct.");
     }
 
@@ -112,6 +115,7 @@ public class OrderRequest : MonoBehaviour
         GameManager.instance.messageHandler.SayMessage(GetMessage(1), gameObject.name);
         Destroy(gameObject);
         Instantiate(particleSystem, transform.position, Quaternion.identity);
+        AudioSource.PlayClipAtPoint(dissatisfiedClip, transform.position);
     }
 
     void Update()

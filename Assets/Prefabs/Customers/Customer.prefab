@@ -131,6 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc163e2c213478458d2ff7ddea6738b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  satisfiedClip: {fileID: 8300000, guid: 8c2c53c457e43d047a9157c5c44bf31e, type: 3}
+  dissatisfiedClip: {fileID: 8300000, guid: 8a04f079d90392d4e8ed570263f17ef6, type: 3}
   order: {fileID: 7335632310184260871, guid: eb7f9db8319938b45bff8ad9886774a6, type: 3}
   maxTime: 80
   timeLeft: 0

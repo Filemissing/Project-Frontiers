@@ -2,8 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Stove : MonoBehaviour
 {
+    AudioSource source;
+    private void Awake()
+    {
+        source = GetComponent<AudioSource>();
+    }
+
     public Pan[] panSlots;
     public Transform[] positions;
     
@@ -30,12 +37,23 @@ public class Stove : MonoBehaviour
 
     void Update()
     {
+        int notCookingSlots = 0;
         for (int i = 0; i < panSlots.Length; i++)
         {
             if (panSlots[i] != null && panSlots[i].ingredient != null)
             {
+                if(!source.isPlaying) source.Play();
                 panSlots[i].ingredient.SendMessage("Cook"); // cook the ingredient in the pan
             }
+            else
+            {
+                notCookingSlots++;
+            }
+        }
+
+        if(notCookingSlots == panSlots.Length)
+        {
+            if(source.isPlaying) source.Stop();
         }
     }
 }
