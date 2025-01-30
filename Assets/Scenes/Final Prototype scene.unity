@@ -5937,7 +5937,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlateStack
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 739505013916543450, guid: d847835e590021149a8afb5579ae558e, type: 3}
+    - {fileID: 4879633385883731747, guid: d847835e590021149a8afb5579ae558e, type: 3}
+    - {fileID: 8943076336362713754, guid: d847835e590021149a8afb5579ae558e, type: 3}
+    - {fileID: 3209787809128403356, guid: d847835e590021149a8afb5579ae558e, type: 3}
+    - {fileID: 8701065494493067725, guid: d847835e590021149a8afb5579ae558e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -10498,6 +10503,7 @@ SceneRoots:
   - {fileID: 5855177103689481422}
   - {fileID: 1180555843}
   - {fileID: 2136241314}
+  - {fileID: 8639856}
   - {fileID: 334845738}
   - {fileID: 134603295}
   - {fileID: 385823680}
@@ -10506,4 +10512,3 @@ SceneRoots:
   - {fileID: 1298574117}
   - {fileID: 1354285761}
   - {fileID: 572955735}
-  - {fileID: 8639856}
