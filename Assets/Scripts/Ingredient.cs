@@ -27,6 +27,7 @@ public class Ingredient : Carryable
         {
             if (GameManager.instance.playerCarry.carryingObject && GameManager.instance.playerCarry.carryingObject.TryGetComponent<Knife>(out Knife knife))
             {
+                cuttingBoard1.source.Play();
                 SendMessage("Chop");
             }
         }
